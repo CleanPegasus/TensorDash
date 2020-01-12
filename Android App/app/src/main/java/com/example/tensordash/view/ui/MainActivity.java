@@ -1,8 +1,10 @@
-package com.example.tensordash;
+package com.example.tensordash.view.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.tensordash.R;
 
 public class MainActivity extends AppCompatActivity {
 
