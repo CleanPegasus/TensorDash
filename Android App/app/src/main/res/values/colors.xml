@@ -7,4 +7,5 @@
     <color name="backgroundColor">#303030</color>
     <color name="actionBarColor">#171717</color>
     <color name="statusBarColor">#000000</color>
+    <color name='buttonBackground'>#C4C4C4</color>
 </resources>

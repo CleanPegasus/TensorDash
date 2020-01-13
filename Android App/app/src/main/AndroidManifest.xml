@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.ui.LoginActivity"></activity>
+        <activity android:name=".view.ui.SignUpActivity"></activity>
+        <activity android:name=".view.ui.CreateAPIKeyActivity" />
+        <activity android:name=".view.ui.LoginActivity" />
         <activity android:name=".view.ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
