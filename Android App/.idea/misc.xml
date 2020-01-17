@@ -6,7 +6,4 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
-  <component name="TerminalProjectOptionsProvider">
-    <option name="myStartingDirectory" value="$USER_HOME$/StudioProjects" />
-  </component>
 </project>
