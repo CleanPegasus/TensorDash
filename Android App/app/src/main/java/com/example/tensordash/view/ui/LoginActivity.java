@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -18,6 +20,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 
 public class LoginActivity extends AppCompatActivity {
@@ -25,11 +28,12 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
 
     // TODO: Implement client-side verification techniques and errors!
-    // TODO: Modify regex so that regex is fetched from the servers.
-    String emailIdRegex = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^-]+(?:\\\\.[a-zA-Z0-9_!#$%&’*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\\\.[a-zA-Z0-9-]+)*$";
+
 
     private TextInputEditText emailIdEditText;
     private TextInputEditText passwordEditText;
+    private TextInputLayout emailTextInputLayout;
+    private TextInputLayout passwordTextInputLayout;
     private ProgressBar progressBar;
 
     @Override
@@ -39,6 +43,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         progressBar = findViewById(R.id.progress_bar);
+        emailIdEditText = findViewById(R.id.new_email_edittext);
+        passwordEditText = findViewById(R.id.password_edittext);
+        emailTextInputLayout = findViewById(R.id.emailTextInputLayout);
+        passwordTextInputLayout = findViewById(R.id.passwordTextInputLayout);
 
         Button loginButton = findViewById(R.id.login_button);
         loginButton.setOnClickListener(v ->{
@@ -52,11 +60,22 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+
+        emailIdEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkIfEmailAddressIsCorrect();
+            }
+        });
     }
 
     private void fetchEmailIdAndPasswordFromEditText(){
-        emailIdEditText = findViewById(R.id.new_email_edittext);
-        passwordEditText = findViewById(R.id.password_edittext);
         String emailId = emailIdEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         login(emailId, password);
@@ -96,6 +115,27 @@ public class LoginActivity extends AppCompatActivity {
     private void hideProgressBar(){
         progressBar.setVisibility(View.GONE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
+    private void checkIfEmailAddressIsCorrect(){
+        // TODO: Modify regex so that regex is fetched from the servers.
+
+        if(emailIdEditText.getText().toString().equals("")){
+            raiseIncorrectEmailError();
+        }
+
+        String emailIdRegex = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+        String email = emailIdEditText.getText().toString();
+        if(!email.matches(emailIdRegex)){
+            raiseIncorrectEmailError();
+        }else{
+            emailTextInputLayout.setError(null);
+        }
+
+    }
+
+    public void raiseIncorrectEmailError(){
+        emailTextInputLayout.setError("Invalid email address");
     }
 
 }

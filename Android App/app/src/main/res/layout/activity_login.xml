@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/emailTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="44dp"
@@ -65,13 +65,15 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+        android:id="@+id/passwordTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="44dp"
         android:layout_marginRight="44dp"
         android:hint="Password"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/emailTextInputLayout"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@android:color/darker_gray">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_edittext"
@@ -96,7 +98,7 @@
         android:background="@drawable/ripple_effect"
         android:text="Login"
         android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordTextInputLayout" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -139,7 +141,7 @@
         android:layout_marginLeft="44dp"
         android:layout_marginTop="24dp"
         android:layout_marginRight="44dp"
-        android:text="First time here? No worries, create a new account for your project"
+        android:text="First time here?"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="16dp"
