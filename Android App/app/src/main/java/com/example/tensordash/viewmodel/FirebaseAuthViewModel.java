@@ -33,7 +33,11 @@ public class FirebaseAuthViewModel extends AndroidViewModel {
         firebaseAuthRepository.createNewUser(emailId, password, onSuccessListener, onFailureListener);
     }
 
-    public void signOut(){
+    public void resetPassword(String emailId, OnSuccessListener<Void> onSuccessListener, OnFailureListener onFailureListener){
+        firebaseAuthRepository.resetPassword(emailId, onSuccessListener, onFailureListener);
+    }
+
+        public void signOut(){
         firebaseAuthRepository.signOut();
     }
 }

@@ -47,6 +47,12 @@ public class FirebaseAuthRepository {
                 .addOnFailureListener(onFailureListener);
     }
 
+    public void resetPassword(String emailId, OnSuccessListener<Void> onSuccessListener, OnFailureListener onFailureListener){
+        mAuth.sendPasswordResetEmail(emailId)
+                .addOnSuccessListener(onSuccessListener)
+                .addOnFailureListener(onFailureListener);
+    }
+
     public void signOut(){
         FirebaseAuth.getInstance().signOut();
     }
