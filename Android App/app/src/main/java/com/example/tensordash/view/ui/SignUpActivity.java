@@ -132,7 +132,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void onSuccessfulNewAccountCreation(){
         hideProgressBar();
-        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+        Intent intent = new Intent(SignUpActivity.this, DashboardActivity.class);
         startActivity(intent);
         finishAffinity();
     }

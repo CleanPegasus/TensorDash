@@ -31,9 +31,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.forgot_password_progress_bar);
         Button resetPasswordButton = findViewById(R.id.reset_password_button);
 
-        resetPasswordButton.setOnClickListener(v -> {
-            resetPassword();
-        });
+        resetPasswordButton.setOnClickListener(v -> resetPassword());
     }
 
     private void resetPassword() {

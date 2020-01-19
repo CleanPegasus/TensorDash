@@ -8,4 +8,7 @@
     <color name="actionBarColor">#171717</color>
     <color name="statusBarColor">#000000</color>
     <color name='buttonBackground'>#C4C4C4</color>
+
+    <color name="textSecondaryCardView">#999999</color>
+    <color name="textPrimaryCardView">#FFFFFF</color>
 </resources>
