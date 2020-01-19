@@ -18,11 +18,11 @@ class SendDataToFirebase(object):
 
     def sendMessage(self, key = None, params = None, ModelName = 'Sample Model'):
 
-        epoch, loss, acc = params
+        epoch, loss, acc, val_loss, val_acc, status = params
 
         firebase = FirebaseApplication('https://cofeeshop-tensorflow.firebaseio.com/')
 
-        result = firebase.put(key, '{}/Epoch {}'.format(ModelName, epoch + 1) , {'Loss' : loss, 'Accuracy' : acc})
+        result = firebase.put(key, '{}/Epoch {}'.format(ModelName, epoch + 1) , {'Epoch': epoch+1, 'Loss' : loss, 'Accuracy' : acc, 'Validation Loss': val_loss, 'Validation Accuracy' : val_acc, 'Model Status' : status})
 
             
 
@@ -76,6 +76,30 @@ class Tensordash(keras.callbacks.Callback):
             else:
                 self.val_acc = float("{0:.6f}".format(self.val_accuracy[-1]))
     
-            values = [epoch, self.loss, self.acc]
+            values = [epoch, self.loss, self.acc, self.val_loss, self.val_acc, 'Running']
 
             SendData.sendMessage(key = self.key, params = values, ModelName = self.ModelName)
+
+    def on_train_end(self, epoch, logs = {}):
+
+        if self.accuracy[-1] == None:
+                self.acc = "Not Specified"
+        else:
+
+            self.acc = self.accuracy[-1]
+
+        if self.val_losses[-1] == None:
+                self.val_loss = "Not Specified"
+        else:
+
+            self.val_loss = self.val_losses[-1]
+
+        if self.val_accuracy[-1] == None:
+                self.val_acc = "Not Specified"
+        else:
+
+            self.val_acc = self.val_accuracy[-1]
+
+        values = [epoch, self.loss, self.acc, self.val_loss, self.val_acc, 'Completed']
+
+        SendData.sendMessage(key = self.key, params = values, ModelName = self.ModelName)
