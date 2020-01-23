@@ -1,4 +1,6 @@
 from firebase.firebase import FirebaseApplication
+import requests
+import json
 import keras
 
 class FirebaseError(Exception):
@@ -24,8 +26,6 @@ class SendDataToFirebase(object):
 
         result = firebase.put(key, '{}/Epoch {}'.format(ModelName, epoch + 1) , {'Epoch': epoch+1, 'Loss' : loss, 'Accuracy' : acc, 'Validation Loss': val_loss, 'Validation Accuracy' : val_acc, 'Model Status' : status})
 
-            
-
 
 #result = firebase.put(sample_key, 'model/Epoch {}'.format(epoch) , {'Loss' : 0.2, 'Accuracy' : 0.70})
 
@@ -34,11 +34,12 @@ SendData = SendDataToFirebase()
 
 class Tensordash(keras.callbacks.Callback):
 
-    def __init__(self, key = 'None', epoch_num = 1, ModelName = 'Sample_model'):
+    def __init__(self, email = 'None', password = 'None', epoch_num = 1, ModelName = 'Sample_model'):
 
         
         self.ModelName = ModelName
-        self.key = key
+        self.email = email
+        self.password = password
         self.epoch_num = epoch_num
     
     def on_train_begin(self, logs = {}):
@@ -48,6 +49,27 @@ class Tensordash(keras.callbacks.Callback):
         self.val_losses = []
         self.val_accuracy = []
         self.num_epochs = []
+
+        headers = {'Content-Type': 'application/json',}
+
+        params = (('key', 'AIzaSyDU4zqFpa92Jf64nYdgzT8u2oJfENn-2f8'),)
+
+        val = {
+            "email" : self.email,
+            "password": self.password,
+            "returnSecureToken": "false"
+        }
+
+        data = str(val)
+
+        response = requests.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword', headers=headers, params=params, data=data)
+
+        #response = requests.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[AIzaSyDU4zqFpa92Jf64nYdgzT8u2oJfENn-2f8]', headers=headers, data=data)
+
+        output = response.json()
+
+        self.key = output['localId']
+
 
     def on_epoch_end(self, epoch, logs = {}):
 
