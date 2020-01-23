@@ -34,13 +34,12 @@ SendData = SendDataToFirebase()
 
 class Tensordash(keras.callbacks.Callback):
 
-    def __init__(self, email = 'None', password = 'None', epoch_num = 1, ModelName = 'Sample_model'):
+    def __init__(self, email = 'None', password = 'None',  ModelName = 'Sample_model'):
 
         
         self.ModelName = ModelName
         self.email = email
         self.password = password
-        self.epoch_num = epoch_num
     
     def on_train_begin(self, logs = {}):
 
@@ -79,49 +78,54 @@ class Tensordash(keras.callbacks.Callback):
         self.val_accuracy.append(logs.get('val_accuracy'))
         self.num_epochs.append(epoch)
 
-        if(epoch % self.epoch_num == 0):
+        
+        self.loss = float("{0:.6f}".format(self.losses[-1]))
 
-            self.loss = float("{0:.6f}".format(self.losses[-1]))
+        if self.accuracy[-1] == None:
+            self.acc = "Not Specified"
+        else:
+            self.acc = float("{0:.6f}".format(self.accuracy[-1]))
 
-            if self.accuracy[-1] == None:
-                self.acc = "Not Specified"
-            else:
-                self.acc = float("{0:.6f}".format(self.accuracy[-1]))
+        if self.val_losses[-1] == None:
+            self.val_loss = "Not Specified"
+        else:
+            self.val_loss = float("{0:.6f}".format(self.val_losses[-1]))
 
-            if self.val_losses[-1] == None:
-                self.val_loss = "Not Specified"
-            else:
-                self.val_loss = float("{0:.6f}".format(self.val_losses[-1]))
-
-            if self.val_accuracy[-1] == None:
-                self.val_acc = "Not Specified"
-            else:
-                self.val_acc = float("{0:.6f}".format(self.val_accuracy[-1]))
+        if self.val_accuracy[-1] == None:
+            self.val_acc = "Not Specified"
+        else:
+            self.val_acc = float("{0:.6f}".format(self.val_accuracy[-1]))
     
-            values = [epoch, self.loss, self.acc, self.val_loss, self.val_acc, 'Running']
+        values = [epoch, self.loss, self.acc, self.val_loss, self.val_acc, 'Running']
 
-            SendData.sendMessage(key = self.key, params = values, ModelName = self.ModelName)
+        SendData.sendMessage(key = self.key, params = values, ModelName = self.ModelName)
 
     def on_train_end(self, epoch, logs = {}):
+
+        epoch = self.num_epochs[-1]
+
+        self.loss = float("{0:.6f}".format(self.losses[-1]))
 
         if self.accuracy[-1] == None:
                 self.acc = "Not Specified"
         else:
 
-            self.acc = self.accuracy[-1]
+            self.acc = float("{0:.6f}".format(self.accuracy[-1]))
 
         if self.val_losses[-1] == None:
                 self.val_loss = "Not Specified"
         else:
 
-            self.val_loss = self.val_losses[-1]
+            self.val_loss = float("{0:.6f}".format(self.val_losses[-1]))
 
         if self.val_accuracy[-1] == None:
                 self.val_acc = "Not Specified"
         else:
 
-            self.val_acc = self.val_accuracy[-1]
+            self.val_acc = float("{0:.6f}".format(self.val_accuracy[-1]))
 
-        values = [epoch, self.loss, self.acc, self.val_loss, self.val_acc, 'Completed']
+        values = [epoch, self.loss, self.acc, self.val_loss, self.val_acc, 'Running']
+
+    #    print(values)
 
         SendData.sendMessage(key = self.key, params = values, ModelName = self.ModelName)
