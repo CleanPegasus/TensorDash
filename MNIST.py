@@ -79,6 +79,10 @@ password = '12345678'
 
 histories = Tensordash(email = email, password = password, ModelName = 'My new model')
 
-model.fit(X_train, y_train, epochs = 2, validation_split = 0.1, batch_size = 5000, verbose = 1, shuffle = True, callbacks = [histories])
+try:
 
+    model.fit(X_train, y_train, epochs = 2, validation_split = 0.1, batch_size = 5000, verbose = 1, shuffle = True, callbacks = [histories])
 
+except:
+
+    histories.sendCrash()
