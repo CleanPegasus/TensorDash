@@ -74,13 +74,19 @@ class Tensordash(keras.callbacks.Callback):
 
         data = str(val)
 
-        response = requests.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword', headers=headers, params=params, data=data)
+        try:
 
-        #response = requests.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[AIzaSyDU4zqFpa92Jf64nYdgzT8u2oJfENn-2f8]', headers=headers, data=data)
+            response = requests.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword', headers=headers, params=params, data=data)
 
-        output = response.json()
+            #response = requests.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[AIzaSyDU4zqFpa92Jf64nYdgzT8u2oJfENn-2f8]', headers=headers, data=data)
 
-        self.key = output['localId']
+            output = response.json()
+
+            self.key = output['localId']
+
+        except:
+
+            raise FirebaseError("Authentication Failed. Kindly Create an account on the companion app")
 
     
     def on_train_begin(self, logs = {}):
