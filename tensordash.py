@@ -76,7 +76,7 @@ class Tensordash(keras.callbacks.Callback):
 
         except:
 
-            raise FirebaseError("Authentication Failed. Kindly Create an account on the companion app")
+            raise FirebaseError("Authentication Failed. Kindly create an account on the companion app")
 
     
     def on_train_begin(self, logs = {}):
