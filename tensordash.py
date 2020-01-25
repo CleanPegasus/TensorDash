@@ -16,19 +16,12 @@ class SendDataToFirebase(object):
 
         epoch, loss, acc, val_loss, val_acc = params
 
-        #firebase = FirebaseApplication('https://cofeeshop-tensorflow.firebaseio.com/')
-
-        #data = {"Epoch": epoch+1, "Loss" : loss, "Accuracy" : acc, "Validation Loss": val_loss, "Validation Accuracy" : val_acc}
-
-        #result = self.firebase.put(key, '{}/Epoch {}'.format(ModelName, epoch + 1) , data = data)
-
         data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + ', "Validation Loss":' + str(val_loss) + ', "Validation Accuracy" :' + str(val_acc) + '}'
 
         response = requests.patch('https://cofeeshop-tensorflow.firebaseio.com/{}/{}/Epoch {}.json'.format(key, ModelName, epoch+1), data=data)
 
     def updateRunningStatus(self, key = None, ModelName = 'Sample Model'):
 
-        #result = self.firebase.put(key, '{}/Status'.format(ModelName), status)
         data = '{"Status" : "Running"}'
 
         response = requests.put('https://cofeeshop-tensorflow.firebaseio.com/{}/{}.json'.format(key, ModelName), data = data)
@@ -41,7 +34,6 @@ class SendDataToFirebase(object):
 
     def crashAnalytics(self, key = None, ModelName = 'Sample Model'):
 
-        #result = self.firebase.put(key, '{}/Status'.format(ModelName), "Crashed")
         data = '{"Status" : "Crashed"}'
 
         response = requests.patch('https://cofeeshop-tensorflow.firebaseio.com/{}/{}.json'.format(key, ModelName), data = data)
@@ -77,8 +69,6 @@ class Tensordash(keras.callbacks.Callback):
         try:
 
             response = requests.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword', headers=headers, params=params, data=data)
-
-            #response = requests.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[AIzaSyDU4zqFpa92Jf64nYdgzT8u2oJfENn-2f8]', headers=headers, data=data)
 
             output = response.json()
 
