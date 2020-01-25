@@ -29,4 +29,25 @@ public class Project {
     public void setProjectParamsList(List<ProjectParams> projectParamsList) {
         this.projectParamsList = projectParamsList;
     }
+
+    public int getLatestEpoch(){
+        return projectParamsList.get(projectParamsList.size() - 1).getEpoch();
+    }
+
+    public double getLatestLoss(){
+        return projectParamsList.get(projectParamsList.size() - 1).getLoss();
+    }
+
+    public double getLatestAccuracy(){
+        return projectParamsList.get(projectParamsList.size() - 1).getAccuracy();
+    }
+
+    public double getLatestValidationAccuracy(){
+        return projectParamsList.get(projectParamsList.size() - 1).getValicationAccuracy();
+    }
+
+    public double getLatestValidationLoss(){
+        return projectParamsList.get(projectParamsList.size() - 1).getValidationLoss();
+    }
+
 }

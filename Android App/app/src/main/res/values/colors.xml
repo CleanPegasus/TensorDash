@@ -11,4 +11,8 @@
 
     <color name="textSecondaryCardView">#999999</color>
     <color name="textPrimaryCardView">#FFFFFF</color>
+
+    <!--Color scheme for ProjectDescriptionActivity-->
+    <color name="supportingTextColor">#A3FFFFFF</color>
+    <color name="mainTextColor">#FFFFFF</color>
 </resources>

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -42,8 +43,12 @@ public class DashboardActivity extends AppCompatActivity {
         recyclerView.setAdapter(projectAdapter);
 
         databaseViewModel = ViewModelProviders.of(DashboardActivity.this).get(FirebaseDatabaseViewModel.class);
-        databaseViewModel.getAllProjects().observe(this, projects -> {
-            projectAdapter.submitList(projects);
+        databaseViewModel.getAllProjects().observe(this, projects -> projectAdapter.submitList(projects));
+
+        projectAdapter.setOnItemClickListener(project -> {
+            Intent intent = new Intent(DashboardActivity.this, ProjectDescriptionActivity.class);
+            intent.putExtra("project_name", project.getProjectName());
+            startActivity(intent);
         });
     }
 }
