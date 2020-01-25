@@ -1,4 +1,4 @@
-from firebase.firebase import FirebaseApplication
+#from firebase.firebase import FirebaseApplication
 import requests
 import json
 import keras
@@ -10,13 +10,7 @@ class SendDataToFirebase(object):
 
     def __init__(self, key = None):
 
-        try:
-
-            self.firebase = FirebaseApplication('https://cofeeshop-tensorflow.firebaseio.com/')
-
-        except:
-
-            raise FirebaseError("Could Not connect to firebase")
+        response = None
 
     def sendMessage(self, key = None, params = None, ModelName = 'Sample Model'):
 
@@ -24,16 +18,33 @@ class SendDataToFirebase(object):
 
         #firebase = FirebaseApplication('https://cofeeshop-tensorflow.firebaseio.com/')
 
-        result = self.firebase.put(key, '{}/Epoch {}'.format(ModelName, epoch + 1) , {'Epoch': epoch+1, 'Loss' : loss, 'Accuracy' : acc, 'Validation Loss': val_loss, 'Validation Accuracy' : val_acc})
+        #data = {"Epoch": epoch+1, "Loss" : loss, "Accuracy" : acc, "Validation Loss": val_loss, "Validation Accuracy" : val_acc}
 
-    def updateStatus(self, key = None, ModelName = 'Sample Model', status = None):
+        #result = self.firebase.put(key, '{}/Epoch {}'.format(ModelName, epoch + 1) , data = data)
 
-        result = self.firebase.put(key, '{}/Status'.format(ModelName), status)
+        data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + ', "Validation Loss":' + str(val_loss) + ', "Validation Accuracy" :' + str(val_acc) + '}'
+
+        response = requests.patch('https://cofeeshop-tensorflow.firebaseio.com/{}/{}/Epoch {}.json'.format(key, ModelName, epoch+1), data=data)
+
+    def updateRunningStatus(self, key = None, ModelName = 'Sample Model'):
+
+        #result = self.firebase.put(key, '{}/Status'.format(ModelName), status)
+        data = '{"Status" : "Running"}'
+
+        response = requests.put('https://cofeeshop-tensorflow.firebaseio.com/{}/{}.json'.format(key, ModelName), data = data)
+
+    def updateCompletedStatus(self, key = None, ModelName = 'Sample Model'):
+
+        data = '{"Status" : "Completed"}'
+
+        response = requests.patch('https://cofeeshop-tensorflow.firebaseio.com/{}/{}.json'.format(key, ModelName), data = data)
 
     def crashAnalytics(self, key = None, ModelName = 'Sample Model'):
 
-        result = self.firebase.put(key, '{}/Status'.format(ModelName), "Crashed")
+        #result = self.firebase.put(key, '{}/Status'.format(ModelName), "Crashed")
+        data = '{"Status" : "Crashed"}'
 
+        response = requests.patch('https://cofeeshop-tensorflow.firebaseio.com/{}/{}.json'.format(key, ModelName), data = data)
 
 
 #result = firebase.put(sample_key, 'model/Epoch {}'.format(epoch) , {'Loss' : 0.2, 'Accuracy' : 0.70})
@@ -80,7 +91,7 @@ class Tensordash(keras.callbacks.Callback):
         self.val_accuracy = []
         self.num_epochs = []
 
-        SendData.updateStatus(key = self.key, ModelName = self.ModelName, status = 'Running')
+        SendData.updateRunningStatus(key = self.key, ModelName = self.ModelName)
 
 
     def on_epoch_end(self, epoch, logs = {}):
@@ -116,7 +127,7 @@ class Tensordash(keras.callbacks.Callback):
     def on_train_end(self, epoch, logs = {}):
 
 
-        SendData.updateStatus(key = self.key, ModelName = self.ModelName, status = 'Completed')
+        SendData.updateCompletedStatus(key = self.key, ModelName = self.ModelName)
 
     def sendCrash(self):
 
