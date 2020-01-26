@@ -1,7 +1,7 @@
 package com.example.tensordash.view.ui;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.graphics.Color;
@@ -33,20 +33,28 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
     private TextView lossTextView;
     private TextView validationAccuracyTextView;
     private TextView validationLossTextView;
-    private LineChart lineChart;
+    private LineChart lineChartLoss;
+    private LineChart lineChartAccuracy;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_description);
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+        setTitle("Project Details");
+
         projectNameTextView = findViewById(R.id.project_name_description_textview);
         epochTextView = findViewById(R.id.epoch_project_description_textview);
         accuracyTextView = findViewById(R.id.accuracy_project_description_textview);
         lossTextView = findViewById(R.id.loss_project_description_textview);
         validationAccuracyTextView = findViewById(R.id.validation_accuracy_project_description_textview);
         validationLossTextView = findViewById(R.id.validation_loss_project_description_textview);
-        lineChart = findViewById(R.id.chart_view);
+        lineChartLoss = findViewById(R.id.chart_view_loss);
+        lineChartAccuracy = findViewById(R.id.chart_view_accuracy);
 
 
         firebaseDatabaseViewModel = ViewModelProviders.of(ProjectDescriptionActivity.this).get(FirebaseDatabaseViewModel.class);
@@ -61,6 +69,12 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
     }
 
     private void setValues(Project project) {
@@ -84,16 +98,10 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
 
         ArrayList<Entry> lossEntries = new ArrayList<>();
         ArrayList<Entry> accuracyEntries = new ArrayList<>();
-        ArrayList<Entry> valLossEntries = new ArrayList<>();
-        ArrayList<Entry> valAccEntries = new ArrayList<>();
         for (ProjectParams projectParams : projectParamsList) {
             lossEntries.add(new Entry(projectParams.getEpoch(), (float)projectParams.getLoss()));
             accuracyEntries.add(new Entry(projectParams.getEpoch(), (float)projectParams.getAccuracy()));
-            valLossEntries.add(new Entry(projectParams.getEpoch(), (float)projectParams.getValidationLoss()));
-            valAccEntries.add(new Entry(projectParams.getEpoch(), (float)projectParams.getValicationAccuracy()));
         }
-
-        ArrayList<ILineDataSet> lines = new ArrayList<>();
 
         float textSize = 9;
 
@@ -101,42 +109,51 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
         lossDataset.setColor(colors[0]);
         lossDataset.setValueTextColor(colors[0]);
         lossDataset.setValueTextSize(textSize);
-        lines.add(lossDataset);
 
         LineDataSet accuracyDataset = new LineDataSet(accuracyEntries, "Accuracy");
         accuracyDataset.setColor(colors[1]);
         accuracyDataset.setValueTextColor(colors[1]);
         accuracyDataset.setValueTextSize(textSize);
-        lines.add(accuracyDataset);
 
-//        LineDataSet valLossDataset = new LineDataSet(accuracyEntries, "Validation Loss");
-//        valLossDataset.setColor(colors[2]);
-//        valLossDataset.setValueTextColor(colors[2]);
-//        lines.add(valLossDataset);
-//
-//        LineDataSet valAccDataset = new LineDataSet(accuracyEntries, "Validation Accuracy");
-//        valAccDataset.setColor(colors[3]);
-//        valAccDataset.setValueTextColor(colors[3]);
-//        lines.add(valAccDataset);
 
-        XAxis xAxis = lineChart.getXAxis();
+        XAxis xAxis = lineChartLoss.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setGranularity(1f); // minimum axis-step (interval) is 1
         xAxis.setTextColor(Color.WHITE);
 
-        YAxis yAxisRight = lineChart.getAxisRight();
+        YAxis yAxisRight = lineChartLoss.getAxisRight();
         yAxisRight.setEnabled(false);
 
-        YAxis yAxisLeft = lineChart.getAxisLeft();
+        YAxis yAxisLeft = lineChartLoss.getAxisLeft();
         yAxisLeft.setTextColor(Color.WHITE);
         yAxisLeft.setGranularity(1f);
 
 
-        LineData data = new LineData(lines);
+        LineData data = new LineData(lossDataset);
 
-        lineChart.getLegend().setTextColor(Color.WHITE);
-        lineChart.setData(data);
-        lineChart.invalidate();
+        lineChartLoss.getLegend().setTextColor(Color.WHITE);
+        lineChartLoss.getDescription().setEnabled(false);
+        lineChartLoss.setData(data);
+        lineChartLoss.invalidate();
+
+        XAxis lineChartAccuracyXAxis = lineChartAccuracy.getXAxis();
+        lineChartAccuracyXAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        lineChartAccuracyXAxis.setGranularity(1f); // minimum axis-step (interval) is 1
+        lineChartAccuracyXAxis.setTextColor(Color.WHITE);
+
+        YAxis lineChartAccuracyAxisRight = lineChartAccuracy.getAxisRight();
+        lineChartAccuracyAxisRight.setEnabled(false);
+
+        YAxis lineChartAccuracyAxisLeft = lineChartAccuracy.getAxisLeft();
+        lineChartAccuracyAxisLeft.setTextColor(Color.WHITE);
+        lineChartAccuracyAxisLeft.setGranularity(1f);
+
+
+        LineData dataset = new LineData(accuracyDataset);
+        lineChartAccuracy.getLegend().setTextColor(Color.WHITE);
+        lineChartAccuracy.getDescription().setEnabled(false);
+        lineChartAccuracy.setData(dataset);
+        lineChartAccuracy.invalidate();
 
     }
 
