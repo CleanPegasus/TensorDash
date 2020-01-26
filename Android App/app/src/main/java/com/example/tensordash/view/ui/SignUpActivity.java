@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.example.tensordash.R;
@@ -36,6 +37,7 @@ public class SignUpActivity extends AppCompatActivity {
     private TextInputLayout passwordTextInputLayout;
     private TextInputLayout confirmPasswordTextInputLayout;
     private ProgressBar progressBar;
+    private ImageView backButtonImageView;
 
 
     @Override
@@ -51,6 +53,7 @@ public class SignUpActivity extends AppCompatActivity {
         emailIdTextInputLayout = findViewById(R.id.emailTextInputLayout);
         passwordTextInputLayout = findViewById(R.id.passwordTextInputLayout);
         confirmPasswordTextInputLayout = findViewById(R.id.confirmPasswordTextInputLayout);
+        backButtonImageView = findViewById(R.id.back_image_view);
 
         Button confirmCreateNewAccountButton = findViewById(R.id.button_confirm_create_account);
         confirmCreateNewAccountButton.setOnClickListener(v -> {
@@ -105,6 +108,8 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         });
+
+        backButtonImageView.setOnClickListener(v -> onBackPressed());
 
     }
     

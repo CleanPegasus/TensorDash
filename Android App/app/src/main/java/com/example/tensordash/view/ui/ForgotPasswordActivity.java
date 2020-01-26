@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.example.tensordash.R;
@@ -32,6 +33,9 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         Button resetPasswordButton = findViewById(R.id.reset_password_button);
 
         resetPasswordButton.setOnClickListener(v -> resetPassword());
+
+        ImageView imageView = findViewById(R.id.back_image_view_forgot);
+        imageView.setOnClickListener(v -> onBackPressed());
     }
 
     private void resetPassword() {
