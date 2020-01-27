@@ -10,14 +10,15 @@ class SendDataToFirebase(object):
 
     def sendMessage(self, key = None, params = None, ModelName = 'Sample Model'):
         epoch, loss, acc, val_loss, val_acc = params
-        data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + ', "Validation Loss":' + str(val_loss) + ', "Validation Accuracy" :' + str(val_acc) + '}'
-
+        
         if(acc == None and val_loss == None):
             data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + '}'
         elif(acc == None):
             data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Validation Loss":' + str(val_loss) + '}'
         elif(val_loss == None):
             data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + '}'
+        else:
+            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + ', "Validation Loss":' + str(val_loss) + ', "Validation Accuracy" :' + str(val_acc) + '}'
 
         response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/{}/{}.json'.format(key, ModelName), data=data)
 
