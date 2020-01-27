@@ -74,8 +74,15 @@ def lenet_model():
 
 model = lenet_model()
 
-histories = Tensordash(key = 'sample_key', ModelName = 'My new model')
+email = 'newid@sample.com'
+password = '12345678'
 
-model.fit(X_train, y_train, epochs = 9, validation_split = 0.1, batch_size = 5000, verbose = 1, shuffle = True, callbacks = [histories])
+histories = Tensordash(email = email, password = password, ModelName = 'My new model')
 
+try:
 
+    model.fit(X_train, y_train, epochs = 2, validation_split = 0.1, batch_size = 5000, verbose = 1, shuffle = True, callbacks = [histories])
+
+except:
+
+    histories.sendCrash()
