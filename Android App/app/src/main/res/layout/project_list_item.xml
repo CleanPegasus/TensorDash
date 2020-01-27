@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
-    android:layout_marginBottom="8dp"
+    android:layout_marginBottom="12dp"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="5dp"
     app:cardElevation="10dp">
@@ -13,7 +13,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp">
+        android:paddingTop="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="12dp">
 
         <TextView
             android:id="@+id/textView4"

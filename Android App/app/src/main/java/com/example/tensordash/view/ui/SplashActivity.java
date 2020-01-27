@@ -1,5 +1,6 @@
 package com.example.tensordash.view.ui;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -16,7 +17,10 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.hide();
+        }
         setContentView(R.layout.activity_splash);
 
         new Handler().postDelayed(() -> {
@@ -25,6 +29,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(new Intent(SplashActivity.this, DashboardActivity.class));
             }else{
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+//                throw new RuntimeException("Test Crash");
             }
             finishAffinity();
         }, 1500);

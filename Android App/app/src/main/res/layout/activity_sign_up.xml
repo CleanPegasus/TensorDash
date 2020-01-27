@@ -18,10 +18,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!--
         <ImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
             tools:srcCompat="@tools:sample/avatars" />
+        -->
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,101 +32,108 @@
             android:gravity="center"
             android:text="@string/app_name"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:textSize="32sp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:gravity="center"
-        android:text="Create a new account"
-        android:textColor="@android:color/white"
-        android:textSize="26sp"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailTextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginRight="44dp"
-        android:hint="Email Id"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/new_email_edittext"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
+            android:layout_marginTop="44dp"
+            android:gravity="center"
+            android:text="Create a new account"
             android:textColor="@android:color/white"
-            android:textColorHint="@android:color/darker_gray">
+            android:textSize="26sp" />
 
-        </com.google.android.material.textfield.TextInputEditText>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordTextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="44dp"
-        android:layout_marginRight="44dp"
-        android:hint="Password"
-        app:layout_constraintTop_toBottomOf="@+id/emailTextInputLayout"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@android:color/darker_gray">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password_edittext"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/darker_gray">
+            android:layout_marginLeft="44dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginRight="44dp"
+            android:hint="Email Id">
 
-        </com.google.android.material.textfield.TextInputEditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/new_email_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/darker_gray">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputEditText>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/confirmPasswordTextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="44dp"
-        android:layout_marginRight="44dp"
-        android:hint="Confirm Password"
-        app:layout_constraintTop_toBottomOf="@+id/passwordTextInputLayout"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@android:color/darker_gray">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/confirm_password_edittext"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/confirmPasswordTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/darker_gray">
+            android:layout_marginLeft="44dp"
+            android:layout_marginRight="44dp"
+            android:hint="Confirm Password"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@android:color/darker_gray">
 
-        </com.google.android.material.textfield.TextInputEditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirm_password_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/darker_gray">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="44dp"
+            android:layout_marginRight="44dp"
+            android:hint="Password"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@android:color/darker_gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/darker_gray">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <Button
-        android:id="@+id/button_confirm_create_account"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="44dp"
-        android:background="@drawable/ripple_effect"
-        android:text="Create my account"
-        android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordTextInputLayout" />
+        <Button
+            android:id="@+id/button_confirm_create_account"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginLeft="44dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="44dp"
+            android:background="@drawable/ripple_effect"
+            android:text="Create my account"
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
+
 
     <ProgressBar
         android:id="@+id/progress_bar"

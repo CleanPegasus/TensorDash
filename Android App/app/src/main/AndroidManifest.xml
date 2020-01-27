@@ -19,7 +19,9 @@
         </activity>
         <activity android:name=".view.ui.ForgotPasswordActivity" />
         <activity android:name=".view.ui.SignUpActivity" />
-        <activity android:name=".view.ui.LoginActivity" />
+        <activity
+            android:name=".view.ui.LoginActivity"
+            android:windowSoftInputMode="" />
         <activity android:name=".view.ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

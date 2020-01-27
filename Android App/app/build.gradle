@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 28
@@ -38,4 +39,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.2.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.google.firebase:firebase-crashlytics:17.0.0-beta01'
+
+
+
 }

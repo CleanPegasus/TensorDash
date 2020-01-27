@@ -1,6 +1,7 @@
 package com.example.tensordash.view.ui;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -28,7 +29,10 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
-        getSupportActionBar().hide();
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.hide();
+        }
         progressBar = findViewById(R.id.forgot_password_progress_bar);
         Button resetPasswordButton = findViewById(R.id.reset_password_button);
 
@@ -39,9 +43,13 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     }
 
     private void resetPassword() {
-        showProgressBar();
         TextInputEditText emailInputEditText = findViewById(R.id.forgot_email_edittext);
         String emailId = emailInputEditText.getText().toString();
+        if(emailId.equals("")){
+            Snackbar.make(findViewById(android.R.id.content), "Email is empty", Snackbar.LENGTH_SHORT).show();
+            return;
+        }
+        showProgressBar();
         OnSuccessListener<Void> onSuccessListener = aVoid -> onSuccessfulReset();
 
         OnFailureListener onFailureListener = this::onUnsuccessfulReset;

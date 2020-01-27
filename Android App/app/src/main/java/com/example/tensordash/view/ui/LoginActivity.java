@@ -1,5 +1,6 @@
 package com.example.tensordash.view.ui;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -41,7 +42,10 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.hide();
+        }
         setContentView(R.layout.activity_login);
 
         progressBar = findViewById(R.id.progress_bar);
@@ -91,6 +95,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(String emailId, String password) {
+        if(emailId.equals("") || password.equals("")){
+            Snackbar.make(findViewById(android.R.id.content), "Fields cannot be empty", Snackbar.LENGTH_LONG).show();
+            return;
+        }
         showProgressBar();
         OnSuccessListener<AuthResult> onSuccessListener = authResult -> onSuccessfulLogin();
         OnFailureListener onFailureListener = this::onUnsuccessfulLogin;
@@ -146,6 +154,7 @@ public class LoginActivity extends AppCompatActivity {
     public void raiseIncorrectEmailError() {
         emailTextInputLayout.setError("Invalid email address");
     }
+
 
     private void onForgetPassword() {
         startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
