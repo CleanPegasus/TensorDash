@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="backgroundColor">#303030</color>
+    <color name="actionBarColor">#171717</color>
+    <color name="statusBarColor">#000000</color>
+    <color name='buttonBackground'>#C4C4C4</color>
+
+    <color name="textSecondaryCardView">#999999</color>
+    <color name="textPrimaryCardView">#FFFFFF</color>
+
+    <!--Color scheme for ProjectDescriptionActivity-->
+    <color name="supportingTextColor">#A3FFFFFF</color>
+    <color name="mainTextColor">#FFFFFF</color>
+
+    <!--Color scheme for ProjectItems-->
+    <color name="completed_status_code">#017B06</color>
+    <color name="in_progress_status_code">#A55900</color>
+    <color name="crashed_status_code">#B10000</color>
+
+</resources>
