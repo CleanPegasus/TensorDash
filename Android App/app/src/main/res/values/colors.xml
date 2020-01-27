@@ -15,4 +15,10 @@
     <!--Color scheme for ProjectDescriptionActivity-->
     <color name="supportingTextColor">#A3FFFFFF</color>
     <color name="mainTextColor">#FFFFFF</color>
+
+    <!--Color scheme for ProjectItems-->
+    <color name="completed_status_code">#017B06</color>
+    <color name="in_progress_status_code">#A55900</color>
+    <color name="crashed_status_code">#B10000</color>
+
 </resources>

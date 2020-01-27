@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.tensordash.service.model.Project;
 import com.example.tensordash.service.model.ProjectParams;
+import com.example.tensordash.service.model.StatusCode;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -46,9 +47,16 @@ public class FirebaseDatabaseRepository {
             public void onChildAdded(@NonNull DataSnapshot projectDataSnapshot, @Nullable String s) {
                 Iterator<DataSnapshot> epochLevelIterator = projectDataSnapshot.getChildren().iterator();
                 String projectName = projectDataSnapshot.getKey();
+                StatusCode status = StatusCode.DEFAULT;
                 List<ProjectParams> projectParamsList = new ArrayList<>();
                 while (epochLevelIterator.hasNext()) {
                     DataSnapshot epochDataSnapShot = epochLevelIterator.next();
+                    if(!epochDataSnapShot.hasChildren()){
+                        if(epochDataSnapShot.getKey().equals("Status")){
+                            status = StatusCode.valueOf(epochDataSnapShot.getValue().toString());
+                        }
+                        continue;
+                    }
                     int epoch = Integer.parseInt(epochDataSnapShot.child("Epoch").getValue().toString());
                     double accuracy = Double.parseDouble(epochDataSnapShot.child("Accuracy").getValue().toString());
                     double loss = Double.parseDouble(epochDataSnapShot.child("Loss").getValue().toString());
@@ -56,7 +64,7 @@ public class FirebaseDatabaseRepository {
                     double validationAccuracy = Double.parseDouble(epochDataSnapShot.child("Validation_accuracy").getValue().toString());
                     projectParamsList.add(new ProjectParams(epoch, accuracy, loss, validationLoss, validationAccuracy));
                 }
-                projectList.add(new Project(projectName, projectParamsList));
+                projectList.add(new Project(projectName, status, projectParamsList));
                 projectMutableLiveData.setValue(projectList);
             }
 

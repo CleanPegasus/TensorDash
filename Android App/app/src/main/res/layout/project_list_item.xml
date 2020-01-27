@@ -125,6 +125,21 @@
                     tools:text="1.172218" />
             </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/status_code_textview"
+            android:layout_width="100dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            tools:text="Completed"
+            android:textSize="14sp"
+            android:fontFamily="@font/red_hat_display_bold"
+            android:textStyle="bold"
+            tools:background="@drawable/status_code_completed"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

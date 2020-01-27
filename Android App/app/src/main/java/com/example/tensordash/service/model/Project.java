@@ -5,13 +5,16 @@ import java.util.List;
 public class Project {
     private String projectName;
     private List<ProjectParams> projectParamsList;
+    private StatusCode statusCode;
+
 
     public Project(){
     }
 
-    public Project(String projectName, List<ProjectParams> projectParamsList) {
+    public Project(String projectName, StatusCode statusCode, List<ProjectParams> projectParamsList) {
         this.projectName = projectName;
         this.projectParamsList = projectParamsList;
+        this.statusCode = statusCode;
     }
 
     public String getProjectName() {
@@ -50,4 +53,11 @@ public class Project {
         return projectParamsList.get(projectParamsList.size() - 1).getValidationLoss();
     }
 
+    public StatusCode getStatusCode() {
+        return statusCode;
+    }
+
+    public void setStatusCode(StatusCode statusCode) {
+        this.statusCode = statusCode;
+    }
 }
