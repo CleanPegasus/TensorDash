@@ -11,6 +11,14 @@ class SendDataToFirebase(object):
     def sendMessage(self, key = None, params = None, ModelName = 'Sample Model'):
         epoch, loss, acc, val_loss, val_acc = params
         data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + ', "Validation Loss":' + str(val_loss) + ', "Validation Accuracy" :' + str(val_acc) + '}'
+
+        if(acc == None and val_loss == None):
+            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + '}'
+        elif(acc == None):
+            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Validation Loss":' + str(val_loss) + '}'
+        elif(val_loss == None):
+            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + '}'
+
         response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/{}/{}.json'.format(key, ModelName), data=data)
 
     def updateRunningStatus(self, key = None, ModelName = 'Sample Model'):
@@ -71,17 +79,17 @@ class Tensordash(keras.callbacks.Callback):
         self.loss = float("{0:.6f}".format(self.losses[-1]))
 
         if self.accuracy[-1] == None:
-            self.acc = 0
+            self.acc = None
         else:
             self.acc = float("{0:.6f}".format(self.accuracy[-1]))
 
         if self.val_losses[-1] == None:
-            self.val_loss = 0
+            self.val_loss = None
         else:
             self.val_loss = float("{0:.6f}".format(self.val_losses[-1]))
 
         if self.val_accuracy[-1] == None:
-            self.val_acc = 0
+            self.val_acc = None
         else:
             self.val_acc = float("{0:.6f}".format(self.val_accuracy[-1]))
     
