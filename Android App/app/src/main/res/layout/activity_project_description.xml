@@ -142,7 +142,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Validation loss"
+                    android:text="Validation Accuracy"
                     android:textAlignment="center"
                     android:textColor="@color/supportingTextColor" />
 
@@ -166,7 +166,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Validation Accuracy"
+                    android:text="Validation Loss"
                     android:textAlignment="center"
                     android:textColor="@color/supportingTextColor" />
 
