@@ -61,7 +61,7 @@ public class FirebaseDatabaseRepository {
                     double accuracy = Double.parseDouble(epochDataSnapShot.child("Accuracy").getValue().toString());
                     double loss = Double.parseDouble(epochDataSnapShot.child("Loss").getValue().toString());
                     double validationLoss = Double.parseDouble(epochDataSnapShot.child("Validation Loss").getValue().toString());
-                    double validationAccuracy = Double.parseDouble(epochDataSnapShot.child("Validation_accuracy").getValue().toString());
+                    double validationAccuracy = Double.parseDouble(epochDataSnapShot.child("Validation Accuracy").getValue().toString());
                     projectParamsList.add(new ProjectParams(epoch, accuracy, loss, validationLoss, validationAccuracy));
                 }
                 projectList.add(new Project(projectName, status, projectParamsList));

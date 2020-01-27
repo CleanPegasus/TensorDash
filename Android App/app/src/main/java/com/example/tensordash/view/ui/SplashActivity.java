@@ -29,7 +29,6 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(new Intent(SplashActivity.this, DashboardActivity.class));
             }else{
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-//                throw new RuntimeException("Test Crash");
             }
             finishAffinity();
         }, 1500);

@@ -1,7 +1,6 @@
 package com.example.tensordash.view.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import com.example.tensordash.R;
 import com.example.tensordash.service.model.Project;
 import com.example.tensordash.service.model.StatusCode;
 
-import java.util.Collections;
 
 public class ProjectAdapter extends ListAdapter<Project, ProjectAdapter.ProjectHolder> {
 
@@ -67,19 +65,8 @@ public class ProjectAdapter extends ListAdapter<Project, ProjectAdapter.ProjectH
         holder.epochValue.setText(String.valueOf(project.getProjectParamsList().get(project.getProjectParamsList().size() - 1).getEpoch()));
         holder.lossValue.setText(String.valueOf(project.getProjectParamsList().get(project.getProjectParamsList().size() - 1).getLoss()));
         holder.accuracyValue.setText(String.valueOf(project.getProjectParamsList().get(project.getProjectParamsList().size() - 1).getAccuracy()));
-        StatusCode statusCode = project.getStatusCode();
-        if(statusCode.equals(StatusCode.COMPLETED)){
-            holder.statusCode.setText(StatusCode.COMPLETED.toString());
-            holder.statusCode.setBackground(ContextCompat.getDrawable(context, R.drawable.status_code_completed));
-        }else if(statusCode.equals(StatusCode.CRASHED)){
-            holder.statusCode.setText(StatusCode.CRASHED.toString());
-            holder.statusCode.setBackground(ContextCompat.getDrawable(context, R.drawable.status_code_crashed));
-        }else if(statusCode.equals(StatusCode.RUNNING)){
-            holder.statusCode.setText(StatusCode.RUNNING.toString());
-            holder.statusCode.setBackground(ContextCompat.getDrawable(context, R.drawable.status_code_in_progress));
-        }else{
-            holder.statusCode.setVisibility(View.GONE);
-        }
+        updateStatusCodeColor(holder, project.getStatusCode());
+
 
     }
 
@@ -115,6 +102,20 @@ public class ProjectAdapter extends ListAdapter<Project, ProjectAdapter.ProjectH
         this.listener = listener;
     }
 
+    private void updateStatusCodeColor(ProjectHolder holder, StatusCode statusCode){
+        if(statusCode.equals(StatusCode.COMPLETED)){
+            holder.statusCode.setText(StatusCode.COMPLETED.toString());
+            holder.statusCode.setBackground(ContextCompat.getDrawable(context, R.drawable.status_code_completed));
+        }else if(statusCode.equals(StatusCode.CRASHED)){
+            holder.statusCode.setText(StatusCode.CRASHED.toString());
+            holder.statusCode.setBackground(ContextCompat.getDrawable(context, R.drawable.status_code_crashed));
+        }else if(statusCode.equals(StatusCode.RUNNING)){
+            holder.statusCode.setText(StatusCode.RUNNING.toString());
+            holder.statusCode.setBackground(ContextCompat.getDrawable(context, R.drawable.status_code_in_progress));
+        }else{
+            holder.statusCode.setVisibility(View.GONE);
+        }
+    }
 }
 
 
