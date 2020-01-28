@@ -3,6 +3,7 @@ package com.example.tensordash.view.ui;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,7 +19,6 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
@@ -35,6 +35,7 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
     private TextView validationLossTextView;
     private LineChart lineChartLoss;
     private LineChart lineChartAccuracy;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
 
     @Override
@@ -42,7 +43,7 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_description);
         ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         setTitle("Project Details");
@@ -55,11 +56,22 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
         validationLossTextView = findViewById(R.id.validation_loss_project_description_textview);
         lineChartLoss = findViewById(R.id.chart_view_loss);
         lineChartAccuracy = findViewById(R.id.chart_view_accuracy);
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout_description);
 
+        loadActivity();
+
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            firebaseDatabaseViewModel.refreshProjectList(swipeRefreshLayout);
+            loadActivity();
+        });
+
+
+    }
+
+    public void loadActivity() {
 
         firebaseDatabaseViewModel = ViewModelProviders.of(ProjectDescriptionActivity.this).get(FirebaseDatabaseViewModel.class);
         String projectName = getIntent().getStringExtra("project_name");
-
         firebaseDatabaseViewModel.getAllProjects().observe(this, projects -> {
             for (Project project : projects) {
                 if (projectName.equals(project.getProjectName())) {
@@ -68,11 +80,10 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     @Override
-    public boolean onSupportNavigateUp(){
+    public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }
@@ -89,7 +100,7 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
 
     private void setUpChart(List<ProjectParams> projectParamsList) {
 
-        final int[] colors = new int[] {
+        final int[] colors = new int[]{
                 ColorTemplate.VORDIPLOM_COLORS[0],
                 ColorTemplate.VORDIPLOM_COLORS[1],
                 ColorTemplate.VORDIPLOM_COLORS[2],
@@ -99,8 +110,8 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
         ArrayList<Entry> lossEntries = new ArrayList<>();
         ArrayList<Entry> accuracyEntries = new ArrayList<>();
         for (ProjectParams projectParams : projectParamsList) {
-            lossEntries.add(new Entry(projectParams.getEpoch(), (float)projectParams.getLoss()));
-            accuracyEntries.add(new Entry(projectParams.getEpoch(), (float)projectParams.getAccuracy()));
+            lossEntries.add(new Entry(projectParams.getEpoch(), (float) projectParams.getLoss()));
+            accuracyEntries.add(new Entry(projectParams.getEpoch(), (float) projectParams.getAccuracy()));
         }
 
         float textSize = 9;

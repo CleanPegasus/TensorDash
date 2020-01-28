@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +25,7 @@ public class DashboardActivity extends AppCompatActivity {
     private static final String TAG = "DashboardActivity";
     FirebaseDatabaseViewModel databaseViewModel;
     FirebaseAuthViewModel firebaseAuthViewModel;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,18 @@ public class DashboardActivity extends AppCompatActivity {
             intent.putExtra("project_name", project.getProjectName());
             startActivity(intent);
         });
+
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            databaseViewModel.refreshProjectList(swipeRefreshLayout);
+            databaseViewModel.getAllProjects().observe(this, projects -> {
+                projectAdapter.submitList(projects);
+                projectAdapter.notifyDataSetChanged();
+            });
+
+        });
+
+
     }
 
     @Override
@@ -61,15 +75,18 @@ public class DashboardActivity extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(DashboardActivity.this);
             builder.setTitle("Sign out?")
                     .setMessage("Do you want to sign out?")
-                    .setPositiveButton("Yes", (dialog, which) -> {signOut();})
-                    .setNegativeButton("No", (dialog, which) -> {})
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        signOut();
+                    })
+                    .setNegativeButton("No", (dialog, which) -> {
+                    })
                     .create()
                     .show();
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void signOut(){
+    private void signOut() {
         // TODO: Add a listener
         firebaseAuthViewModel.signOut();
         startActivity(new Intent(DashboardActivity.this, LoginActivity.class));

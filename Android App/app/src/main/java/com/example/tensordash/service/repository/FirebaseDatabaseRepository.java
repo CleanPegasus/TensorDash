@@ -5,10 +5,14 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.tensordash.service.model.Project;
 import com.example.tensordash.service.model.ProjectParams;
 import com.example.tensordash.service.model.StatusCode;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +34,7 @@ public class FirebaseDatabaseRepository {
     private DatabaseReference databaseReference;
     private List<Project> projectList;
     private MutableLiveData<List<Project>> projectMutableLiveData;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
 
     public FirebaseDatabaseRepository() {
@@ -42,7 +47,9 @@ public class FirebaseDatabaseRepository {
     }
 
     private void getProjects() {
+
         databaseReference.addChildEventListener(new ChildEventListener() {
+
             @Override
             public void onChildAdded(@NonNull DataSnapshot projectDataSnapshot, @Nullable String s) {
                 Iterator<DataSnapshot> epochLevelIterator = projectDataSnapshot.getChildren().iterator();
@@ -66,6 +73,9 @@ public class FirebaseDatabaseRepository {
                 }
                 projectList.add(new Project(projectName, status, projectParamsList));
                 projectMutableLiveData.setValue(projectList);
+                if(swipeRefreshLayout != null){
+                    swipeRefreshLayout.setRefreshing(false);
+                }
             }
 
             @Override
@@ -78,13 +88,19 @@ public class FirebaseDatabaseRepository {
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
+            public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
+
     }
 
     public MutableLiveData<List<Project>> getAllProjects(){
         return projectMutableLiveData;
+    }
+
+    public void refreshProjectList(SwipeRefreshLayout swipeRefreshLayout){
+        this.swipeRefreshLayout = swipeRefreshLayout;
+        projectList.clear();
+        getProjects();
     }
 
 
