@@ -6,18 +6,18 @@ public class ProjectParams {
     private double accuracy;
     private double loss;
     private double validationLoss;
-    private double valicationAccuracy;
+    private double validationAccuracy;
 
     public ProjectParams(){
 
     }
 
-    public ProjectParams(int epoch, double accuracy, double loss, double validationLoss, double valicationAccuracy) {
+    public ProjectParams(int epoch, double accuracy, double loss, double validationLoss, double validationAccuracy) {
         this.epoch = epoch;
         this.accuracy = accuracy;
         this.loss = loss;
         this.validationLoss = validationLoss;
-        this.valicationAccuracy = valicationAccuracy;
+        this.validationAccuracy = validationAccuracy;
     }
 
     public int getEpoch() {
@@ -36,7 +36,7 @@ public class ProjectParams {
         return validationLoss;
     }
 
-    public double getValicationAccuracy() {
-        return valicationAccuracy;
+    public double getValidationAccuracy() {
+        return validationAccuracy;
     }
 }

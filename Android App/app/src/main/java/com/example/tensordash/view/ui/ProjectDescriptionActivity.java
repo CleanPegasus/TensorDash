@@ -7,6 +7,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.tensordash.R;
@@ -35,7 +36,12 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
     private TextView validationLossTextView;
     private LineChart lineChartLoss;
     private LineChart lineChartAccuracy;
+    private LineChart lineChartValidationLoss;
+    private LineChart lineChartValidationAccuracy;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private boolean isAccuracyPresent = true;
+    private boolean isValidationLossPresent = true;
+    private boolean isValidationAccuracyPresent = true;
 
 
     @Override
@@ -56,6 +62,8 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
         validationLossTextView = findViewById(R.id.validation_loss_project_description_textview);
         lineChartLoss = findViewById(R.id.chart_view_loss);
         lineChartAccuracy = findViewById(R.id.chart_view_accuracy);
+        lineChartValidationLoss = findViewById(R.id.chart_view_validation_loss);
+        lineChartValidationAccuracy = findViewById(R.id.chart_view_validation_accuracy);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout_description);
 
         loadActivity();
@@ -109,64 +117,85 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
 
         ArrayList<Entry> lossEntries = new ArrayList<>();
         ArrayList<Entry> accuracyEntries = new ArrayList<>();
+        ArrayList<Entry> validationLossEntries = new ArrayList<>();
+        ArrayList<Entry> validationAccuracyEntries = new ArrayList<>();
         for (ProjectParams projectParams : projectParamsList) {
             lossEntries.add(new Entry(projectParams.getEpoch(), (float) projectParams.getLoss()));
             accuracyEntries.add(new Entry(projectParams.getEpoch(), (float) projectParams.getAccuracy()));
+            validationLossEntries.add(new Entry(projectParams.getEpoch(), (float) projectParams.getValidationLoss()));
+            validationAccuracyEntries.add(new Entry(projectParams.getEpoch(), (float) projectParams.getValidationAccuracy()));
+        }
+        shouldChartExist(projectParamsList);
+        createChart(lossEntries, "Loss", colors[0], lineChartLoss);
+
+        if (isAccuracyPresent) {
+            createChart(accuracyEntries, "Accuracy", colors[1], lineChartAccuracy);
+        } else {
+            lineChartAccuracy.setVisibility(View.GONE);
+            findViewById(R.id.chart_textView_accuracy_description).setVisibility(View.GONE);
         }
 
+        if (isValidationAccuracyPresent) {
+            createChart(validationAccuracyEntries, "Validation Accuracy", colors[1], lineChartValidationAccuracy);
+        } else {
+            lineChartValidationAccuracy.setVisibility(View.GONE);
+            findViewById(R.id.validation_accuracy_project_description_textview).setVisibility(View.GONE);
+        }
+
+        if (isValidationLossPresent) {
+            createChart(validationLossEntries, "Validation Loss", colors[0], lineChartValidationLoss);
+        } else {
+            lineChartValidationLoss.setVisibility(View.GONE);
+            findViewById(R.id.chart_textView_validation_loss_description).setVisibility(View.GONE);
+        }
+
+
+    }
+
+    private void createChart(ArrayList<Entry> entries, String label, int color, LineChart lineChart) {
         float textSize = 9;
 
-        LineDataSet lossDataset = new LineDataSet(lossEntries, "Loss");
-        lossDataset.setColor(colors[0]);
-        lossDataset.setValueTextColor(colors[0]);
-        lossDataset.setValueTextSize(textSize);
+        LineDataSet dataSet = new LineDataSet(entries, label);
+        dataSet.setColor(color);
+        dataSet.setValueTextColor(color);
+        dataSet.setValueTextSize(textSize);
 
-        LineDataSet accuracyDataset = new LineDataSet(accuracyEntries, "Accuracy");
-        accuracyDataset.setColor(colors[1]);
-        accuracyDataset.setValueTextColor(colors[1]);
-        accuracyDataset.setValueTextSize(textSize);
-
-
-        XAxis xAxis = lineChartLoss.getXAxis();
+        XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setGranularity(1f); // minimum axis-step (interval) is 1
         xAxis.setTextColor(Color.WHITE);
 
-        YAxis yAxisRight = lineChartLoss.getAxisRight();
+        YAxis yAxisRight = lineChart.getAxisRight();
         yAxisRight.setEnabled(false);
 
-        YAxis yAxisLeft = lineChartLoss.getAxisLeft();
+        YAxis yAxisLeft = lineChart.getAxisLeft();
         yAxisLeft.setTextColor(Color.WHITE);
         yAxisLeft.setGranularity(1f);
 
+        LineData data = new LineData(dataSet);
 
-        LineData data = new LineData(lossDataset);
-
-        lineChartLoss.getLegend().setTextColor(Color.WHITE);
-        lineChartLoss.getDescription().setEnabled(false);
-        lineChartLoss.setData(data);
-        lineChartLoss.invalidate();
-
-        XAxis lineChartAccuracyXAxis = lineChartAccuracy.getXAxis();
-        lineChartAccuracyXAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        lineChartAccuracyXAxis.setGranularity(1f); // minimum axis-step (interval) is 1
-        lineChartAccuracyXAxis.setTextColor(Color.WHITE);
-
-        YAxis lineChartAccuracyAxisRight = lineChartAccuracy.getAxisRight();
-        lineChartAccuracyAxisRight.setEnabled(false);
-
-        YAxis lineChartAccuracyAxisLeft = lineChartAccuracy.getAxisLeft();
-        lineChartAccuracyAxisLeft.setTextColor(Color.WHITE);
-        lineChartAccuracyAxisLeft.setGranularity(1f);
-
-
-        LineData dataset = new LineData(accuracyDataset);
-        lineChartAccuracy.getLegend().setTextColor(Color.WHITE);
-        lineChartAccuracy.getDescription().setEnabled(false);
-        lineChartAccuracy.setData(dataset);
-        lineChartAccuracy.invalidate();
-
+        lineChart.getLegend().setTextColor(Color.WHITE);
+        lineChart.getDescription().setEnabled(false);
+        lineChart.setData(data);
+        lineChart.invalidate();
     }
 
+    private void shouldChartExist(List<ProjectParams> projectParamsArrayList) {
+        float accuracySum = 0, valLossSum = 0, valAccSum = 0;
+        for (ProjectParams projectParams : projectParamsArrayList) {
+            accuracySum += projectParams.getAccuracy();
+            valLossSum += projectParams.getValidationLoss();
+            valAccSum += projectParams.getValidationAccuracy();
+        }
+        if (accuracySum == 0) {
+            isAccuracyPresent = false;
+        }
+        if (valLossSum == 0) {
+            isValidationLossPresent = false;
+        }
+        if (valAccSum == 0) {
+            isValidationAccuracyPresent = false;
+        }
+    }
 
 }

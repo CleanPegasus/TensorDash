@@ -188,7 +188,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/chart_textView_loss_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -204,10 +204,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                app:layout_constraintTop_toBottomOf="@+id/chart_textView_loss_description" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/chart_textView_accuracy_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -220,10 +220,46 @@
                 android:id="@+id/chart_view_accuracy"
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chart_textView_accuracy_description" />
+
+            <TextView
+                android:id="@+id/chart_textView_validation_loss_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Validation Loss Chart"
+                android:textAlignment="center"
+                android:textColor="@color/supportingTextColor"
+                app:layout_constraintTop_toBottomOf="@+id/chart_view_accuracy" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/chart_view_validation_loss"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chart_textView_validation_loss_description" />
+
+            <TextView
+                android:id="@+id/chart_textView_validation_accuracy_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Validation Accuracy Chart"
+                android:textAlignment="center"
+                android:textColor="@color/supportingTextColor"
+                app:layout_constraintTop_toBottomOf="@+id/chart_view_validation_loss" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/chart_view_validation_accuracy"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintTop_toBottomOf="@+id/chart_textView_validation_accuracy_description" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

@@ -58,49 +58,91 @@ public class FirebaseDatabaseRepository {
                 List<ProjectParams> projectParamsList = new ArrayList<>();
                 while (epochLevelIterator.hasNext()) {
                     DataSnapshot epochDataSnapShot = epochLevelIterator.next();
-                    if(!epochDataSnapShot.hasChildren()){
-                        if(epochDataSnapShot.getKey().equals("Status")){
+                    if (!epochDataSnapShot.hasChildren()) {
+                        if (epochDataSnapShot.getKey().equals("Status")) {
                             status = StatusCode.valueOf(epochDataSnapShot.getValue().toString());
                         }
                         continue;
                     }
+
                     int epoch = Integer.parseInt(epochDataSnapShot.child("Epoch").getValue().toString());
-                    double accuracy = Double.parseDouble(epochDataSnapShot.child("Accuracy").getValue().toString());
-                    double loss = Double.parseDouble(epochDataSnapShot.child("Loss").getValue().toString());
-                    double validationLoss = Double.parseDouble(epochDataSnapShot.child("Validation Loss").getValue().toString());
-                    double validationAccuracy = Double.parseDouble(epochDataSnapShot.child("Validation Accuracy").getValue().toString());
+                    double loss = getAccuracy(epochDataSnapShot);
+                    double accuracy = getAccuracy(epochDataSnapShot);
+                    double validationLoss = getValidationLoss(epochDataSnapShot);
+                    double validationAccuracy = getValidationAccuracy(epochDataSnapShot);
+
                     projectParamsList.add(new ProjectParams(epoch, accuracy, loss, validationLoss, validationAccuracy));
                 }
                 projectList.add(new Project(projectName, status, projectParamsList));
                 projectMutableLiveData.setValue(projectList);
-                if(swipeRefreshLayout != null){
+                if (swipeRefreshLayout != null) {
                     swipeRefreshLayout.setRefreshing(false);
                 }
             }
 
             @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            }
 
             @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {}
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+            }
 
             @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
         });
 
     }
 
-    public MutableLiveData<List<Project>> getAllProjects(){
+    public MutableLiveData<List<Project>> getAllProjects() {
         return projectMutableLiveData;
     }
 
-    public void refreshProjectList(SwipeRefreshLayout swipeRefreshLayout){
+    public void refreshProjectList(SwipeRefreshLayout swipeRefreshLayout) {
         this.swipeRefreshLayout = swipeRefreshLayout;
         projectList.clear();
         getProjects();
+    }
+
+    private double getLoss(DataSnapshot epochDataSnapShot){
+        double loss = 0;
+        try {
+            loss = Double.parseDouble(epochDataSnapShot.child("Loss").getValue().toString());
+        } catch (Exception ignored) {
+        }
+        return loss;
+    }
+
+    private double getAccuracy(DataSnapshot epochDataSnapShot) {
+        double accuracy = 0;
+        try {
+            accuracy = Double.parseDouble(epochDataSnapShot.child("Accuracy").getValue().toString());
+        } catch (Exception ignored) {
+        }
+        return accuracy;
+    }
+
+    private double getValidationLoss(DataSnapshot epochDataSnapShot) {
+        double validationLoss = 0;
+        try {
+            validationLoss = Double.parseDouble(epochDataSnapShot.child("Validation Loss").getValue().toString());
+        } catch (Exception ignored) {
+        }
+        return validationLoss;
+    }
+
+    private double getValidationAccuracy(DataSnapshot epochDataSnapShot) {
+        double validationAccuracy = 0;
+        try {
+            validationAccuracy = Double.parseDouble(epochDataSnapShot.child("Validation Accuracy").getValue().toString());
+        } catch (Exception ignored) {
+        }
+        return validationAccuracy;
     }
 
 
