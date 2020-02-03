@@ -30,6 +30,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.ui.DashboardActivity" />
+
+        <service android:name=".view.ui.FirebaseMessage" />
     </application>
+
 
 </manifest>
