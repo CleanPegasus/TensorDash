@@ -65,8 +65,8 @@ public class FirebaseDatabaseRepository {
                         continue;
                     }
 
-                    int epoch = Integer.parseInt(epochDataSnapShot.child("Epoch").getValue().toString());
-                    double loss = getAccuracy(epochDataSnapShot);
+                    int epoch = getEpoch(epochDataSnapShot);
+                    double loss = getLoss(epochDataSnapShot);
                     double accuracy = getAccuracy(epochDataSnapShot);
                     double validationLoss = getValidationLoss(epochDataSnapShot);
                     double validationAccuracy = getValidationAccuracy(epochDataSnapShot);
@@ -107,6 +107,15 @@ public class FirebaseDatabaseRepository {
         this.swipeRefreshLayout = swipeRefreshLayout;
         projectList.clear();
         getProjects();
+    }
+
+    private int getEpoch(DataSnapshot epochDataSnapShot){
+        int epoch = 0;
+        try {
+            epoch = Integer.parseInt(epochDataSnapShot.child("Epoch").getValue().toString());
+        } catch (Exception ignored) {
+        }
+        return epoch;
     }
 
     private double getLoss(DataSnapshot epochDataSnapShot){

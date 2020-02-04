@@ -7,12 +7,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.tensordash.R;
 import com.example.tensordash.view.adapter.ProjectAdapter;
@@ -27,22 +28,32 @@ public class DashboardActivity extends AppCompatActivity {
     FirebaseDatabaseViewModel databaseViewModel;
     FirebaseAuthViewModel firebaseAuthViewModel;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private RecyclerView recyclerView;
+    private TextView noProjectsPresentTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+        noProjectsPresentTextView = findViewById(R.id.no_projects_present_textview);
+
         final ProjectAdapter projectAdapter = new ProjectAdapter();
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+
+        recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(projectAdapter);
 
+        setAreProjectsPresent(false);
+
         firebaseAuthViewModel = ViewModelProviders.of(DashboardActivity.this, new FirebaseAuthViewModelFactory(getApplication(), DashboardActivity.this)).get(FirebaseAuthViewModel.class);
 
         databaseViewModel = ViewModelProviders.of(DashboardActivity.this).get(FirebaseDatabaseViewModel.class);
-        databaseViewModel.getAllProjects().observe(this, projects -> projectAdapter.submitList(projects));
+        databaseViewModel.getAllProjects().observe(this, projects -> {
+            setAreProjectsPresent(!projects.isEmpty());
+            projectAdapter.submitList(projects);
+        });
 
         projectAdapter.setOnItemClickListener(project -> {
             Intent intent = new Intent(DashboardActivity.this, ProjectDescriptionActivity.class);
@@ -54,6 +65,7 @@ public class DashboardActivity extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(() -> {
             databaseViewModel.refreshProjectList(swipeRefreshLayout);
             databaseViewModel.getAllProjects().observe(this, projects -> {
+                setAreProjectsPresent(!projects.isEmpty());
                 projectAdapter.submitList(projects);
                 projectAdapter.notifyDataSetChanged();
             });
@@ -94,5 +106,17 @@ public class DashboardActivity extends AppCompatActivity {
         startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
         finishAffinity();
     }
+
+    private void setAreProjectsPresent(boolean areProjectsPresent){
+        Log.d(TAG, "setAreProjectsPresent: " + areProjectsPresent);
+        if(areProjectsPresent){
+            recyclerView.setVisibility(View.VISIBLE);
+            noProjectsPresentTextView.setVisibility(View.GONE);
+        }else{
+            recyclerView.setVisibility(View.GONE);
+            noProjectsPresentTextView.setVisibility(View.VISIBLE);
+        }
+    }
+
 
 }
