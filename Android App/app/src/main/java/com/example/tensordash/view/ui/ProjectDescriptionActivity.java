@@ -136,14 +136,14 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
         }
 
         if (isValidationAccuracyPresent) {
-            createChart(validationAccuracyEntries, "Validation Accuracy", colors[1], lineChartValidationAccuracy);
+            createChart(validationAccuracyEntries, "Validation Accuracy", colors[2], lineChartValidationAccuracy);
         } else {
             lineChartValidationAccuracy.setVisibility(View.GONE);
-            findViewById(R.id.validation_accuracy_project_description_textview).setVisibility(View.GONE);
+            findViewById(R.id.chart_textView_validation_accuracy_description).setVisibility(View.GONE);
         }
 
         if (isValidationLossPresent) {
-            createChart(validationLossEntries, "Validation Loss", colors[0], lineChartValidationLoss);
+            createChart(validationLossEntries, "Validation Loss", colors[3], lineChartValidationLoss);
         } else {
             lineChartValidationLoss.setVisibility(View.GONE);
             findViewById(R.id.chart_textView_validation_loss_description).setVisibility(View.GONE);
