@@ -68,7 +68,7 @@ class Tensordash(keras.callbacks.Callback):
         self.num_epochs = []
 
         SendData.updateRunningStatus(key = self.key, ModelName = self.ModelName)
-        SendData.sendMessage(key = self.key, params = (0, 0, 0, 0, 0), ModelName = self.ModelName)
+        SendData.sendMessage(key = self.key, params = (-1, 0, 0, 0, 0), ModelName = self.ModelName)
 
     def on_epoch_end(self, epoch, logs = {}):
 
@@ -99,6 +99,7 @@ class Tensordash(keras.callbacks.Callback):
         SendData.sendMessage(key = self.key, params = values, ModelName = self.ModelName)
 
     def on_train_end(self, epoch, logs = {}):
+        
         SendData.updateCompletedStatus(key = self.key, ModelName = self.ModelName)
 
     def sendCrash(self):
