@@ -31,7 +31,7 @@
         </activity>
         <activity android:name=".view.ui.DashboardActivity" />
 
-        <service android:name=".view.ui.FirebaseMessage" />
+        <service android:name=".service.FirebaseMessageService" />
     </application>
 
 

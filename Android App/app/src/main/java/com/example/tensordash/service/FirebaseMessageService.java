@@ -1,4 +1,4 @@
-package com.example.tensordash.view.ui;
+package com.example.tensordash.service;
 
 import com.example.tensordash.R;
 
@@ -13,10 +13,11 @@ import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
+import com.example.tensordash.view.ui.DashboardActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-public class FirebaseMessage extends FirebaseMessagingService {
+public class FirebaseMessageService extends FirebaseMessagingService {
 
     private static final String TAG = "FirebaseMessagingServce";
 
