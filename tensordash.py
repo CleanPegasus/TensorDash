@@ -26,13 +26,26 @@ class SendDataToFirebase(object):
         data = '{"Status" : "RUNNING"}'
         response = requests.put('https://cofeeshop-tensorflow.firebaseio.com/{}/{}.json'.format(key, ModelName), data = data)
 
+        notif_data = '{"Key":' + '"' + str(key) + '"' + ', "Status" : "Running"}'
+        response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/notification.json', data = notif_data)
+
     def updateCompletedStatus(self, key = None, ModelName = 'Sample Model'):
         data = '{"Status" : "COMPLETED"}'
         response = requests.patch('https://cofeeshop-tensorflow.firebaseio.com/{}/{}.json'.format(key, ModelName), data = data)
 
+
+        notif_data = notif_data = '{"Key":' + '"' + str(key) + '"' + ', "Status" : "Completed"}'
+        #notif_data = '{"Key" : "Sample Key", "Status" : "Running"}'
+        response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/notification.json', data = notif_data)
+
     def crashAnalytics(self, key = None, ModelName = 'Sample Model'):
         data = '{"Status" : "CRASHED"}'
         response = requests.patch('https://cofeeshop-tensorflow.firebaseio.com/{}/{}.json'.format(key, ModelName), data = data)
+
+
+        notif_data = '{"Key":' + '"' + str(key) + '"' + ', "Status" : "Crashed"}'
+        #notif_data = '{"Key" : "Sample Key", "Status" : "Running"}'
+        response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/notification.json', data = notif_data)
 
 SendData = SendDataToFirebase()
 class Tensordash(keras.callbacks.Callback):
@@ -99,7 +112,7 @@ class Tensordash(keras.callbacks.Callback):
         SendData.sendMessage(key = self.key, params = values, ModelName = self.ModelName)
 
     def on_train_end(self, epoch, logs = {}):
-        
+
         SendData.updateCompletedStatus(key = self.key, ModelName = self.ModelName)
 
     def sendCrash(self):
