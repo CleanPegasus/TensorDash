@@ -43,7 +43,7 @@ public class ProjectAdapter extends ListAdapter<Project, ProjectAdapter.ProjectH
         if(!oldItem.getProjectName().equals(newItem.getProjectName())){
             return false;
         }else{
-            return (oldItem.getProjectParamsList().equals(newItem.getProjectParamsList()));
+            return (oldItem.getProjectParamsList().equals(newItem.getProjectParamsList()) && oldItem.getStatusCode().equals(newItem.getStatusCode()));
         }
     }
 

@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.tensordash.service.model.Project;
 import com.example.tensordash.service.repository.FirebaseDatabaseRepository;
@@ -24,6 +25,10 @@ public class FirebaseDatabaseViewModel extends AndroidViewModel {
 
     public MutableLiveData<List<Project>> getAllProjects(){
         return projectList;
+    }
+
+    public void refreshProjectList(SwipeRefreshLayout swipeRefreshLayout){
+        firebaseDatabaseRepository.refreshProjectList(swipeRefreshLayout);
     }
 
 

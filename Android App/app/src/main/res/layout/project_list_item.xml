@@ -19,7 +19,7 @@
         android:paddingBottom="12dp">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/chart_textView_validation_loss_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Project Name"
@@ -35,7 +35,7 @@
             android:textColor="@color/textPrimaryCardView"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/chart_textView_validation_loss_description"
             tools:text="Project-Name-One" />
 
         <LinearLayout

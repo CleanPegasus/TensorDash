@@ -46,7 +46,7 @@ public class Project {
     }
 
     public double getLatestValidationAccuracy(){
-        return projectParamsList.get(projectParamsList.size() - 1).getValicationAccuracy();
+        return projectParamsList.get(projectParamsList.size() - 1).getValidationAccuracy();
     }
 
     public double getLatestValidationLoss(){
