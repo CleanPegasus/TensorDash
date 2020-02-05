@@ -20,6 +20,7 @@ import com.example.tensordash.view.adapter.ProjectAdapter;
 import com.example.tensordash.viewmodel.FirebaseAuthViewModel;
 import com.example.tensordash.viewmodel.FirebaseAuthViewModelFactory;
 import com.example.tensordash.viewmodel.FirebaseDatabaseViewModel;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -71,8 +72,6 @@ public class DashboardActivity extends AppCompatActivity {
             });
 
         });
-
-        FirebaseMessaging.getInstance().subscribeToTopic("pushNotifications");
 
     }
 

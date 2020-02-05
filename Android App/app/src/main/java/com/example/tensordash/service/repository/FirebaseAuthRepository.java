@@ -7,6 +7,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class FirebaseAuthRepository {
     private static final String TAG = "FirebaseAuthRepository";
@@ -43,6 +44,7 @@ public class FirebaseAuthRepository {
     }
 
     public void signOut(){
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(mAuth.getUid());
         FirebaseAuth.getInstance().signOut();
     }
 }
