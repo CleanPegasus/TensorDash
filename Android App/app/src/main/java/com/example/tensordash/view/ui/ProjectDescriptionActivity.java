@@ -120,6 +120,9 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
         ArrayList<Entry> validationLossEntries = new ArrayList<>();
         ArrayList<Entry> validationAccuracyEntries = new ArrayList<>();
         for (ProjectParams projectParams : projectParamsList) {
+            if(projectParams.getEpoch() == 0){
+                continue;
+            }
             lossEntries.add(new Entry(projectParams.getEpoch(), (float) projectParams.getLoss()));
             accuracyEntries.add(new Entry(projectParams.getEpoch(), (float) projectParams.getAccuracy()));
             validationLossEntries.add(new Entry(projectParams.getEpoch(), (float) projectParams.getValidationLoss()));
