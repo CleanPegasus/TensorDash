@@ -28,24 +28,6 @@ histories = TensorDash(
 4. Now you can monitor your model values and status using **crash analysis**. Simply use a try-catch block as shown below.
 
 ```python
-
-model.fit(
-	X_train, 
-	y_train, 
-	epochs = epochs, 
-	validation_data = validation_data, 
-	batch_size = batch_size, 
-	callbacks = [histories])
-```
-
-
-
-### OR
-
-Alternatively, if you do not want to use **crash analysis** then you can just monitor by just adding histories object to callback
-
-
-```python
 try:
     model.fit(
 	X_train, 
@@ -58,3 +40,21 @@ try:
 except:
     histories.sendCrash()
 ```
+
+
+### OR
+
+Alternatively, if you do not want to use **crash analysis** then you can just monitor by just adding histories object to callback
+
+
+```python
+
+model.fit(
+	X_train, 
+	y_train, 
+	epochs = epochs, 
+	validation_data = validation_data, 
+	batch_size = batch_size, 
+	callbacks = [histories])
+```
+
