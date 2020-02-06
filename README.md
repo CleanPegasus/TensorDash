@@ -36,6 +36,7 @@ model.fit(
 	validation_data = validation_data, 
 	batch_size = batch_size, 
 	callbacks = [histories])
+```
 
 
 
