@@ -1,6 +1,12 @@
 # TensorDash
 TensorDash is an application that lets you remotely monitor your deep learning model's metrics and notifies you when your model training is completed or crashed.
 
+## Why Tensordash?
+1. Watch your model train in real-time
+2. Remotely get details on the training and validation metrics
+3. Get notified when your model has completed trainng or when it has crashed.
+4. Get detailed graphs on your model’s metrics.
+
 ## Installation
 
 Install the python package "tensordash" on your computer by using
