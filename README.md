@@ -17,8 +17,8 @@ Install the android app from the play store.
 2. After signing up, **sign in** to your account.
 3. In your python code, import TensorDash library
 ```python
-from tensordash.tensordash import TensorDash
-histories = TensorDash(
+from tensordash.tensordash import Tensordash
+histories = Tensordash(
 	email = '[YOUR_EMAIL_ID]', 
 	password = '[YOUR PASSWORD]', 
 	ModelName = '[YOUR_MODEL_NAME]')
