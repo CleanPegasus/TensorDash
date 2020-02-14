@@ -23,5 +23,5 @@ setup(
     ],
     packages = ["tensordash"],
     include_package_data = True,
-    install_requires = ["keras>=2.2.0", "requests"]
+    install_requires = ["keras>=2.3.0", "requests"]
     )
