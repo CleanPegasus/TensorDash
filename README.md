@@ -13,9 +13,8 @@ Install the python package "tensordash" on your computer by using
 
 `pip install tensor-dash`
 
-Install the android app from the play store.
-> [Android app](https://drive.google.com/file/d/1b3yqyqE21Lb7-LUDGJLQXZRsi0hbKs7g/view?usp=sharing)
-
+Install the android app from the play store.<br>
+[<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="30%" width="30%">](https://play.google.com/store/apps/details?id=tech.tensordash.tensordash)
 
 ## How to use
 
