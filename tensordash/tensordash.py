@@ -31,10 +31,10 @@ class SendDataToFirebase(object):
 
     def updateCompletedStatus(self, key = None, auth_token = None, ModelName = 'Sample Model'):
         data = '{"Status" : "COMPLETED"}'
-        response = requests.patch('https://cofeeshop-tensorflow.firebaseio.com/user_data/{}/{}.json'.format(key, ModelName), data = data)
+        response = requests.patch('https://cofeeshop-tensorflow.firebaseio.com/user_data/{}/{}.json'.format(key, ModelName), params = auth_token, data = data)
 
 
-        notif_data = notif_data = '{"Key":' + '"' + str(key) + '"' + ', "Status" : "Completed"}'
+        notif_data = '{"Key":' + '"' + str(key) + '"' + ', "Status" : "Completed"}'
         response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/notification.json', params = auth_token, data = notif_data)
 
     def crashAnalytics(self, key = None, auth_token = None, ModelName = 'Sample Model'):
@@ -83,6 +83,12 @@ class Tensordash(keras.callbacks.Callback):
 
         SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = (-1, 0, 0, 0, 0), ModelName = self.ModelName)
+    """
+    def on_epoch_begin(self, epoch, logs = {}):
+
+        self.filename = self.ModelName + '.h5'
+        self.model.save(self.filename, overwrite = True)
+    """
 
     def on_epoch_end(self, epoch, logs = {}):
 
