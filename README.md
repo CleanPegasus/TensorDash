@@ -9,9 +9,11 @@ TensorDash is an application that lets you remotely monitor your deep learning m
 
 ## Installation
 
-Install the python package "tensordash" on your computer by using
+### Installing the Python Package
 
 `pip install tensor-dash`
+
+### Installing the Android App
 
 Install the android app from the play store.<br>
 [<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="30%" width="30%">](https://play.google.com/store/apps/details?id=tech.tensordash.tensordash)
