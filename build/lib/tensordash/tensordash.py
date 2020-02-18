@@ -98,7 +98,10 @@ class Tensordash(keras.callbacks.Callback):
         else:
             self.accuracy.append(logs.get('accuracy'))
         self.val_losses.append(logs.get('val_loss'))
-        self.val_accuracy.append(logs.get('val_accuracy'))
+        if(logs.get('val_acc') != None):
+            self.val_accuracy.append(logs.get('val_acc'))
+        else:
+            self.val_accuracy.append(logs.get('val_accuracy'))
         self.num_epochs.append(epoch)
 
         self.loss = float("{0:.6f}".format(self.losses[-1]))
