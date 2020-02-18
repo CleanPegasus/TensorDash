@@ -23,13 +23,44 @@ Install the android app from the play store.<br>
 1. If you are using the app for he first time, **sign up** by clicking on the "create an account" button.
 2. After signing up, **sign in** to your account.
 3. In your python code, import Tensordash library
+
+There are multiple ways to Link your Account , The Following are displayed.
+
+#### Specify only Model Name : 
+
+```python
+from tensordash.tensordash import Tensordash
+histories = Tensordash(ModelName = '[YOUR_MODEL_NAME]')
+```
+```bash
+Enter Email : ...........
+Enter Tensordash Password : ********
+```
+#### Specify Model Name and Email address : 
+
 ```python
 from tensordash.tensordash import Tensordash
 histories = Tensordash(
-	email = '[YOUR_EMAIL_ID]', 
-	password = '[YOUR PASSWORD]', 
-	ModelName = '[YOUR_MODEL_NAME]')
+	ModelName = '[YOUR_MODEL_NAME]',
+	email = '[YOUR_EMAIL_ID]')
 ```
+```bash
+Enter Tensordash Password : ********
+```
+
+#### Specify Model Name ,Email address and password : 
+
+```python
+from tensordash.tensordash import Tensordash
+histories = Tensordash(
+	ModelName = '[YOUR_MODEL_NAME]',
+	email = '[YOUR_EMAIL_ID]', 
+	password = '[YOUR PASSWORD]')
+```
+
+
+
+
 *In the app, if you have multiple models you would be able to identify your model by YOUR_MODEL_NAME, so this name has to be unique.*
 
 4. Now you can monitor your model values and status using **crash analysis**. Simply use a try-catch block as shown below.
