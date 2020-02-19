@@ -9,7 +9,7 @@ def readme():
 setup(
 
     name = "tensor-dash",
-    version = "1.4.2",
+    version = "1.5",
     description = "A python package that lets you remotely monitor your deep learning training metrics through it's companion app.",
     long_description = readme(),
     long_description_content_type = "text/markdown",
@@ -23,5 +23,5 @@ setup(
     ],
     packages = ["tensordash"],
     include_package_data = True,
-    install_requires = ["keras>=2.3.0", "requests"]
+    install_requires = ["requests"]
     )
