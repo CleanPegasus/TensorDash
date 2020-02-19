@@ -50,7 +50,7 @@ class SendDataToFirebase(object):
 SendData = SendDataToFirebase()
 class Tensordash(keras.callbacks.Callback):
 
-    def __init__(self, ModelName = 'Sample_model', email = 'None', password ='None' ):
+    def __init__(self, ModelName = 'Sample_model', email = 'None', password ='None'):
         # Get Email and Password If Not Entered Initially
         if(email == 'None'):
             email = input("Enter Email :")
@@ -88,15 +88,9 @@ class Tensordash(keras.callbacks.Callback):
         self.val_accuracy = []
         self.num_epochs = []
 
-        SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = (-1, 0, 0, 0, 0), ModelName = self.ModelName)
-    """
-    def on_epoch_begin(self, epoch, logs = {}):
-
-        self.filename = self.ModelName + '.h5'
-        self.model.save(self.filename, overwrite = True)
-    """
-
+        SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
+        
     def on_epoch_end(self, epoch, logs = {}):
 
         self.losses.append(logs.get('loss'))
