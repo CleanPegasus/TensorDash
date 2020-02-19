@@ -1,6 +1,8 @@
 import requests
 import json
 import keras
+import getpass
+
 class FirebaseError(Exception):
     pass
 class SendDataToFirebase(object):
@@ -10,7 +12,7 @@ class SendDataToFirebase(object):
 
     def sendMessage(self, key = None, auth_token = None, params = None, ModelName = 'Sample Model'):
         epoch, loss, acc, val_loss, val_acc = params
-        
+
         if(acc == None and val_loss == None):
             data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + '}'
         elif(acc == None):
@@ -48,8 +50,13 @@ class SendDataToFirebase(object):
 SendData = SendDataToFirebase()
 class Tensordash(keras.callbacks.Callback):
 
-    def __init__(self, email = 'None', password = 'None',  ModelName = 'Sample_model'):
-
+    def __init__(self, ModelName = 'Sample_model', email = 'None', password ='None' ):
+        # Get Email and Password If Not Entered Initially
+        if(email == 'None'):
+            email = input("Enter Email :")
+        if(email != 'None' and password == 'None'):
+            password = getpass.getpass("Enter Tensordash Password :")
+            
         self.ModelName = ModelName
         self.email = email
         self.password = password
@@ -73,7 +80,7 @@ class Tensordash(keras.callbacks.Callback):
 
         except:
             raise FirebaseError("Authentication Failed. Kindly create an account on the companion app")
-    
+
     def on_train_begin(self, logs = {}):
         self.losses = []
         self.accuracy = []
@@ -120,7 +127,7 @@ class Tensordash(keras.callbacks.Callback):
             self.val_acc = None
         else:
             self.val_acc = float("{0:.6f}".format(self.val_accuracy[-1]))
-    
+
         values = [epoch, self.loss, self.acc, self.val_loss, self.val_acc]
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = values, ModelName = self.ModelName)
 
