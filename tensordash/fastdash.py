@@ -16,16 +16,16 @@ class SendDataToFirebase(object):
         response = None
 
     def sendMessage(self, key = None, auth_token = None, params = None, ModelName = 'Sample Model'):
-        epoch, loss, acc, val_loss, val_acc = params
+        epoch, loss, val_loss, acc = params
         
         if(acc == None and val_loss == None):
-            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + '}'
+            data = '{"Epoch":' +  str(int(epoch)+1) + ', "Loss" :' + str(loss) + '}'
         elif(acc == None):
-            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Validation Loss":' + str(val_loss) + '}'
+            data = '{"Epoch":' +  str(int(epoch)+1) + ', "Loss" :' + str(loss) + ', "Validation Loss":' + str(val_loss) + '}'
         elif(val_loss == None):
-            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + '}'
+            data = '{"Epoch":' +  str(int(epoch)+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + '}'
         else:
-            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + ', "Validation Loss":' + str(val_loss) + ', "Validation Accuracy" :' + str(val_acc) + '}'
+            data = '{"Epoch":' +  str(int(epoch)+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + ', "Validation Loss":' + str(val_loss) + '}'
 
         response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/user_data/{}/{}.json?'.format(key, ModelName), params = auth_token, data=data)
 
@@ -57,7 +57,7 @@ SendData = SendDataToFirebase()
 class FastDash(LearnerCallback):
     "A `LearnerCallback` that saves history of metrics while training `learn` into CSV `filename`."
     def __init__(self, learn:Learner, filename: str = 'history', append: bool = False, ModelName = 'Sample_model', email = 'None', password ='None'):
-        
+
         super().__init__(learn)
         if(email == 'None'):
             email = input("Enter Email :")
@@ -90,8 +90,9 @@ class FastDash(LearnerCallback):
 
 
     def on_train_begin(self, **kwargs: Any) -> None:
-        "Prepare file with metric names."
-        print("Train Begin")
+
+        SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
+        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = (-1, 0, 0, 0), ModelName = self.ModelName)
     
         
     def on_epoch_end(self, epoch: int, smooth_loss: Tensor, last_metrics: MetricsList, **kwargs: Any) -> bool:
@@ -99,9 +100,14 @@ class FastDash(LearnerCallback):
         last_metrics = ifnone(last_metrics, [])
         stats = [str(stat) if isinstance(stat, int) else '#na#' if stat is None else f'{stat:.6f}'
                  for name, stat in zip(self.learn.recorder.names, [epoch, smooth_loss] + last_metrics)]
-        print(stats)
+
+        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = stats, ModelName = self.ModelName)
 
 
     def on_train_end(self, **kwargs: Any) -> None:  
-        print("Training Ends")
+        
+        SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
+
+    def sendCrash(self):
+        SendData.crashAnalytics(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
 
