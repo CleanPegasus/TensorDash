@@ -1,6 +1,11 @@
 import requests
 import json
-import keras
+import fastai
+from fastai.torch_core import Any, Tensor, MetricsList, ifnone
+#from fastai.basic_data import *
+#from fastai.callback import *
+#from fastai.data_block import *
+from fastai.basic_train import LearnerCallback, Learner
 import getpass
 
 class FirebaseError(Exception):
@@ -11,16 +16,16 @@ class SendDataToFirebase(object):
         response = None
 
     def sendMessage(self, key = None, auth_token = None, params = None, ModelName = 'Sample Model'):
-        epoch, loss, acc, val_loss, val_acc = params
-
+        epoch, loss, val_loss, acc = params
+        
         if(acc == None and val_loss == None):
-            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + '}'
+            data = '{"Epoch":' +  str(int(epoch)+1) + ', "Loss" :' + str(loss) + '}'
         elif(acc == None):
-            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Validation Loss":' + str(val_loss) + '}'
+            data = '{"Epoch":' +  str(int(epoch)+1) + ', "Loss" :' + str(loss) + ', "Validation Loss":' + str(val_loss) + '}'
         elif(val_loss == None):
-            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + '}'
+            data = '{"Epoch":' +  str(int(epoch)+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + '}'
         else:
-            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + ', "Validation Loss":' + str(val_loss) + ', "Validation Accuracy" :' + str(val_acc) + '}'
+            data = '{"Epoch":' +  str(int(epoch)+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + ', "Validation Loss":' + str(val_loss) + '}'
 
         response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/user_data/{}/{}.json?'.format(key, ModelName), params = auth_token, data=data)
 
@@ -48,10 +53,12 @@ class SendDataToFirebase(object):
         response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/notification.json', params = auth_token, data = notif_data)
 
 SendData = SendDataToFirebase()
-class Tensordash(keras.callbacks.Callback):
 
-    def __init__(self, ModelName = 'Sample_model', email = 'None', password ='None'):
-        # Get Email and Password If Not Entered Initially
+class Fastdash(LearnerCallback):
+    "A `LearnerCallback` that saves history of metrics while training `learn` into CSV `filename`."
+    def __init__(self, learn:Learner, filename: str = 'history', append: bool = False, ModelName = 'Sample_model', email = 'None', password ='None'):
+
+        super().__init__(learn)
         if(email == 'None'):
             email = input("Enter Email :")
         if(email != 'None' and password == 'None'):
@@ -81,53 +88,26 @@ class Tensordash(keras.callbacks.Callback):
         except:
             raise FirebaseError("Authentication Failed. Kindly create an account on the companion app")
 
-    def on_train_begin(self, logs = {}):
-        self.losses = []
-        self.accuracy = []
-        self.val_losses = []
-        self.val_accuracy = []
-        self.num_epochs = []
 
-        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = (-1, 0, 0, 0, 0), ModelName = self.ModelName)
+    def on_train_begin(self, **kwargs: Any) -> None:
+
         SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
+        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = (-1, 0, 0, 0), ModelName = self.ModelName)
+    
         
-    def on_epoch_end(self, epoch, logs = {}):
+    def on_epoch_end(self, epoch: int, smooth_loss: Tensor, last_metrics: MetricsList, **kwargs: Any) -> bool:
+        "Add a line with `epoch` number, `smooth_loss` and `last_metrics`."
+        last_metrics = ifnone(last_metrics, [])
+        stats = [str(stat) if isinstance(stat, int) else '#na#' if stat is None else f'{stat:.6f}'
+                 for name, stat in zip(self.learn.recorder.names, [epoch, smooth_loss] + last_metrics)]
 
-        self.losses.append(logs.get('loss'))
-        if(logs.get('acc') != None):
-            self.accuracy.append(logs.get('acc'))
-        else:
-            self.accuracy.append(logs.get('accuracy'))
-        self.val_losses.append(logs.get('val_loss'))
-        if(logs.get('val_acc') != None):
-            self.val_accuracy.append(logs.get('val_acc'))
-        else:
-            self.val_accuracy.append(logs.get('val_accuracy'))
-        self.num_epochs.append(epoch)
+        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = stats, ModelName = self.ModelName)
 
-        self.loss = float("{0:.6f}".format(self.losses[-1]))
 
-        if self.accuracy[-1] == None:
-            self.acc = None
-        else:
-            self.acc = float("{0:.6f}".format(self.accuracy[-1]))
-
-        if self.val_losses[-1] == None:
-            self.val_loss = None
-        else:
-            self.val_loss = float("{0:.6f}".format(self.val_losses[-1]))
-
-        if self.val_accuracy[-1] == None:
-            self.val_acc = None
-        else:
-            self.val_acc = float("{0:.6f}".format(self.val_accuracy[-1]))
-
-        values = [epoch, self.loss, self.acc, self.val_loss, self.val_acc]
-        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = values, ModelName = self.ModelName)
-
-    def on_train_end(self, epoch, logs = {}):
-
+    def on_train_end(self, **kwargs: Any) -> None:  
+        
         SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
 
     def sendCrash(self):
         SendData.crashAnalytics(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
+
