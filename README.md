@@ -1,4 +1,8 @@
 # TensorDash
+<img src="readme_resources/cover_image.jpeg">
+</img>
+<br>
+<br/>
 TensorDash is an application that lets you remotely monitor your deep learning model's metrics and notifies you when your model training is completed or crashed.
 
 ## Why Tensordash?
