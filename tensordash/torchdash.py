@@ -21,6 +21,8 @@ class SendDataToFirebase(object):
         else:
             data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + ', "Validation Loss":' + str(val_loss) + ', "Validation Accuracy" :' + str(val_acc) + '}'
 
+        response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/user_data/{}/{}.json?'.format(key, ModelName), params = auth_token, data=data)
+
     def updateRunningStatus(self, key = None, auth_token = None, ModelName = 'Sample Model'):
         data = '{"Status" : "RUNNING"}'
         response = requests.put('https://cofeeshop-tensorflow.firebaseio.com/user_data/{}/{}.json'.format(key, ModelName), params = auth_token, data = data)
@@ -79,8 +81,9 @@ class Torchdash(object):
             raise FirebaseError("Authentication Failed. Kindly create an account on the companion app")
 
     def sendLoss(self, epoch = None, loss = None, acc = None, val_loss = None, val_acc = None, total_epochs = None):
+
         if(epoch == 0):
-            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0], ModelName = self.ModelName)
+            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
             SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
 
         if(epoch == total_epochs - 1):
