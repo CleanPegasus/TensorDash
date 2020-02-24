@@ -10,12 +10,16 @@ class SendDataToFirebase(object):
         response = None
 
     def sendMessage(self, key = None, auth_token = None, params = None, ModelName = 'Sample Model'):
-        epoch, loss = params
-        loss = float("{0:.6f}".format(loss))
+        epoch, loss, acc, val_loss, val_acc = params
 
-        data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + '}'
-
-        response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/user_data/{}/{}.json?'.format(key, ModelName), params = auth_token, data=data)
+        if(acc == None and val_loss == None):
+            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + '}'
+        elif(acc == None):
+            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Validation Loss":' + str(val_loss) + '}'
+        elif(val_loss == None):
+            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + '}'
+        else:
+            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + ', "Validation Loss":' + str(val_loss) + ', "Validation Accuracy" :' + str(val_acc) + '}'
 
     def updateRunningStatus(self, key = None, auth_token = None, ModelName = 'Sample Model'):
         data = '{"Status" : "RUNNING"}'
@@ -74,13 +78,31 @@ class Torchdash(object):
         except:
             raise FirebaseError("Authentication Failed. Kindly create an account on the companion app")
 
-    def sendLoss(self, epoch = None, loss = None, total_epochs = None):
+    def sendLoss(self, epoch = None, loss = None, acc = None, val_loss = None, val_acc = None, total_epochs = None):
         if(epoch == 0):
             SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0], ModelName = self.ModelName)
             SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
+
         if(epoch == total_epochs - 1):
             SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
-        params = [epoch, loss]
+        
+        loss = float("{0:.6f}".format(loss))
+        if acc == None:
+            acc = None
+        else:
+            acc = float("{0:.6f}".format(acc))
+
+        if val_loss == None:
+            val_loss = None
+        else:
+            val_loss = float("{0:.6f}".format(loss))
+
+        if val_acc == None:
+            val_acc = None
+        else:
+            val_acc = float("{0:.6f}".format(val_acc))
+        
+        params = [epoch, loss, acc, val_loss, val_acc]
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = params, ModelName = self.ModelName)
 
     def sendCrash(self):
