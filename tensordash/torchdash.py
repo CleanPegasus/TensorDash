@@ -83,3 +83,6 @@ class Torchdash(object):
         params = [epoch, loss]
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = params, ModelName = self.ModelName)
 
+    def sendCrash(self):
+        SendData.crashAnalytics(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
+
