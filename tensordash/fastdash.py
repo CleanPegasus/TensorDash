@@ -2,9 +2,6 @@ import requests
 import json
 import fastai
 from fastai.torch_core import Any, Tensor, MetricsList, ifnone
-#from fastai.basic_data import *
-#from fastai.callback import *
-#from fastai.data_block import *
 from fastai.basic_train import LearnerCallback, Learner
 import getpass
 
