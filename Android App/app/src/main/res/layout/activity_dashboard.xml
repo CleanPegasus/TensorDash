@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="8dp"
-    tools:context=".view.ui.DashboardActivity">
+    tools:context="tech.tensordash.tensordash.view.ui.DashboardActivity">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
@@ -29,11 +29,12 @@
 
             <TextView
                 android:id="@+id/no_projects_present_textview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:gravity="center"
                 android:visibility="gone"
-                android:text="No projects present. Kindly go through the documentation to add projects."
+                android:text="No projects present. Click here to go to learn how to add projects"
                 android:textColor="@android:color/white"
                 android:textSize="18sp" />
         </RelativeLayout>
