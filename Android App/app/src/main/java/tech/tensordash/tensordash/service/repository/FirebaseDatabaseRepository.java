@@ -9,6 +9,8 @@ import tech.tensordash.tensordash.service.model.Project;
 import tech.tensordash.tensordash.service.model.ProjectParams;
 import tech.tensordash.tensordash.service.model.StatusCode;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -162,6 +164,10 @@ public class FirebaseDatabaseRepository {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         };
+    }
+
+    public void deleteProject(String projectName){
+        databaseReference.child(projectName).setValue(null);
     }
 
 }

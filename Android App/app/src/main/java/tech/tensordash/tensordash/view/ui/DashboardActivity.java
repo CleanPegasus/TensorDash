@@ -1,5 +1,7 @@
 package tech.tensordash.tensordash.view.ui;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
@@ -17,10 +19,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import tech.tensordash.tensordash.R;
+import tech.tensordash.tensordash.service.model.Project;
 import tech.tensordash.tensordash.view.adapter.ProjectAdapter;
 import tech.tensordash.tensordash.viewmodel.FirebaseAuthViewModel;
 import tech.tensordash.tensordash.viewmodel.FirebaseAuthViewModelFactory;
 import tech.tensordash.tensordash.viewmodel.FirebaseDatabaseViewModel;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -32,6 +38,7 @@ public class DashboardActivity extends AppCompatActivity {
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private TextView noProjectsPresentTextView;
+    private ProjectAdapter projectAdapter;
 
 
     @Override
@@ -41,34 +48,36 @@ public class DashboardActivity extends AppCompatActivity {
 
         noProjectsPresentTextView = findViewById(R.id.no_projects_present_textview);
 
-        final ProjectAdapter projectAdapter = new ProjectAdapter();
+        projectAdapter = new ProjectAdapter();
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(projectAdapter);
 
-        setAreProjectsPresent(false);
+        setAreProjectsPresentProgressBar(false);
+
+
 
         firebaseAuthViewModel = ViewModelProviders.of(DashboardActivity.this, new FirebaseAuthViewModelFactory(getApplication(), DashboardActivity.this)).get(FirebaseAuthViewModel.class);
 
         databaseViewModel = ViewModelProviders.of(DashboardActivity.this).get(FirebaseDatabaseViewModel.class);
         databaseViewModel.getAllProjects().observe(this, projects -> {
-            setAreProjectsPresent(!projects.isEmpty());
+            setAreProjectsPresentProgressBar(!projects.isEmpty());
             projectAdapter.submitList(projects);
         });
 
         projectAdapter.setOnItemClickListener(project -> {
             Intent intent = new Intent(DashboardActivity.this, ProjectDescriptionActivity.class);
             intent.putExtra("project_name", project.getProjectName());
-            startActivity(intent);
+            startActivityForResult(intent, 0);
         });
 
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
             databaseViewModel.refreshProjectList(swipeRefreshLayout);
             databaseViewModel.getAllProjects().observe(this, projects -> {
-                setAreProjectsPresent(!projects.isEmpty());
+                setAreProjectsPresentProgressBar(!projects.isEmpty());
                 projectAdapter.submitList(projects);
                 projectAdapter.notifyDataSetChanged();
             });
@@ -114,8 +123,8 @@ public class DashboardActivity extends AppCompatActivity {
         finishAffinity();
     }
 
-    private void setAreProjectsPresent(boolean areProjectsPresent){
-        Log.d(TAG, "setAreProjectsPresent: " + areProjectsPresent);
+    private void setAreProjectsPresentProgressBar(boolean areProjectsPresent){
+        Log.d(TAG, "setAreProjectsPresentProgressBar: " + areProjectsPresent);
         if(areProjectsPresent){
             recyclerView.setVisibility(View.VISIBLE);
             noProjectsPresentTextView.setVisibility(View.GONE);
@@ -130,4 +139,26 @@ public class DashboardActivity extends AppCompatActivity {
         startActivity(browserIntent);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == ProjectDescriptionActivity.DELETE_PROJECT){
+            deleteProject(data.getStringExtra("delete_project"));
+        }
+    }
+
+    public void deleteProject(String deleteProjectName){
+        databaseViewModel.getAllProjects().observe(this, projects -> {
+            for(int i = 0; i < projects.size(); i++){
+                if(projects.get(i).getProjectName().equals(deleteProjectName)){
+                    projects.remove(i);
+                    break;
+                }
+            }
+            projectAdapter.submitList(projects);
+            projectAdapter.notifyDataSetChanged();
+            databaseViewModel.deleteProject(deleteProjectName);
+
+        });
+    }
 }

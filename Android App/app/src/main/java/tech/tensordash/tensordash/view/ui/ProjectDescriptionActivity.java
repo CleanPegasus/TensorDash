@@ -1,12 +1,16 @@
 package tech.tensordash.tensordash.view.ui;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,6 +18,7 @@ import tech.tensordash.tensordash.R;
 import tech.tensordash.tensordash.service.model.Project;
 import tech.tensordash.tensordash.service.model.ProjectParams;
 import tech.tensordash.tensordash.viewmodel.FirebaseDatabaseViewModel;
+
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -21,6 +26,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +48,11 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
     private boolean isAccuracyPresent = true;
     private boolean isValidationLossPresent = true;
     private boolean isValidationAccuracyPresent = true;
+
+    private Project thisProject;
+
+    public static final int DELETE_PROJECT = 1;
+
 
 
     @Override
@@ -83,7 +94,8 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
         firebaseDatabaseViewModel.getAllProjects().observe(this, projects -> {
             for (Project project : projects) {
                 if (projectName.equals(project.getProjectName())) {
-                    setValues(project);
+                    thisProject = project;
+                    setValues();
                     break;
                 }
             }
@@ -96,14 +108,14 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
         return true;
     }
 
-    private void setValues(Project project) {
-        projectNameTextView.setText(project.getProjectName());
-        epochTextView.setText(String.valueOf(project.getLatestEpoch()));
-        accuracyTextView.setText(String.valueOf(project.getLatestAccuracy()));
-        lossTextView.setText(String.valueOf(project.getLatestLoss()));
-        validationAccuracyTextView.setText(String.valueOf(project.getLatestValidationAccuracy()));
-        validationLossTextView.setText(String.valueOf(project.getLatestValidationLoss()));
-        setUpChart(project.getProjectParamsList());
+    private void setValues() {
+        projectNameTextView.setText(thisProject.getProjectName());
+        epochTextView.setText(String.valueOf(thisProject.getLatestEpoch()));
+        accuracyTextView.setText(String.valueOf(thisProject.getLatestAccuracy()));
+        lossTextView.setText(String.valueOf(thisProject.getLatestLoss()));
+        validationAccuracyTextView.setText(String.valueOf(thisProject.getLatestValidationAccuracy()));
+        validationLossTextView.setText(String.valueOf(thisProject.getLatestValidationLoss()));
+        setUpChart(thisProject.getProjectParamsList());
     }
 
     private void setUpChart(List<ProjectParams> projectParamsList) {
@@ -120,7 +132,7 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
         ArrayList<Entry> validationLossEntries = new ArrayList<>();
         ArrayList<Entry> validationAccuracyEntries = new ArrayList<>();
         for (ProjectParams projectParams : projectParamsList) {
-            if(projectParams.getEpoch() == 0 && projectParamsList.size() > 1){
+            if (projectParams.getEpoch() == 0 && projectParamsList.size() > 1) {
                 continue;
             }
             lossEntries.add(new Entry(projectParams.getEpoch(), (float) projectParams.getLoss()));
@@ -199,6 +211,38 @@ public class ProjectDescriptionActivity extends AppCompatActivity {
         if (valAccSum == 0) {
             isValidationAccuracyPresent = false;
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_project_description, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.menu_project_delete) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(ProjectDescriptionActivity.this);
+            builder.setTitle("Sign out?")
+                    .setMessage("Do you want to delete \"" + thisProject.getProjectName() + "\" ?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        deleteProject(thisProject.getProjectName());
+                    })
+                    .setNegativeButton("No", (dialog, which) -> {
+                    })
+                    .create()
+                    .show();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void deleteProject(String projectName){
+        Intent intent = new Intent();
+        intent.putExtra("delete_project", projectName);
+        setResult(DELETE_PROJECT, intent);
+        finish();
     }
 
 }

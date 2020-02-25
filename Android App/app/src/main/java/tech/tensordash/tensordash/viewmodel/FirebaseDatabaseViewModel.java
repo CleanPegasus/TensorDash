@@ -7,6 +7,9 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+
 import tech.tensordash.tensordash.service.model.Project;
 import tech.tensordash.tensordash.service.repository.FirebaseDatabaseRepository;
 
@@ -33,6 +36,10 @@ public class FirebaseDatabaseViewModel extends AndroidViewModel {
 
     public void detachListeners(){
         firebaseDatabaseRepository.detachListeners();
+    }
+
+    public void deleteProject(String projectName){
+        firebaseDatabaseRepository.deleteProject(projectName);
     }
 
 
