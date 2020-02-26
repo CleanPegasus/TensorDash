@@ -126,7 +126,6 @@ class Tensordash(keras.callbacks.Callback):
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = values, ModelName = self.ModelName)
 
     def on_train_end(self, epoch, logs = {}):
-
         SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
 
     def sendCrash(self):
@@ -174,19 +173,13 @@ class Customdash(object):
             SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
         
         loss = float("{0:.6f}".format(loss))
-        if acc == None:
-            acc = None
-        else:
+        if acc != None:
             acc = float("{0:.6f}".format(acc))
 
-        if val_loss == None:
-            val_loss = None
-        else:
+        if val_loss != None:
             val_loss = float("{0:.6f}".format(loss))
 
-        if val_acc == None:
-            val_acc = None
-        else:
+        if val_acc != None:
             val_acc = float("{0:.6f}".format(val_acc))
         
         params = [epoch, loss, acc, val_loss, val_acc]
