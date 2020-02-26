@@ -1,0 +1,9 @@
+site_name: TensorDash
+nav:
+    - Home: index.md
+    - How to use: usage.md
+    - About: about.md
+
+theme:
+    name: 'readthedocs'
+    logo: 'img/logo.png'
