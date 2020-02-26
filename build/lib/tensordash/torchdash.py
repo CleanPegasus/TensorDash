@@ -1,8 +1,5 @@
 import requests
 import json
-import fastai
-from fastai.torch_core import Any, Tensor, MetricsList, ifnone
-from fastai.basic_train import LearnerCallback, Learner
 import getpass
 
 class FirebaseError(Exception):
@@ -13,16 +10,16 @@ class SendDataToFirebase(object):
         response = None
 
     def sendMessage(self, key = None, auth_token = None, params = None, ModelName = 'Sample Model'):
-        epoch, loss, val_loss, acc = params
-        
+        epoch, loss, acc, val_loss, val_acc = params
+
         if(acc == None and val_loss == None):
-            data = '{"Epoch":' +  str(int(epoch)+1) + ', "Loss" :' + str(loss) + '}'
+            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + '}'
         elif(acc == None):
-            data = '{"Epoch":' +  str(int(epoch)+1) + ', "Loss" :' + str(loss) + ', "Validation Loss":' + str(val_loss) + '}'
+            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Validation Loss":' + str(val_loss) + '}'
         elif(val_loss == None):
-            data = '{"Epoch":' +  str(int(epoch)+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + '}'
+            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + '}'
         else:
-            data = '{"Epoch":' +  str(int(epoch)+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + ', "Validation Loss":' + str(val_loss) + '}'
+            data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + ', "Validation Loss":' + str(val_loss) + ', "Validation Accuracy" :' + str(val_acc) + '}'
 
         response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/user_data/{}/{}.json?'.format(key, ModelName), params = auth_token, data=data)
 
@@ -49,12 +46,11 @@ class SendDataToFirebase(object):
         notif_data = '{"Key":' + '"' + str(key) + '"' + ', "Status" : "Crashed"}'
         response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/notification.json', params = auth_token, data = notif_data)
 
+
 SendData = SendDataToFirebase()
 
-class Fastdash(LearnerCallback):
-    def __init__(self, learn:Learner, filename: str = 'history', append: bool = False, ModelName = 'Sample_model', email = 'None', password ='None'):
-
-        super().__init__(learn)
+class Torchdash(object):
+    def __init__(self, ModelName = 'Sample Model', email = None, password = None):
         if(email == 'None'):
             email = input("Enter Email :")
         if(email != 'None' and password == 'None'):
@@ -84,22 +80,27 @@ class Fastdash(LearnerCallback):
         except:
             raise FirebaseError("Authentication Failed. Kindly create an account on the companion app")
 
+    def sendLoss(self, epoch = None, loss = None, acc = None, val_loss = None, val_acc = None, total_epochs = None):
 
-    def on_train_begin(self, **kwargs: Any) -> None:
-        SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
-        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = (-1, 0, 0, 0), ModelName = self.ModelName)
-    
+        if(epoch == 0):
+            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
+            SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
+
+        if(epoch == total_epochs - 1):
+            SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
         
-    def on_epoch_end(self, epoch: int, smooth_loss: Tensor, last_metrics: MetricsList, **kwargs: Any) -> bool:
-        last_metrics = ifnone(last_metrics, [])
-        stats = [str(stat) if isinstance(stat, int) else '#na#' if stat is None else f'{stat:.6f}'
-                 for name, stat in zip(self.learn.recorder.names, [epoch, smooth_loss] + last_metrics)]
+        loss = float("{0:.6f}".format(loss))
+        if acc != None:
+            acc = float("{0:.6f}".format(acc))
 
-        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = stats, ModelName = self.ModelName)
+        if val_loss != None:
+            val_loss = float("{0:.6f}".format(loss))
 
-
-    def on_train_end(self, **kwargs: Any) -> None:  
-        SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
+        if val_acc != None:
+            val_acc = float("{0:.6f}".format(val_acc))
+        
+        params = [epoch, loss, acc, val_loss, val_acc]
+        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = params, ModelName = self.ModelName)
 
     def sendCrash(self):
         SendData.crashAnalytics(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
