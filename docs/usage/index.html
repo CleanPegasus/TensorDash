@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>How to use - TensorDash</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to use";
+    var mkdocs_page_input_path = "usage.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> TensorDash</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">How to use</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#how-to-use">How to use</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#keras">Keras</a></li>
+        
+            <li><a class="toctree-l3" href="#tensorflow">Tensorflow</a></li>
+        
+            <li><a class="toctree-l3" href="#pytorch">Pytorch</a></li>
+        
+            <li><a class="toctree-l3" href="#fastai">Fast.ai</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">About</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">TensorDash</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to use</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="how-to-use">How to use</h1>
+<ol>
+<li>If you are using the app for he first time, <strong>sign up</strong> by clicking on the "create an account" button.</li>
+<li>After signing up, <strong>sign in</strong> to your account.</li>
+</ol>
+<h2 id="keras">Keras</h2>
+<ol>
+<li>In your python code, import Tensordash library
+There are multiple ways to Link your Account , The Following are displayed.</li>
+</ol>
+<h4 id="specify-only-model-name">Specify only Model Name :</h4>
+<pre><code class="python">from tensordash.tensordash import Tensordash
+histories = Tensordash(ModelName = '&lt;YOUR_MODEL_NAME&gt;')
+</code></pre>
+
+<pre><code class="bash">Enter Email : ...........
+Enter Tensordash Password : ********
+</code></pre>
+
+<h4 id="specify-model-name-and-email-address">Specify Model Name and Email address :</h4>
+<pre><code class="python">from tensordash.tensordash import Tensordash
+histories = Tensordash(
+    ModelName = '&lt;YOUR_MODEL_NAME&gt;',
+    email = '&lt;YOUR_EMAIL_ID&gt;')
+</code></pre>
+
+<pre><code class="bash">Enter Tensordash Password : ********
+</code></pre>
+
+<h4 id="specify-model-name-email-address-and-password">Specify Model Name, Email address and password :</h4>
+<pre><code class="python">from tensordash.tensordash import Tensordash
+histories = Tensordash(
+    ModelName = '&lt;YOUR_MODEL_NAME&gt;',
+    email = '&lt;YOUR_EMAIL_ID&gt;', 
+    password = '&lt;YOUR PASSWORD&gt;')
+</code></pre>
+
+<p><strong><em>In the app, if you have multiple models you would be able to identify your model by YOUR_MODEL_NAME, so this name has to be unique.</em></strong></p>
+<ol>
+<li>Now you can monitor your model values and status using <strong>crash analysis</strong>. Simply use a try-catch block as shown below.</li>
+</ol>
+<pre><code class="python">try:
+    model.fit(
+    X_train, 
+    y_train, 
+    epochs = epochs, 
+    validation_data = validation_data, 
+    batch_size = batch_size, 
+    callbacks = [histories])
+
+except:
+    histories.sendCrash()
+</code></pre>
+
+<h3 id="or">OR</h3>
+<p>Alternatively, if you do not want to use <strong>crash analysis</strong> then you can just monitor by just adding histories object to callback</p>
+<pre><code class="python">model.fit(
+    X_train, 
+    y_train, 
+    epochs = epochs, 
+    validation_data = validation_data, 
+    batch_size = batch_size, 
+    callbacks = [histories])
+</code></pre>
+
+<h2 id="tensorflow">Tensorflow</h2>
+<ol>
+<li>In your python code, import Tensordash library</li>
+</ol>
+<p><strong><em> To use Tensordash on pytorch, you have to pass the metrics as parameters to the function manually.</em></strong>
+<br>
+<strong><em>The function takes:<br>
+1. loss<br>
+2. epoch<br>
+3. total_epochs<br>
+4. accuracy(optional)<br>
+5. val_loss(optional)<br>
+6. val_acc(optional),  as the parameters </em></strong></p>
+<pre><code class="python">from tensordash.tensordash import Customdash
+</code></pre>
+
+<p>There are multiple ways to Link your Account , The Following are displayed.</p>
+<h4 id="specify-only-model-name_1">Specify only Model Name :</h4>
+<pre><code class="python">histories = Customdash(ModelName = '&lt;YOUR_MODEL_NAME&gt;')
+</code></pre>
+
+<pre><code class="bash">Enter Email : ...........
+Enter Tensordash Password : ********
+</code></pre>
+
+<h4 id="specify-model-name-and-email-address_1">Specify Model Name and Email address :</h4>
+<pre><code class="python">histories = Customdash(
+    ModelName = '&lt;YOUR_MODEL_NAME&gt;',
+    email = '&lt;YOUR_EMAIL_ID&gt;')
+</code></pre>
+
+<pre><code class="bash">Enter Tensordash Password : ********
+</code></pre>
+
+<h4 id="specify-model-name-email-address-and-password_1">Specify Model Name, Email address and password :</h4>
+<pre><code class="python">histories = Customdash(
+    ModelName = '&lt;YOUR_MODEL_NAME&gt;',
+    email = '&lt;YOUR_EMAIL_ID&gt;', 
+    password = '&lt;YOUR PASSWORD&gt;')
+</code></pre>
+
+<p><strong><em>In the app, if you have multiple models you would be able to identify your model by YOUR_MODEL_NAME, so this name has to be unique.</em></strong></p>
+<ol>
+<li>Now you can monitor your model values and status using <strong>crash analysis</strong>. Simply use a try-catch block as shown below.</li>
+</ol>
+<pre><code class="python">try:
+
+    for epoch in range(num_epochs):
+        epoch_loss_avg = tf.keras.metrics.Mean()
+        epoch_accuracy = tf.keras.metrics.SparseCategoricalAccuracy()
+
+        for x, y in train_dataset:
+
+            loss_value, grads = grad(model, x, y)
+            optimizer.apply_gradients(zip(grads, model.trainable_variables))
+
+            epoch_loss_avg(loss_value)
+            epoch_accuracy(y, model(x, training=True))
+
+        train_loss_results.append(epoch_loss_avg.result())
+        train_accuracy_results.append(epoch_accuracy.result())
+
+        histories.sendLoss(loss = epoch_loss_avg.result(), accuracy = epoch_accuracy.result(), epoch = epoch, total_epochs = epochs)
+
+except:
+    histories.sendCrash()
+
+</code></pre>
+
+<h3 id="or_1">OR</h3>
+<p>Alternatively, if you do not want to use <strong>crash analysis</strong> then you can just monitor by just adding histories object to callback</p>
+<pre><code class="python">for epoch in range(num_epochs):
+    epoch_loss_avg = tf.keras.metrics.Mean()
+    epoch_accuracy = tf.keras.metrics.SparseCategoricalAccuracy()
+
+    for x, y in train_dataset:
+
+        loss_value, grads = grad(model, x, y)
+        optimizer.apply_gradients(zip(grads, model.trainable_variables))
+
+        epoch_loss_avg(loss_value)
+        epoch_accuracy(y, model(x, training=True))
+
+    train_loss_results.append(epoch_loss_avg.result())
+    train_accuracy_results.append(epoch_accuracy.result())
+
+    histories.sendLoss(loss = epoch_loss_avg.result(), accuracy = epoch_accuracy.result(), epoch = epoch, total_epochs = epochs)
+
+</code></pre>
+
+<h2 id="pytorch">Pytorch</h2>
+<ol>
+<li>In your python code, import Tensordash library</li>
+</ol>
+<pre><code class="python">from tensordash.torchdash import Torchdash
+</code></pre>
+
+<p><strong><em> To use Tensordash on pytorch, you have to pass the metrics as parameters to the function manually.</em></strong>
+<br>
+<strong><em>The function takes:<br>
+1. loss<br>
+2. epoch<br>
+3. total_epochs<br>
+4. accuracy(optional)<br>
+5. val_loss(optional)<br>
+6. val_acc(optional),  as the parameters </em></strong></p>
+<p>There are multiple ways to Link your Account , The Following are displayed.</p>
+<h4 id="specify-only-model-name_2">Specify only Model Name :</h4>
+<pre><code class="python">histories = Torchdash(ModelName = '&lt;YOUR_MODEL_NAME&gt;')
+</code></pre>
+
+<pre><code class="bash">Enter Email : ...........
+Enter Tensordash Password : ********
+</code></pre>
+
+<h4 id="specify-model-name-and-email-address_2">Specify Model Name and Email address :</h4>
+<pre><code class="python">histories = Torchdash(
+    ModelName = '&lt;YOUR_MODEL_NAME&gt;',
+    email = '&lt;YOUR_EMAIL_ID&gt;')
+</code></pre>
+
+<pre><code class="bash">Enter Tensordash Password : ********
+</code></pre>
+
+<h4 id="specify-model-name-email-address-and-password_2">Specify Model Name, Email address and password :</h4>
+<pre><code class="python">histories = Torchdash(
+    ModelName = '&lt;YOUR_MODEL_NAME&gt;',
+    email = '&lt;YOUR_EMAIL_ID&gt;', 
+    password = '&lt;YOUR PASSWORD&gt;')
+</code></pre>
+
+<p><strong><em>In the app, if you have multiple models you would be able to identify your model by YOUR_MODEL_NAME, so this name has to be unique.</em></strong></p>
+<ol>
+<li>Now you can monitor your model values and status using <strong>crash analysis</strong>. Simply use a try-catch block as shown below.</li>
+</ol>
+<pre><code class="python">try:
+    for epoch in range(epochs):
+        losses = []
+        for data in trainset:
+            X, y = data
+            net.zero_grad()
+            output = net(X.view(data_shape))
+            loss = F.nll_loss(output, y)
+            loss.backward()
+            optimizer.step()
+        losses = np.asarray(losses)
+        histories.sendLoss(loss = np.mean(losses), epoch = epoch, total_epochs = epochs)
+
+except:
+    histories.sendCrash()
+
+</code></pre>
+
+<h3 id="or_2">OR</h3>
+<p>Alternatively, if you do not want to use <strong>crash analysis</strong> then you can just monitor by just adding histories object to callback</p>
+<pre><code class="python">for epoch in range(epochs):
+    losses = []
+    for data in trainset:
+        X, y = data
+        net.zero_grad()
+        output = net(X.view(-1,784))
+        loss = F.nll_loss(output, y)
+        loss.backward()
+        optimizer.step()
+    losses = np.asarray(losses)
+    histories.sendLoss(loss = np.mean(losses), epoch = epoch, total_epochs = epochs)
+
+</code></pre>
+
+<h2 id="fastai">Fast.ai</h2>
+<ol>
+<li>In your python code, import Tensordash library
+There are multiple ways to Link your Account , The Following are displayed.</li>
+</ol>
+<h4 id="specify-only-model-name_3">Specify only Model Name :</h4>
+<pre><code class="python">from tensordash.fastdash import Fastdash
+
+learn = cnn_learner(data, models.resnet18, metrics=accuracy)
+my_cb = Fastdash(learn, ModelName = '&lt;YOUR_MODEL_NAME&gt;')
+</code></pre>
+
+<pre><code class="bash">Enter Email : ...........
+Enter Tensordash Password : ********
+</code></pre>
+
+<h4 id="specify-model-name-and-email-address_3">Specify Model Name and Email address :</h4>
+<pre><code class="python">from tensordash.fastdash import Fastdash
+my_cb = Fastdash(
+    ModelName = '&lt;YOUR_MODEL_NAME&gt;',
+    email = '&lt;YOUR_EMAIL_ID&gt;')
+</code></pre>
+
+<pre><code class="bash">Enter Tensordash Password : ********
+</code></pre>
+
+<h4 id="specify-model-name-email-address-and-password_3">Specify Model Name, Email address and password :</h4>
+<pre><code class="python">from tensordash.fastdash import Fastdash
+my_cb = Tensordash(
+    ModelName = '&lt;YOUR_MODEL_NAME&gt;',
+    email = '&lt;YOUR_EMAIL_ID&gt;', 
+    password = '&lt;YOUR PASSWORD&gt;')
+</code></pre>
+
+<ol>
+<li>Now you can monitor your model values and status using <strong>crash analysis</strong>. Simply use a try-catch block as shown below.</li>
+</ol>
+<pre><code class="python">try:
+    learn.fit(epochs, learning_rate, callbacks = my_cb)
+except:
+    my_cb.sendCrash()
+</code></pre>
+
+<h3 id="or_3">OR</h3>
+<p>Alternatively, if you do not want to use <strong>crash analysis</strong> then you can just monitor by just adding my_cb object to callback</p>
+<pre><code class="python">learn.fit(epochs, learning_rate, callbacks = my_cb)
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../about/" class="btn btn-neutral float-right" title="About">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../about/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
