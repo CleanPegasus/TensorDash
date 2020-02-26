@@ -1,5 +1,5 @@
 # TensorDash
-<img src="readme_resources/cover_image.jpeg"/>
+<img src="readme_resources/cover_image.jpeg">
 TensorDash is an application that lets you remotely monitor your deep learning model's metrics and notifies you when your model training is completed or crashed.
 
 ## Why Tensordash?
@@ -43,6 +43,7 @@ histories = Tensordash(
 	ModelName = '<YOUR_MODEL_NAME>',
 	email = '<YOUR_EMAIL_ID>')
 ```
+Then, enter the password in the terminal.
 ```bash
 Enter Tensordash Password : ********
 ```
@@ -52,6 +53,7 @@ Enter Tensordash Password : ********
 from tensordash.tensordash import Tensordash
 histories = Tensordash(ModelName = '<YOUR_MODEL_NAME>')
 ```
+Then, enter the email id and password in the terminal.
 ```bash
 Enter Email : ...........
 Enter Tensordash Password : ********
@@ -115,6 +117,7 @@ my_cb = Fastdash(
 	ModelName = '<YOUR_MODEL_NAME>',
 	email = '<YOUR_EMAIL_ID>')
 ```
+Then, enter the password in the terminal.
 ```bash
 Enter Tensordash Password : ********
 ```
@@ -126,6 +129,7 @@ from tensordash.fastdash import Fastdash
 learn = cnn_learner(data, models.resnet18, metrics=accuracy)
 my_cb = Fastdash(learn, ModelName = '<YOUR_MODEL_NAME>')
 ```
+Then, enter the email id and password in the terminal.
 ```bash
 Enter Email : ...........
 Enter Tensordash Password : ********
