@@ -2,13 +2,13 @@
 <img src="readme_resources/cover_image.jpeg">
 TensorDash is an application that lets you remotely monitor your deep learning model's metrics and notifies you when your model training is completed or crashed.
 
-#### Check out the documentation [here](https://cleanpegasus.github.io/TensorDash/)
+#### [Go to docs](https://cleanpegasus.github.io/TensorDash/)
 
 ## Why Tensordash?
 
-1. Watch your model train in real-time
-2. Supports all major deep learning framework
-3. Remotely get details on the training and validation metrics
+1. Watch your model train in real-time.
+2. Supports all major deep learning frameworks.
+3. Remotely get details on the training and validation metrics.
 4. Get notified when your model has completed trainng or when it has crashed.
 5. Get detailed graphs on your model’s metrics.
 
@@ -56,32 +56,16 @@ Install the android app from the play store.<br>
 
 ## [How to use](https://cleanpegasus.github.io/TensorDash/usage/)
 
-TensorDash supports all the major deep learning frameworks. You can check out the documentation of the project [here](https://cleanpegasus.github.io/TensorDash/usage/).
 
-## Support
+<table border="0">
+<tr>
+	<td><a href="https://cleanpegasus.github.io/TensorDash/usage/#tensorflow"><img src="readme_resources/tensorflow.png" width="" height="100px"><br><p align="center">Tensorflow</p></a></td>
+	<td><a href="https://cleanpegasus.github.io/TensorDash/usage/#keras"> <img src="readme_resources/keras.png" width="" height="100px"><br><p align="center">Keras</p></a></td>
+	<td><a href="https://cleanpegasus.github.io/TensorDash/usage/#pytorch"> <img src="readme_resources/pytorch.png" width="" height="100px"><br><p align="center">PyTorch</p></a></td>
+	<td><a href="https://cleanpegasus.github.io/TensorDash/usage/#fastai"> <img src="readme_resources/fastai.png" width="" height="100px"><br><p align="center">Fast.ai</a></p>
+</tr>
+</table>
 
-<div class="container">
-    <div style="float:left;width:49%">
-	    <img src="readme_resources/tensorflow.png">
-		<h4> Tensorflow </h4>
-    </div>
-    <div style="float:left;width:49%">
-	    <img src="readme_resources/keras.png">
-		<h4> Keras </br>
-    </div>
-    </div>
-</div>
-<br>
-<div class="container">
-    <div style="float:left;width:49%">
-	    <img src="readme_resources/pytorch.png">
-		<h4> Pytorch </h4>
-    </div>
-    <div style="float:left;width:49%">
-	    <img src="readme_resources/fastai.png">
-		<h4> Fastai </br>
-    </div>
-    </div>
-</div>
-<br>
-</br>
+		
+
+
