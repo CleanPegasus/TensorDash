@@ -34,7 +34,7 @@ If you are using a virtualenv, you may want to avoid using sudo:
 pip install tensor-dash
 ```
 
-- **Alternatively: install Keras from the GitHub source:**
+- **Alternatively: install tensordash from the GitHub source:**
 
 First, clone TensorDash using `git`:
 
