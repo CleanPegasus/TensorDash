@@ -19,6 +19,9 @@ TensorDash is an application that lets you remotely monitor your deep learning m
 Install the android app from the play store.<br>
 [<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="30%" width="30%">](https://play.google.com/store/apps/details?id=tech.tensordash.tensordash)
 
+## How to use
+
+TensorDash supports all the major deep learning frameworks. You can check out the documentation of the project [here](https://cleanpegasus.github.io/TensorDash/usage/).
 
 ## Support
 
@@ -47,4 +50,3 @@ Install the android app from the play store.<br>
 </div>
 <br>
 </br>
-
