@@ -8,7 +8,7 @@
 3. In your python code, import Tensordash library
 There are multiple ways to Link your Account , The Following are displayed.
 
-#### Specify only Model Name : 
+#### a) Specify only Model Name : 
 
 ```python
 from tensordash.tensordash import Tensordash
@@ -18,7 +18,7 @@ histories = Tensordash(ModelName = '<YOUR_MODEL_NAME>')
 Enter Email : ...........
 Enter Tensordash Password : ********
 ```
-#### Specify Model Name and Email address : 
+#### b) Specify Model Name and Email address : 
 
 ```python
 from tensordash.tensordash import Tensordash
@@ -30,7 +30,7 @@ histories = Tensordash(
 Enter Tensordash Password : ********
 ```
 
-#### Specify Model Name, Email address and password : 
+#### c) Specify Model Name, Email address and password : 
 
 ```python
 from tensordash.tensordash import Tensordash
@@ -94,7 +94,7 @@ from tensordash.tensordash import Customdash
 
 There are multiple ways to Link your Account , The Following are displayed.
 
-#### Specify only Model Name : 
+#### a) Specify only Model Name : 
 
 ```python
 histories = Customdash(ModelName = '<YOUR_MODEL_NAME>')
@@ -103,7 +103,7 @@ histories = Customdash(ModelName = '<YOUR_MODEL_NAME>')
 Enter Email : ...........
 Enter Tensordash Password : ********
 ```
-#### Specify Model Name and Email address : 
+#### b) Specify Model Name and Email address : 
 
 ```python
 histories = Customdash(
@@ -114,7 +114,7 @@ histories = Customdash(
 Enter Tensordash Password : ********
 ```
 
-#### Specify Model Name, Email address and password : 
+#### c) Specify Model Name, Email address and password : 
 
 ```python
 histories = Customdash(
@@ -199,7 +199,7 @@ from tensordash.torchdash import Torchdash
 
 There are multiple ways to Link your Account , The Following are displayed.
 
-#### Specify only Model Name : 
+#### a) Specify only Model Name : 
 
 ```python
 histories = Torchdash(ModelName = '<YOUR_MODEL_NAME>')
@@ -208,7 +208,7 @@ histories = Torchdash(ModelName = '<YOUR_MODEL_NAME>')
 Enter Email : ...........
 Enter Tensordash Password : ********
 ```
-#### Specify Model Name and Email address : 
+#### b) Specify Model Name and Email address : 
 
 ```python
 histories = Torchdash(
@@ -219,7 +219,7 @@ histories = Torchdash(
 Enter Tensordash Password : ********
 ```
 
-#### Specify Model Name, Email address and password : 
+#### c) Specify Model Name, Email address and password : 
 
 ```python
 histories = Torchdash(
@@ -273,19 +273,12 @@ for epoch in range(epochs):
 ```
 
 
-
-
-
-
-
-
-
 ## Fast.ai
 
 3. In your python code, import Tensordash library
 There are multiple ways to Link your Account , The Following are displayed.
 
-#### Specify only Model Name : 
+#### a) Specify only Model Name : 
 
 ```python
 from tensordash.fastdash import Fastdash
@@ -297,7 +290,7 @@ my_cb = Fastdash(learn, ModelName = '<YOUR_MODEL_NAME>')
 Enter Email : ...........
 Enter Tensordash Password : ********
 ```
-#### Specify Model Name and Email address : 
+#### b) Specify Model Name and Email address : 
 
 ```python
 from tensordash.fastdash import Fastdash
@@ -309,7 +302,7 @@ my_cb = Fastdash(
 Enter Tensordash Password : ********
 ```
 
-#### Specify Model Name, Email address and password : 
+#### c) Specify Model Name, Email address and password : 
 
 ```python
 from tensordash.fastdash import Fastdash
