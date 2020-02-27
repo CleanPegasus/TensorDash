@@ -121,7 +121,32 @@
 </ol>
 <h2 id="installation">Installation</h2>
 <h3 id="installing-the-python-package">Installing the Python Package</h3>
-<p><code>pip install tensor-dash</code></p>
+<h3 id="installing-the-python-package_1">Installing the Python Package</h3>
+<p>There are two ways to install tensordash:</p>
+<ul>
+<li><strong>Install tensordash from PyPI (recommended):</strong></li>
+</ul>
+<p>Note: These installation steps assume that you are on a Linux or Mac environment.
+If you are on Windows, you will need to remove <code>sudo</code> to run the commands below.</p>
+<pre><code class="sh">sudo pip install tensor-dash
+</code></pre>
+
+<p>If you are using a virtualenv, you may want to avoid using sudo:</p>
+<pre><code class="sh">pip install tensor-dash
+</code></pre>
+
+<ul>
+<li><strong>Alternatively: install tensordash from the GitHub source:</strong></li>
+</ul>
+<p>First, clone TensorDash using <code>git</code>:</p>
+<pre><code class="sh">git clone https://github.com/CleanPegasus/TensorDash.git
+</code></pre>
+
+<p>Then, <code>cd</code> to the TensorDash folder and run the install command:</p>
+<pre><code class="sh">cd TensorDash
+sudo python setup.py install
+</code></pre>
+
 <h3 id="installing-the-android-app">Installing the Android App</h3>
 <p>Install the android app from the play store.<br>
 <a href="https://play.google.com/store/apps/details?id=tech.tensordash.tensordash"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="30%" width="30%"></a></p>
@@ -173,5 +198,5 @@
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-02-27 07:21:57
+Build Date UTC : 2020-02-27 08:24:32
 -->

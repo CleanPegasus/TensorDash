@@ -120,10 +120,14 @@
 </ol>
 <h2 id="keras">Keras</h2>
 <ol>
-<li>In your python code, import Tensordash library
-There are multiple ways to Link your Account , The Following are displayed.</li>
+<li>
+<p>In your python code, import Tensordash library
+There are multiple ways to Link your Account , The Following are displayed.</p>
+</li>
+<li>
+<p><strong>Specify only Model Name :</strong> </p>
+</li>
 </ol>
-<h4 id="a-specify-only-model-name">a) Specify only Model Name :</h4>
 <pre><code class="python">from tensordash.tensordash import Tensordash
 histories = Tensordash(ModelName = '&lt;YOUR_MODEL_NAME&gt;')
 </code></pre>
@@ -132,7 +136,9 @@ histories = Tensordash(ModelName = '&lt;YOUR_MODEL_NAME&gt;')
 Enter Tensordash Password : ********
 </code></pre>
 
-<h4 id="b-specify-model-name-and-email-address">b) Specify Model Name and Email address :</h4>
+<ul>
+<li><strong>Specify Model Name and Email address :</strong></li>
+</ul>
 <pre><code class="python">from tensordash.tensordash import Tensordash
 histories = Tensordash(
     ModelName = '&lt;YOUR_MODEL_NAME&gt;',
@@ -142,7 +148,9 @@ histories = Tensordash(
 <pre><code class="bash">Enter Tensordash Password : ********
 </code></pre>
 
-<h4 id="c-specify-model-name-email-address-and-password">c) Specify Model Name, Email address and password :</h4>
+<ul>
+<li><strong>Specify Model Name, Email address and password :</strong> </li>
+</ul>
 <pre><code class="python">from tensordash.tensordash import Tensordash
 histories = Tensordash(
     ModelName = '&lt;YOUR_MODEL_NAME&gt;',
@@ -195,7 +203,9 @@ except:
 </code></pre>
 
 <p>There are multiple ways to Link your Account , The Following are displayed.</p>
-<h4 id="a-specify-only-model-name_1">a) Specify only Model Name :</h4>
+<ul>
+<li><strong>Specify only Model Name :</strong> </li>
+</ul>
 <pre><code class="python">histories = Customdash(ModelName = '&lt;YOUR_MODEL_NAME&gt;')
 </code></pre>
 
@@ -203,7 +213,9 @@ except:
 Enter Tensordash Password : ********
 </code></pre>
 
-<h4 id="b-specify-model-name-and-email-address_1">b) Specify Model Name and Email address :</h4>
+<ul>
+<li><strong>Specify Model Name and Email address :</strong> </li>
+</ul>
 <pre><code class="python">histories = Customdash(
     ModelName = '&lt;YOUR_MODEL_NAME&gt;',
     email = '&lt;YOUR_EMAIL_ID&gt;')
@@ -212,7 +224,9 @@ Enter Tensordash Password : ********
 <pre><code class="bash">Enter Tensordash Password : ********
 </code></pre>
 
-<h4 id="c-specify-model-name-email-address-and-password_1">c) Specify Model Name, Email address and password :</h4>
+<ul>
+<li><strong>Specify Model Name, Email address and password :</strong> </li>
+</ul>
 <pre><code class="python">histories = Customdash(
     ModelName = '&lt;YOUR_MODEL_NAME&gt;',
     email = '&lt;YOUR_EMAIL_ID&gt;', 
@@ -285,7 +299,9 @@ except:
 5. val_loss(optional)<br>
 6. val_acc(optional),  as the parameters </em></strong></p>
 <p>There are multiple ways to Link your Account , The Following are displayed.</p>
-<h4 id="a-specify-only-model-name_2">a) Specify only Model Name :</h4>
+<ul>
+<li><strong>Specify only Model Name :</strong> </li>
+</ul>
 <pre><code class="python">histories = Torchdash(ModelName = '&lt;YOUR_MODEL_NAME&gt;')
 </code></pre>
 
@@ -293,7 +309,9 @@ except:
 Enter Tensordash Password : ********
 </code></pre>
 
-<h4 id="b-specify-model-name-and-email-address_2">b) Specify Model Name and Email address :</h4>
+<ul>
+<li><strong>Specify Model Name and Email address :</strong> </li>
+</ul>
 <pre><code class="python">histories = Torchdash(
     ModelName = '&lt;YOUR_MODEL_NAME&gt;',
     email = '&lt;YOUR_EMAIL_ID&gt;')
@@ -302,7 +320,9 @@ Enter Tensordash Password : ********
 <pre><code class="bash">Enter Tensordash Password : ********
 </code></pre>
 
-<h4 id="c-specify-model-name-email-address-and-password_2">c) Specify Model Name, Email address and password :</h4>
+<ul>
+<li><strong>Specify Model Name, Email address and password :</strong> </li>
+</ul>
 <pre><code class="python">histories = Torchdash(
     ModelName = '&lt;YOUR_MODEL_NAME&gt;',
     email = '&lt;YOUR_EMAIL_ID&gt;', 
@@ -349,10 +369,14 @@ except:
 
 <h2 id="fastai">Fast.ai</h2>
 <ol>
-<li>In your python code, import Tensordash library
-There are multiple ways to Link your Account , The Following are displayed.</li>
+<li>
+<p>In your python code, import Tensordash library
+There are multiple ways to Link your Account , The Following are displayed.</p>
+</li>
+<li>
+<p><strong>Specify only Model Name :</strong> </p>
+</li>
 </ol>
-<h4 id="a-specify-only-model-name_3">a) Specify only Model Name :</h4>
 <pre><code class="python">from tensordash.fastdash import Fastdash
 
 learn = cnn_learner(data, models.resnet18, metrics=accuracy)
@@ -363,7 +387,9 @@ my_cb = Fastdash(learn, ModelName = '&lt;YOUR_MODEL_NAME&gt;')
 Enter Tensordash Password : ********
 </code></pre>
 
-<h4 id="b-specify-model-name-and-email-address_3">b) Specify Model Name and Email address :</h4>
+<ul>
+<li><strong>Specify Model Name and Email address :</strong> </li>
+</ul>
 <pre><code class="python">from tensordash.fastdash import Fastdash
 my_cb = Fastdash(
     ModelName = '&lt;YOUR_MODEL_NAME&gt;',
@@ -373,7 +399,9 @@ my_cb = Fastdash(
 <pre><code class="bash">Enter Tensordash Password : ********
 </code></pre>
 
-<h4 id="c-specify-model-name-email-address-and-password_3">c) Specify Model Name, Email address and password :</h4>
+<ul>
+<li><strong>Specify Model Name, Email address and password :</strong> </li>
+</ul>
 <pre><code class="python">from tensordash.fastdash import Fastdash
 my_cb = Tensordash(
     ModelName = '&lt;YOUR_MODEL_NAME&gt;',

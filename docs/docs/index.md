@@ -15,7 +15,38 @@ TensorDash is an application that lets you remotely monitor your deep learning m
 
 ### Installing the Python Package
 
-`pip install tensor-dash`
+### Installing the Python Package ###
+
+There are two ways to install tensordash:
+
+- **Install tensordash from PyPI (recommended):**
+
+Note: These installation steps assume that you are on a Linux or Mac environment.
+If you are on Windows, you will need to remove `sudo` to run the commands below.
+
+```sh
+sudo pip install tensor-dash
+```
+
+If you are using a virtualenv, you may want to avoid using sudo:
+
+```sh
+pip install tensor-dash
+```
+
+- **Alternatively: install tensordash from the GitHub source:**
+
+First, clone TensorDash using `git`:
+
+```sh
+git clone https://github.com/CleanPegasus/TensorDash.git
+```
+
+ Then, `cd` to the TensorDash folder and run the install command:
+```sh
+cd TensorDash
+sudo python setup.py install
+```
 
 ### Installing the Android App
 
