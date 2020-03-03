@@ -55,9 +55,9 @@ class Fastdash(LearnerCallback):
     def __init__(self, learn:Learner, filename: str = 'history', append: bool = False, ModelName = 'Sample_model', email = 'None', password ='None'):
 
         super().__init__(learn)
-        if(email == 'None'):
+        if(email == None):
             email = input("Enter Email :")
-        if(email != 'None' and password == 'None'):
+        if(email != None and password == None):
             password = getpass.getpass("Enter Tensordash Password :")
             
         self.ModelName = ModelName

@@ -51,9 +51,9 @@ SendData = SendDataToFirebase()
 
 class Torchdash(object):
     def __init__(self, ModelName = 'Sample Model', email = None, password = None):
-        if(email == 'None'):
+        if(email == None):
             email = input("Enter Email :")
-        if(email != 'None' and password == 'None'):
+        if(email != None and password == None):
             password = getpass.getpass("Enter Tensordash Password :")
             
         self.ModelName = ModelName

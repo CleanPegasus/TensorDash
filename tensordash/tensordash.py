@@ -52,7 +52,7 @@ class Tensordash(keras.callbacks.Callback):
 
     def __init__(self, ModelName = 'Sample_model', email = None, password =None):
         # Get Email and Password If Not Entered Initially
-        if(email == 'None'):
+        if(email == None):
             email = input("Enter Email :")
         if(email != 'None' and password == 'None'):
             password = getpass.getpass("Enter Tensordash Password :")
@@ -134,9 +134,9 @@ class Tensordash(keras.callbacks.Callback):
 
 class Customdash(object):
     def __init__(self, ModelName = 'Sample Model', email = None, password = None):
-        if(email == 'None'):
+        if(email == None):
             email = input("Enter Email :")
-        if(email != 'None' and password == 'None'):
+        if(email != None and password == None):
             password = getpass.getpass("Enter Tensordash Password :")
             
         self.ModelName = ModelName
