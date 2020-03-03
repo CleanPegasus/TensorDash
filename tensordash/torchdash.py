@@ -99,9 +99,11 @@ class Torchdash(object):
         if val_acc != None:
             val_acc = float("{0:.6f}".format(val_acc))
         
+        self.epoch = epoch
         params = [epoch, loss, acc, val_loss, val_acc]
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = params, ModelName = self.ModelName)
 
     def sendCrash(self):
+        if(self.epoch == 0):
+            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
         SendData.crashAnalytics(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
-
