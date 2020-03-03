@@ -23,6 +23,10 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
+**Package**
+- Package Version: [eg, v1.6]
+- Deep learning framework used: [eg. keras, tensorflow, pytorch]
+
 **Desktop (please complete the following information):**
  - OS: [e.g. iOS]
  - Browser [e.g. chrome, safari]
