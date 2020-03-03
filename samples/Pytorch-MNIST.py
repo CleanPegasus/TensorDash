@@ -44,7 +44,7 @@ import torch.optim as optim
 loss_function = nn.CrossEntropyLoss()
 optimizer = optim.Adam(net.parameters(), lr=0.001)
 
-my_cb = Torchdash(ModelName='Pytorch sample Model', email = 'l777arunkumar@gmail.com', password= 'grand design')
+my_cb = Torchdash(ModelName='Pytorch sample Model', email = '<YOUR_EMAIL_ID>', password= '<YOUR_PASSWORD>')
 
 epochs = 10
 

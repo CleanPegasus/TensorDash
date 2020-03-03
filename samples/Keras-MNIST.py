@@ -75,10 +75,8 @@ def lenet_model():
 
 model = lenet_model()
 
-email = 'l777arunkumar@gmail.com'
-password = 'grand design'
 
-histories = Tensordash(ModelName = 'My new model')
+histories = Tensordash(ModelName = 'My new model', email = '<YOUR_EMAIL_ID>', password = '<>YOUR_PASSWORD>')
 
 try:
 
