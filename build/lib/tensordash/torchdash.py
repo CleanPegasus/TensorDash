@@ -99,7 +99,7 @@ class Torchdash(object):
         if val_acc != None:
             val_acc = float("{0:.6f}".format(val_acc))
         
-        self.epoch = epoch
+        self.epoch = epoch + 1
         params = [epoch, loss, acc, val_loss, val_acc]
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = params, ModelName = self.ModelName)
 
