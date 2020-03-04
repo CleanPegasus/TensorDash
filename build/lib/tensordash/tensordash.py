@@ -124,7 +124,7 @@ class Tensordash(keras.callbacks.Callback):
             self.val_acc = float("{0:.6f}".format(self.val_accuracy[-1]))
 
         values = [epoch, self.loss, self.acc, self.val_loss, self.val_acc]
-        self.epoch = 0
+        self.epoch = epoch
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = values, ModelName = self.ModelName)
 
     def on_train_end(self, epoch, logs = {}):
