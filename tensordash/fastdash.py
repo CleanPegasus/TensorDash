@@ -87,8 +87,8 @@ class Fastdash(LearnerCallback):
 
 
     def on_train_begin(self, **kwargs: Any) -> None:
-        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = (-1, 0, 0, 0), ModelName = self.ModelName)
         SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
+        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = (-1, 0, 0, 0), ModelName = self.ModelName)
     
         
     def on_epoch_end(self, epoch: int, smooth_loss: Tensor, last_metrics: MetricsList, **kwargs: Any) -> bool:

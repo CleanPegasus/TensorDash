@@ -83,8 +83,8 @@ class Torchdash(object):
     def sendLoss(self, epoch = None, loss = None, acc = None, val_loss = None, val_acc = None, total_epochs = None):
 
         if(epoch == 0):
-            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
             SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
+            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
 
         if(epoch == total_epochs - 1):
             SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
