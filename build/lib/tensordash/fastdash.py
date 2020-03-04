@@ -55,14 +55,15 @@ class Fastdash(LearnerCallback):
     def __init__(self, learn:Learner, filename: str = 'history', append: bool = False, ModelName = 'Sample_model', email = 'None', password ='None'):
 
         super().__init__(learn)
-        if(email == 'None'):
+        if(email == None):
             email = input("Enter Email :")
-        if(email != 'None' and password == 'None'):
+        if(email != None and password == None):
             password = getpass.getpass("Enter Tensordash Password :")
             
         self.ModelName = ModelName
         self.email = email
         self.password = password
+        self.epoch = 0
 
         headers = {'Content-Type': 'application/json',}
         params = (('key', 'AIzaSyDU4zqFpa92Jf64nYdgzT8u2oJfENn-2f8'),)
@@ -92,15 +93,17 @@ class Fastdash(LearnerCallback):
         
     def on_epoch_end(self, epoch: int, smooth_loss: Tensor, last_metrics: MetricsList, **kwargs: Any) -> bool:
         last_metrics = ifnone(last_metrics, [])
-        stats = [str(stat) if isinstance(stat, int) else '#na#' if stat is None else f'{stat:.6f}'
+        self.stats = [str(stat) if isinstance(stat, int) else '#na#' if stat is None else f'{stat:.6f}'
                  for name, stat in zip(self.learn.recorder.names, [epoch, smooth_loss] + last_metrics)]
 
-        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = stats, ModelName = self.ModelName)
+        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = self.stats, ModelName = self.ModelName)
 
 
     def on_train_end(self, **kwargs: Any) -> None:  
         SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
 
     def sendCrash(self):
+        if(self.stats[0] == 0):
+            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = (-1, 0, 0, 0), ModelName = self.ModelName)
         SendData.crashAnalytics(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
 

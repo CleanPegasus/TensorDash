@@ -51,9 +51,9 @@ SendData = SendDataToFirebase()
 
 class Torchdash(object):
     def __init__(self, ModelName = 'Sample Model', email = None, password = None):
-        if(email == 'None'):
+        if(email == None):
             email = input("Enter Email :")
-        if(email != 'None' and password == 'None'):
+        if(email != None and password == None):
             password = getpass.getpass("Enter Tensordash Password :")
             
         self.ModelName = ModelName
@@ -83,8 +83,8 @@ class Torchdash(object):
     def sendLoss(self, epoch = None, loss = None, acc = None, val_loss = None, val_acc = None, total_epochs = None):
 
         if(epoch == 0):
-            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
             SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
+            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
 
         if(epoch == total_epochs - 1):
             SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
@@ -99,9 +99,11 @@ class Torchdash(object):
         if val_acc != None:
             val_acc = float("{0:.6f}".format(val_acc))
         
+        self.epoch = epoch
         params = [epoch, loss, acc, val_loss, val_acc]
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = params, ModelName = self.ModelName)
 
     def sendCrash(self):
+        if(self.epoch == 0):
+            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
         SendData.crashAnalytics(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
-

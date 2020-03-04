@@ -52,14 +52,15 @@ class Tensordash(keras.callbacks.Callback):
 
     def __init__(self, ModelName = 'Sample_model', email = None, password =None):
         # Get Email and Password If Not Entered Initially
-        if(email == 'None'):
+        if(email == None):
             email = input("Enter Email :")
-        if(email != 'None' and password == 'None'):
+        if(email != None and password == None):
             password = getpass.getpass("Enter Tensordash Password :")
             
         self.ModelName = ModelName
         self.email = email
         self.password = password
+        self.epoch = 0
 
         headers = {'Content-Type': 'application/json',}
         params = (('key', 'AIzaSyDU4zqFpa92Jf64nYdgzT8u2oJfENn-2f8'),)
@@ -88,8 +89,8 @@ class Tensordash(keras.callbacks.Callback):
         self.val_accuracy = []
         self.num_epochs = []
 
-        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = (-1, 0, 0, 0, 0), ModelName = self.ModelName)
         SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
+        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = (-1, 0, 0, 0, 0), ModelName = self.ModelName)
         
     def on_epoch_end(self, epoch, logs = {}):
 
@@ -123,25 +124,30 @@ class Tensordash(keras.callbacks.Callback):
             self.val_acc = float("{0:.6f}".format(self.val_accuracy[-1]))
 
         values = [epoch, self.loss, self.acc, self.val_loss, self.val_acc]
+        self.epoch = 0
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = values, ModelName = self.ModelName)
 
     def on_train_end(self, epoch, logs = {}):
         SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
 
     def sendCrash(self):
+        if(self.epoch == 0):
+            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
         SendData.crashAnalytics(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
 
 
 class Customdash(object):
     def __init__(self, ModelName = 'Sample Model', email = None, password = None):
-        if(email == 'None'):
+        if(email == None):
             email = input("Enter Email :")
-        if(email != 'None' and password == 'None'):
+        if(email != None and password == None):
             password = getpass.getpass("Enter Tensordash Password :")
             
         self.ModelName = ModelName
         self.email = email
         self.password = password
+
+        self.epoch = 0
 
         headers = {'Content-Type': 'application/json',}
         params = (('key', 'AIzaSyDU4zqFpa92Jf64nYdgzT8u2oJfENn-2f8'),)
@@ -166,8 +172,8 @@ class Customdash(object):
     def sendLoss(self, epoch = None, loss = None, acc = None, val_loss = None, val_acc = None, total_epochs = None):
 
         if(epoch == 0):
-            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
             SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
+            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
 
         if(epoch == total_epochs - 1):
             SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
@@ -181,9 +187,12 @@ class Customdash(object):
 
         if val_acc != None:
             val_acc = float("{0:.6f}".format(val_acc))
-        
+
+        self.epoch = epoch
         params = [epoch, loss, acc, val_loss, val_acc]
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = params, ModelName = self.ModelName)
 
     def sendCrash(self):
+        if(self.epoch == 0):
+            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
         SendData.crashAnalytics(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
