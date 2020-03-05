@@ -2,23 +2,22 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-import tensorflow as tf
-import tensorflow.keras
-from tensorflow.keras.datasets import mnist
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.layers import Flatten
-from tensorflow.keras.layers import Conv2D
-from tensorflow.keras.layers import MaxPooling2D
-from tensorflow.keras.layers import Dropout
-from tensorflow.keras.models import Model
-from tensorflow.keras.utils import to_categorical
-from tensorflow.keras.callbacks import LambdaCallback
+import keras
+from keras.datasets import mnist
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.optimizers import Adam
+from keras.layers import Flatten
+from keras.layers import Conv2D
+from keras.layers import MaxPooling2D
+from keras.layers import Dropout
+from keras.models import Model
+from keras.utils import to_categorical
+from keras.callbacks import LambdaCallback
 import random
 from tensordash.tensordash import Tensordash
 
-print(tf.__version__)
+
 
 np.random.seed(0)
 
@@ -66,7 +65,7 @@ def lenet_model():
     model.add(Conv2D(15, (3, 3), activation = 'relu'))
     model.add(MaxPooling2D(pool_size = (2,2)))
     model.add(Flatten())
-    model.add(Dense(500, activation = 'relu'))
+    model.add(Dense(50, activation = 'relu'))
     # model.add(Dense(500, activation = 'relu'))
     model.add(Dropout(0.5))
     model.add(Dense(num_classes, activation = 'softmax'))
@@ -76,11 +75,11 @@ def lenet_model():
 model = lenet_model()
 
 
-histories = Tensordash(ModelName = 'My new model', email = '<YOUR_EMAIL_ID>', password = '<>YOUR_PASSWORD>')
+histories = Tensordash(ModelName = '<YOUR_MODEL_NAME_HERE>', email = '<YOUR_EMAIL_ID>', password = '<YOUR_PASSWORD>')
 
 try:
 
-    model.fit(X_train, y_train, epochs = 2, validation_split = 0.1, batch_size = 5000, verbose = 1, shuffle = True, callbacks = [histories])
+    model.fit(X_train, y_train, epochs = 10, validation_split = 0.1, batch_size = 5000, verbose = 1, shuffle = True, callbacks = [histories])
 
 except:
 
