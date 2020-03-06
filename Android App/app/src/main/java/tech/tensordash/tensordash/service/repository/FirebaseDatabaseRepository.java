@@ -141,6 +141,9 @@ public class FirebaseDatabaseRepository {
 
                     projectParamsList.add(new ProjectParams(epoch, accuracy, loss, validationLoss, validationAccuracy));
                 }
+                if(projectParamsList.isEmpty()){
+                    projectParamsList.add(new ProjectParams(0,0,0,0,0));
+                }
                 projectList.add(new Project(projectName, status, projectParamsList));
                 projectMutableLiveData.setValue(projectList);
                 if (swipeRefreshLayout != null) {
