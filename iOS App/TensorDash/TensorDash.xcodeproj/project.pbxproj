@@ -50,7 +50,6 @@
 				26B9A7A2550BA7A5E97B5CA0 /* Pods-TensorDash.debug.xcconfig */,
 				39E385671CAA3E1CB1A1BA1F /* Pods-TensorDash.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -75,12 +74,11 @@
 		7795459F2414F6510038709E /* TensorDash */ = {
 			isa = PBXGroup;
 			children = (
-				779545A02414F6510038709E /* AppDelegate.swift */,
-				779545A22414F6510038709E /* ViewController.swift */,
-				779545A42414F6510038709E /* Main.storyboard */,
-				779545A72414F6540038709E /* Assets.xcassets */,
-				779545A92414F6540038709E /* LaunchScreen.storyboard */,
+				779545BA2414FCFE0038709E /* Model */,
+				779545B82414FCDD0038709E /* Controllers */,
+				779545B72414FCD10038709E /* View */,
 				779545B22414F9260038709E /* Fonts */,
+				779545B92414FCF30038709E /* Helpers */,
 				779545AC2414F6540038709E /* Info.plist */,
 			);
 			path = TensorDash;
@@ -93,6 +91,39 @@
 				779545B52414F9AD0038709E /* RedHatDisplay-Regular.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		779545B72414FCD10038709E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				779545A42414F6510038709E /* Main.storyboard */,
+				779545A92414F6540038709E /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		779545B82414FCDD0038709E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				779545A22414F6510038709E /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		779545B92414FCF30038709E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				779545A02414F6510038709E /* AppDelegate.swift */,
+				779545A72414F6540038709E /* Assets.xcassets */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		779545BA2414FCFE0038709E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		ADB3466E3EA96BE682FC3B08 /* Frameworks */ = {
