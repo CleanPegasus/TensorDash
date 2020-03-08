@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  loginViewController.swift
 //  TensorDash
 //
 //  Created by Devang Patel on 08/03/20.
@@ -7,14 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
-class ViewController: UIViewController {
+class loginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // Do any additional setup after loading the view.
     }
 
-
 }
-

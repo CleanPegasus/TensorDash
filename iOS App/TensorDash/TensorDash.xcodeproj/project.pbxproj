@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		52EBFCDCCE97E8D3C2681C6A /* Pods_TensorDash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0621A8A9560C591ACA627D /* Pods_TensorDash.framework */; };
 		779545A12414F6510038709E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779545A02414F6510038709E /* AppDelegate.swift */; };
-		779545A32414F6510038709E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779545A22414F6510038709E /* ViewController.swift */; };
 		779545A62414F6510038709E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 779545A42414F6510038709E /* Main.storyboard */; };
 		779545A82414F6540038709E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 779545A72414F6540038709E /* Assets.xcassets */; };
 		779545AB2414F6540038709E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 779545A92414F6540038709E /* LaunchScreen.storyboard */; };
 		779545B42414F9350038709E /* RedHatText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 779545B32414F9350038709E /* RedHatText-Regular.otf */; };
 		779545B62414F9AD0038709E /* RedHatDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 779545B52414F9AD0038709E /* RedHatDisplay-Regular.otf */; };
+		779545BC2414FDD10038709E /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779545BB2414FDD10038709E /* loginViewController.swift */; };
+		779545C0241509310038709E /* roundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779545BF241509300038709E /* roundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,13 +23,14 @@
 		39E385671CAA3E1CB1A1BA1F /* Pods-TensorDash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TensorDash.release.xcconfig"; path = "Target Support Files/Pods-TensorDash/Pods-TensorDash.release.xcconfig"; sourceTree = "<group>"; };
 		7795459D2414F6510038709E /* TensorDash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TensorDash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		779545A02414F6510038709E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		779545A22414F6510038709E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		779545A52414F6510038709E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		779545A72414F6540038709E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		779545AA2414F6540038709E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		779545AC2414F6540038709E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		779545B32414F9350038709E /* RedHatText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-Regular.otf"; sourceTree = "<group>"; };
 		779545B52414F9AD0038709E /* RedHatDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatDisplay-Regular.otf"; sourceTree = "<group>"; };
+		779545BB2414FDD10038709E /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		779545BF241509300038709E /* roundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundedButton.swift; sourceTree = "<group>"; };
 		EF0621A8A9560C591ACA627D /* Pods_TensorDash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TensorDash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -105,7 +107,7 @@
 		779545B82414FCDD0038709E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				779545A22414F6510038709E /* ViewController.swift */,
+				779545BB2414FDD10038709E /* loginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				779545A02414F6510038709E /* AppDelegate.swift */,
+				779545BF241509300038709E /* roundedButton.swift */,
 				779545A72414F6540038709E /* Assets.xcassets */,
 			);
 			path = Helpers;
@@ -260,8 +263,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				779545A32414F6510038709E /* ViewController.swift in Sources */,
+				779545BC2414FDD10038709E /* loginViewController.swift in Sources */,
 				779545A12414F6510038709E /* AppDelegate.swift in Sources */,
+				779545C0241509310038709E /* roundedButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
