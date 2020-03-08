@@ -1,0 +1,6 @@
+framework module Pods_TensorDash {
+  umbrella header "Pods-TensorDash-umbrella.h"
+
+  export *
+  module * { export * }
+}

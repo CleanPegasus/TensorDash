@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52EBFCDCCE97E8D3C2681C6A /* Pods_TensorDash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0621A8A9560C591ACA627D /* Pods_TensorDash.framework */; };
 		779545A12414F6510038709E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779545A02414F6510038709E /* AppDelegate.swift */; };
 		779545A32414F6510038709E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779545A22414F6510038709E /* ViewController.swift */; };
 		779545A62414F6510038709E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 779545A42414F6510038709E /* Main.storyboard */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26B9A7A2550BA7A5E97B5CA0 /* Pods-TensorDash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TensorDash.debug.xcconfig"; path = "Target Support Files/Pods-TensorDash/Pods-TensorDash.debug.xcconfig"; sourceTree = "<group>"; };
+		39E385671CAA3E1CB1A1BA1F /* Pods-TensorDash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TensorDash.release.xcconfig"; path = "Target Support Files/Pods-TensorDash/Pods-TensorDash.release.xcconfig"; sourceTree = "<group>"; };
 		7795459D2414F6510038709E /* TensorDash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TensorDash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		779545A02414F6510038709E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		779545A22414F6510038709E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +29,7 @@
 		779545AC2414F6540038709E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		779545B32414F9350038709E /* RedHatText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-Regular.otf"; sourceTree = "<group>"; };
 		779545B52414F9AD0038709E /* RedHatDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatDisplay-Regular.otf"; sourceTree = "<group>"; };
+		EF0621A8A9560C591ACA627D /* Pods_TensorDash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TensorDash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52EBFCDCCE97E8D3C2681C6A /* Pods_TensorDash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45A3D93EBC4809C93BD18FD2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				26B9A7A2550BA7A5E97B5CA0 /* Pods-TensorDash.debug.xcconfig */,
+				39E385671CAA3E1CB1A1BA1F /* Pods-TensorDash.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		779545942414F6510038709E = {
 			isa = PBXGroup;
 			children = (
 				7795459F2414F6510038709E /* TensorDash */,
 				7795459E2414F6510038709E /* Products */,
+				45A3D93EBC4809C93BD18FD2 /* Pods */,
+				ADB3466E3EA96BE682FC3B08 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +95,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		ADB3466E3EA96BE682FC3B08 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EF0621A8A9560C591ACA627D /* Pods_TensorDash.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -85,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 779545AF2414F6540038709E /* Build configuration list for PBXNativeTarget "TensorDash" */;
 			buildPhases = (
+				3827BBD890EA26952C91D270 /* [CP] Check Pods Manifest.lock */,
 				779545992414F6510038709E /* Sources */,
 				7795459A2414F6510038709E /* Frameworks */,
 				7795459B2414F6510038709E /* Resources */,
+				CB987DB81D9E2BEF804646FF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -145,6 +172,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3827BBD890EA26952C91D270 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TensorDash-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB987DB81D9E2BEF804646FF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TensorDash/Pods-TensorDash-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TensorDash/Pods-TensorDash-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		779545992414F6510038709E /* Sources */ = {
@@ -296,6 +374,7 @@
 		};
 		779545B02414F6540038709E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26B9A7A2550BA7A5E97B5CA0 /* Pods-TensorDash.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -313,6 +392,7 @@
 		};
 		779545B12414F6540038709E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39E385671CAA3E1CB1A1BA1F /* Pods-TensorDash.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
