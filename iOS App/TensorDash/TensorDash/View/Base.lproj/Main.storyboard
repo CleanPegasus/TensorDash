@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -26,20 +26,20 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="loginViewController" customModule="TensorDash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="YrQ-10-2Jf">
-                                <rect key="frame" x="30" y="54" width="315" height="108.5"/>
+                                <rect key="frame" x="30" y="78" width="354" height="108.33333333333331"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TensorDash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MB-l1-d84">
-                                        <rect key="frame" x="78.5" y="0.0" width="158" height="35"/>
+                                        <rect key="frame" x="98" y="0.0" width="158" height="35"/>
                                         <fontDescription key="fontDescription" name="RedHatText-Regular" family="Red Hat Text" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login using existing account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rec-Eo-q6I">
-                                        <rect key="frame" x="29.5" y="85" width="256" height="23.5"/>
+                                        <rect key="frame" x="49.333333333333329" y="85" width="255.66666666666669" height="23.333333333333329"/>
                                         <fontDescription key="fontDescription" name="RedHatText-Regular" family="Red Hat Text" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -47,26 +47,26 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="phW-uA-jYb">
-                                <rect key="frame" x="35" y="505.5" width="305" height="136.5"/>
+                                <rect key="frame" x="35" y="685.66666666666663" width="344" height="136.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="1Yo-G0-LMz">
-                                        <rect key="frame" x="0.0" y="0.0" width="305" height="44.5"/>
+                                        <rect key="frame" x="19.666666666666657" y="0.0" width="305" height="44.666666666666664"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHY-xG-JTQ">
-                                                <rect key="frame" x="0.0" y="21.5" width="131" height="1"/>
+                                                <rect key="frame" x="0.0" y="21.666666666666742" width="131" height="1"/>
                                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="ere-7K-pR6"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hq4-O8-8YP">
-                                                <rect key="frame" x="138" y="9" width="29" height="26.5"/>
+                                                <rect key="frame" x="138" y="9.0000000000000018" width="29" height="26.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="RedHatText-Regular" family="Red Hat Text" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kxI-jw-2m0">
-                                                <rect key="frame" x="175" y="21.5" width="130" height="1"/>
+                                                <rect key="frame" x="175" y="21.666666666666742" width="130" height="1"/>
                                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="BzB-QS-3PL"/>
@@ -81,16 +81,16 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XQF-bA-Mvp">
-                                        <rect key="frame" x="0.0" y="64.5" width="305" height="72"/>
+                                        <rect key="frame" x="0.0" y="64.666666666666742" width="344" height="71.666666666666686"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First time here? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rex-7k-zj1">
-                                                <rect key="frame" x="95" y="0.0" width="115.5" height="19"/>
+                                                <rect key="frame" x="114.33333333333334" y="0.0" width="115.33333333333334" height="18.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="RedHatDisplay-Regular" family="Red Hat Display" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yk-wr-dkY" customClass="roundedButton" customModule="TensorDash" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="34" width="305" height="38"/>
+                                                <rect key="frame" x="0.0" y="33.666666666666629" width="344" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="K6a-jw-FWl"/>
                                                 </constraints>
@@ -126,16 +126,16 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="DTu-10-GMq">
-                                <rect key="frame" x="40" y="212.5" width="295" height="149"/>
+                                <rect key="frame" x="40" y="266.33333333333331" width="334" height="149"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="kp6-iM-MYk">
-                                        <rect key="frame" x="0.0" y="0.0" width="295" height="95"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="95"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="H7T-4u-aqn">
-                                                <rect key="frame" x="0.0" y="0.0" width="295" height="35"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="334" height="35"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="IFq-vr-CyD">
-                                                        <rect key="frame" x="10" y="0.0" width="285" height="27"/>
+                                                        <rect key="frame" x="10" y="0.0" width="324" height="27"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Saira-Regular" family="Saira" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="continue"/>
@@ -146,7 +146,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYv-Nc-y4a">
-                                                        <rect key="frame" x="0.0" y="34" width="295" height="1"/>
+                                                        <rect key="frame" x="0.0" y="34" width="334" height="1"/>
                                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="nE6-IV-EJu"/>
@@ -161,10 +161,10 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="sA8-qY-Juq">
-                                                <rect key="frame" x="0.0" y="60" width="295" height="35"/>
+                                                <rect key="frame" x="0.0" y="60" width="334" height="35"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DFi-ve-t7R">
-                                                        <rect key="frame" x="10" y="0.0" width="275" height="27"/>
+                                                        <rect key="frame" x="10" y="0.0" width="314" height="27"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Saira-Regular" family="Saira" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
@@ -175,7 +175,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPi-ai-73r">
-                                                        <rect key="frame" x="0.0" y="34" width="295" height="1"/>
+                                                        <rect key="frame" x="0.0" y="34" width="334" height="1"/>
                                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Y1f-Je-Qcg"/>
@@ -210,7 +210,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ju0-zN-saK">
-                                <rect key="frame" x="50" y="411.5" width="275" height="32"/>
+                                <rect key="frame" x="50" y="465.33333333333331" width="314" height="32"/>
                                 <color key="backgroundColor" red="0.76862745098039209" green="0.76862745098039209" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="RedHatDisplay-Regular" family="Red Hat Display" pointSize="17"/>
                                 <state key="normal" title="LOGIN">
@@ -220,11 +220,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="DTu-10-GMq" firstAttribute="top" secondItem="YrQ-10-2Jf" secondAttribute="bottom" constant="50" id="5fq-pT-037"/>
+                            <constraint firstItem="DTu-10-GMq" firstAttribute="top" secondItem="YrQ-10-2Jf" secondAttribute="bottom" constant="80" id="5fq-pT-037"/>
                             <constraint firstItem="YrQ-10-2Jf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="34" id="EjL-Wc-8DU"/>
                             <constraint firstItem="Ju0-zN-saK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="IX7-Q4-J48"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YrQ-10-2Jf" secondAttribute="trailing" constant="30" id="LRA-2n-6yS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="phW-uA-jYb" secondAttribute="bottom" constant="25" id="NBg-2o-XL0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="phW-uA-jYb" secondAttribute="bottom" constant="40" id="NBg-2o-XL0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="phW-uA-jYb" secondAttribute="trailing" constant="35" id="OV6-K6-CbA"/>
                             <constraint firstItem="YrQ-10-2Jf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Orz-JG-jb8"/>
                             <constraint firstItem="DTu-10-GMq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="ToX-Ia-NIP"/>
