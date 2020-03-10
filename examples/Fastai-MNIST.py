@@ -13,7 +13,7 @@ data = (ImageList.from_folder(mnist)
         .normalize(imagenet_stats))
 
 learn = cnn_learner(data, models.resnet18, metrics=accuracy)
-my_cb = Fastdash(learn, ModelName = 'Fastai Model', email = 'newid@sample.com', password = '12345678')
+my_cb = Fastdash(learn, ModelName = '<YOUR_MODEL_NAME>', email = '<YOUR_EMAIL_ID>', password = '<YOUR_PASSWORD>')
 try:
     learn.fit(10,1e-2, callbacks = my_cb)
 except:

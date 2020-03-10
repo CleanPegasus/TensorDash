@@ -17,35 +17,16 @@ from keras.callbacks import LambdaCallback
 import random
 from tensordash.tensordash import Tensordash
 
-
-
 np.random.seed(0)
-
-
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
-
-
-print(X_train.shape)
-print(X_test.shape)
-print(y_test.shape)
-
-assert(X_train.shape[0] == y_train.shape[0]), "The number of images is not equal to the number of labels."
-assert(X_test.shape[0] == y_test.shape[0]), "The number of images is not equal to the number of labels."
-assert(X_train.shape[1:] == (28, 28)), "The dimensions of the images are not 28*28."
-assert(X_test.shape[1:] == (28, 28)), "The dimensions of the images are not 28*28."
-
 
 num_of_samples = []
 
-cols = 5
 num_classes = 10
 
 
 y_train = to_categorical(y_train, 10)
 y_test = to_categorical(y_test, 10)
-
-print(X_train.shape)
-
 
 X_train = X_train/255
 X_test = X_test/255
@@ -66,7 +47,6 @@ def lenet_model():
     model.add(MaxPooling2D(pool_size = (2,2)))
     model.add(Flatten())
     model.add(Dense(50, activation = 'relu'))
-    # model.add(Dense(500, activation = 'relu'))
     model.add(Dropout(0.5))
     model.add(Dense(num_classes, activation = 'softmax'))
     model.compile(Adam(lr = 0.01), loss = 'categorical_crossentropy', metrics = ['accuracy'])
@@ -75,7 +55,7 @@ def lenet_model():
 model = lenet_model()
 
 
-histories = Tensordash(ModelName = '<YOUR_MODEL_NAME_HERE>', email = '<YOUR_EMAIL_ID>', password = '<YOUR_PASSWORD>')
+histories = Tensordash(ModelName = '<YOUR_MODEL_NAME>', email = '<YOUR_EMAIL_ID>', password= '<YOUR_PASSWORD>')
 
 try:
 
