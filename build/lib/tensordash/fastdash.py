@@ -24,7 +24,7 @@ class SendDataToFirebase(object):
         else:
             data = '{"Epoch":' +  str(int(epoch)+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + ', "Validation Loss":' + str(val_loss) + '}'
 
-        response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/user_data/{}/{}.json?'.format(key, ModelName), params = auth_token, data=data)
+        response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/user_data/{}/{}.json'.format(key, ModelName), params = auth_token, data=data)
 
     def updateRunningStatus(self, key = None, auth_token = None, ModelName = 'Sample Model'):
         data = '{"Status" : "RUNNING"}'
@@ -37,14 +37,12 @@ class SendDataToFirebase(object):
         data = '{"Status" : "COMPLETED"}'
         response = requests.patch('https://cofeeshop-tensorflow.firebaseio.com/user_data/{}/{}.json'.format(key, ModelName), params = auth_token, data = data)
 
-
         notif_data = '{"Key":' + '"' + str(key) + '"' + ', "Status" : "Completed"}'
         response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/notification.json', params = auth_token, data = notif_data)
 
     def crashAnalytics(self, key = None, auth_token = None, ModelName = 'Sample Model'):
         data = '{"Status" : "CRASHED"}'
         response = requests.patch('https://cofeeshop-tensorflow.firebaseio.com/user_data/{}/{}.json'.format(key, ModelName), params = auth_token, data = data)
-
 
         notif_data = '{"Key":' + '"' + str(key) + '"' + ', "Status" : "Crashed"}'
         response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/notification.json', params = auth_token, data = notif_data)
@@ -88,8 +86,6 @@ class Fastdash(LearnerCallback):
 
     def on_train_begin(self, **kwargs: Any) -> None:
         SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
-        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = (-1, 0, 0, 0), ModelName = self.ModelName)
-    
         
     def on_epoch_end(self, epoch: int, smooth_loss: Tensor, last_metrics: MetricsList, **kwargs: Any) -> bool:
         last_metrics = ifnone(last_metrics, [])
@@ -103,7 +99,5 @@ class Fastdash(LearnerCallback):
         SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
 
     def sendCrash(self):
-        if(self.stats[0] == 0):
-            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = (-1, 0, 0, 0), ModelName = self.ModelName)
         SendData.crashAnalytics(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
 
