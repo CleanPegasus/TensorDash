@@ -84,7 +84,6 @@ class Torchdash(object):
 
         if(epoch == 0):
             SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
-            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
 
         if(epoch == total_epochs - 1):
             SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
@@ -104,6 +103,4 @@ class Torchdash(object):
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = params, ModelName = self.ModelName)
 
     def sendCrash(self):
-        if(self.epoch == 0):
-            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
         SendData.crashAnalytics(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)

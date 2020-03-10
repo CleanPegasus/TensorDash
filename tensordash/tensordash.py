@@ -22,7 +22,11 @@ class SendDataToFirebase(object):
         else:
             data = '{"Epoch":' +  str(epoch+1) + ', "Loss" :' + str(loss) + ', "Accuracy" :' + str(acc) + ', "Validation Loss":' + str(val_loss) + ', "Validation Accuracy" :' + str(val_acc) + '}'
 
-        response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/user_data/{}/{}.json?'.format(key, ModelName), params = auth_token, data=data)
+        response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/user_data/{}/{}.json'.format(key, ModelName), params = auth_token, data=data)
+
+    def model_init(self, key = None, auth_token = None, ModelName = 'Sample Model'):
+        data = '{' + ModelName + ':' +  '"null"' + '}'
+        response = requests.put('https://cofeeshop-tensorflow.firebaseio.com/user_data/{}.json'.format(key), params = auth_token, data = data)
 
     def updateRunningStatus(self, key = None, auth_token = None, ModelName = 'Sample Model'):
         data = '{"Status" : "RUNNING"}'
@@ -34,7 +38,6 @@ class SendDataToFirebase(object):
     def updateCompletedStatus(self, key = None, auth_token = None, ModelName = 'Sample Model'):
         data = '{"Status" : "COMPLETED"}'
         response = requests.patch('https://cofeeshop-tensorflow.firebaseio.com/user_data/{}/{}.json'.format(key, ModelName), params = auth_token, data = data)
-
 
         notif_data = '{"Key":' + '"' + str(key) + '"' + ', "Status" : "Completed"}'
         response = requests.post('https://cofeeshop-tensorflow.firebaseio.com/notification.json', params = auth_token, data = notif_data)
@@ -89,8 +92,8 @@ class Tensordash(tf.keras.callbacks.Callback):
         self.val_accuracy = []
         self.num_epochs = []
 
+        SendData.model_init(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
         SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
-        SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = (-1, 0, 0, 0, 0), ModelName = self.ModelName)
         
     def on_epoch_end(self, epoch, logs = {}):
 
@@ -131,8 +134,6 @@ class Tensordash(tf.keras.callbacks.Callback):
         SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
 
     def sendCrash(self):
-        if(self.epoch_num == 0):
-            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
         SendData.crashAnalytics(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
 
 
@@ -173,7 +174,6 @@ class Customdash(object):
 
         if(epoch == 0):
             SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
-            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
 
         if(epoch == total_epochs - 1):
             SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
@@ -188,11 +188,8 @@ class Customdash(object):
         if val_acc != None:
             val_acc = float("{0:.6f}".format(val_acc))
 
-        self.epoch = epoch + 1
         params = [epoch, loss, acc, val_loss, val_acc]
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = params, ModelName = self.ModelName)
 
     def sendCrash(self):
-        if(self.epoch == 0):
-            SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = [-1, 0, 0, 0, 0], ModelName = self.ModelName)
         SendData.crashAnalytics(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
