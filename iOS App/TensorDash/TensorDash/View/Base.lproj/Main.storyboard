@@ -235,10 +235,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextF" destination="IFq-vr-CyD" id="CFp-pm-0cs"/>
+                        <outlet property="emailTextView" destination="FYv-Nc-y4a" id="wgy-t7-39C"/>
+                        <outlet property="passTextF" destination="DFi-ve-t7R" id="mXX-8G-Lf7"/>
+                        <outlet property="passTextView" destination="BPi-ai-73r" id="GfL-zf-et2"/>
+                        <outlet property="upperConstraint" destination="EjL-Wc-8DU" id="E1u-6P-7hR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="61.600000000000001" y="26.53673163418291"/>
+            <point key="canvasLocation" x="60.869565217391312" y="26.116071428571427"/>
         </scene>
     </scenes>
 </document>

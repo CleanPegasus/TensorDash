@@ -11,47 +11,71 @@ import Firebase
 
 class loginViewController: UIViewController {
 
+    //MARK: - Outlets
+    @IBOutlet weak var passTextF: UITextField!
+    @IBOutlet weak var emailTextF: UITextField!
+    @IBOutlet weak var upperConstraint: NSLayoutConstraint!
+    @IBOutlet weak var passTextView: UIView!
+    @IBOutlet weak var emailTextView: UIView!
+    
+    //MARK: - Variables
+    var constant:CGFloat = 80.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        
-        //Hide Keyboard
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardwilchange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardwilchange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardwilchange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        
+        // ADDING Tap gestures
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(loginViewController.dismissKeyboard)))
     
     }
-    
-    // MARK: - Code below this is for hiding keyboard
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+ 
+    // Oject selector function for dismiss keyboard
+    @objc func dismissKeyboard() {
+        emailTextF.resignFirstResponder()
+        passTextF.resignFirstResponder()
     }
     
-    func hideKeyboard(){
-        view.resignFirstResponder()
-    }
-    
-    @objc func keyboardwilchange(notification: Notification){
-        view.frame.origin.y = -210
-        
-    }
-    
-    //UITextFieldDeligate Methods
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        hideKeyboard()
+        let nextTag = textField.tag + 1
+        
+        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        
         return true
     }
     
-    //Hide when touch outside keyboard
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-        view.frame.origin.y = 0
-        
+    // Function for did begin editing textField
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.3) {
+            self.upperConstraint.constant -= self.constant
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    // Function for did end editing textField
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if !(self.emailTextF.isEditing || self.passTextF.isEditing) {
+            self.view.layoutIfNeeded()
+            UIView.animate(withDuration: 0.3, animations: {
+                self.upperConstraint.constant += self.constant
+                self.view.layoutIfNeeded()
+            })
+        }
     }
 
+}
 
+
+
+//MARK: - Extensions
+extension loginViewController: UITextFieldDelegate {
+    
+    //Setup textfield delegates
+    func textFieldDelegateSetUp() {
+        emailTextF.delegate = self
+        passTextF.delegate = self
+    }
 }
