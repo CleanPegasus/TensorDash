@@ -24,43 +24,31 @@ class loginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        // Setting up textField Delegates
+        textFieldDelegateSetUp()
+        
         // ADDING Tap gestures
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(loginViewController.dismissKeyboard)))
     
     }
  
-    // Oject selector function for dismiss keyboard
     @objc func dismissKeyboard() {
         emailTextF.resignFirstResponder()
         passTextF.resignFirstResponder()
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let nextTag = textField.tag + 1
-        
-        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
-            nextResponder.becomeFirstResponder()
-        } else {
-            textField.resignFirstResponder()
-        }
-        
-        return true
-    }
-    
-    // Function for did begin editing textField
     func textFieldDidBeginEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.3) {
-            self.upperConstraint.constant -= self.constant
+            self.upperConstraint.constant -= 70.0
             self.view.layoutIfNeeded()
         }
     }
     
-    // Function for did end editing textField
     func textFieldDidEndEditing(_ textField: UITextField) {
         if !(self.emailTextF.isEditing || self.passTextF.isEditing) {
             self.view.layoutIfNeeded()
             UIView.animate(withDuration: 0.3, animations: {
-                self.upperConstraint.constant += self.constant
+                self.upperConstraint.constant += 70.0
                 self.view.layoutIfNeeded()
             })
         }
