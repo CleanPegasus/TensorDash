@@ -32,22 +32,34 @@ class loginViewController: UIViewController {
     
     }
  
+    
+    // MARK: - Selector function for dismissing keyboard
     @objc func dismissKeyboard() {
         emailTextF.resignFirstResponder()
         passTextF.resignFirstResponder()
     }
     
     
-    
+    // MARK: - Function for textFieldDidBeginEditing
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        if (self.emailTextF.isEditing) {
+            emailTextView.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        }
+        else if(self.passTextF.isEditing) {
+            passTextView.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        }
         UIView.animate(withDuration: 0.3) {
             self.upperConstraint.constant -= 70.0
             self.view.layoutIfNeeded()
         }
     }
     
+    
+    // MARK: - Function for textFieldDidEndEditing
     func textFieldDidEndEditing(_ textField: UITextField) {
         if !(self.emailTextF.isEditing || self.passTextF.isEditing) {
+            emailTextView.backgroundColor = UIColor.darkGray
+            passTextView.backgroundColor = UIColor.darkGray
             self.view.layoutIfNeeded()
             UIView.animate(withDuration: 0.3, animations: {
                 self.upperConstraint.constant += 70.0
@@ -69,6 +81,7 @@ extension loginViewController: UITextFieldDelegate {
         passTextF.delegate = self
     }
     
+    // Setting to go to next textField when pressed next in keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == passTextF {
             self.view.endEditing(true)
