@@ -216,7 +216,13 @@
                                 <state key="normal" title="LOGIN">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="slf-i4-rUS"/>
+                                </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="ZJ5-D8-skt">
+                                <rect key="frame" x="177" y="383" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -224,6 +230,7 @@
                             <constraint firstItem="YrQ-10-2Jf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="34" id="EjL-Wc-8DU"/>
                             <constraint firstItem="Ju0-zN-saK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="IX7-Q4-J48"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YrQ-10-2Jf" secondAttribute="trailing" constant="30" id="LRA-2n-6yS"/>
+                            <constraint firstItem="ZJ5-D8-skt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="177" id="Mgn-zF-FoI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="phW-uA-jYb" secondAttribute="bottom" constant="40" id="NBg-2o-XL0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="phW-uA-jYb" secondAttribute="trailing" constant="35" id="OV6-K6-CbA"/>
                             <constraint firstItem="YrQ-10-2Jf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Orz-JG-jb8"/>
@@ -232,12 +239,15 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ju0-zN-saK" secondAttribute="trailing" constant="50" id="iYy-g8-a47"/>
                             <constraint firstItem="Ju0-zN-saK" firstAttribute="top" secondItem="DTu-10-GMq" secondAttribute="bottom" constant="50" id="j6F-zY-SqU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DTu-10-GMq" secondAttribute="trailing" constant="40" id="lak-K2-0Hb"/>
+                            <constraint firstItem="Ju0-zN-saK" firstAttribute="top" secondItem="ZJ5-D8-skt" secondAttribute="bottom" constant="22.5" id="pAK-oQ-X5a"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZJ5-D8-skt" secondAttribute="trailing" constant="178" id="wHa-KY-ZHz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="emailTextF" destination="IFq-vr-CyD" id="CFp-pm-0cs"/>
                         <outlet property="emailTextView" destination="FYv-Nc-y4a" id="wgy-t7-39C"/>
+                        <outlet property="load" destination="ZJ5-D8-skt" id="nCT-P6-xUr"/>
                         <outlet property="passTextF" destination="DFi-ve-t7R" id="mXX-8G-Lf7"/>
                         <outlet property="passTextView" destination="BPi-ai-73r" id="GfL-zf-et2"/>
                         <outlet property="upperConstraint" destination="EjL-Wc-8DU" id="E1u-6P-7hR"/>

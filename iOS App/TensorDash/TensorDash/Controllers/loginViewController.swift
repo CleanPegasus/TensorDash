@@ -17,6 +17,7 @@ class loginViewController: UIViewController {
     @IBOutlet weak var upperConstraint: NSLayoutConstraint!
     @IBOutlet weak var passTextView: UIView!
     @IBOutlet weak var emailTextView: UIView!
+    @IBOutlet weak var load: UIActivityIndicatorView!
     
     //MARK: - Variables
     var constant:CGFloat = 80.0
@@ -26,6 +27,9 @@ class loginViewController: UIViewController {
     
         // Setting up textField Delegates
         textFieldDelegateSetUp()
+        
+        // Hidding activity indicator
+        load.isHidden = true
         
         // ADDING Tap gestures
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(loginViewController.dismissKeyboard)))
@@ -67,7 +71,15 @@ class loginViewController: UIViewController {
             })
         }
     }
-
+    
+    
+    //MARK: - Login Action
+    @IBAction func loginAction(_ sender: UIButton) {
+        dismissKeyboard()
+        load.isHidden = false
+        load.startAnimating()
+    }
+    
 }
 
 
