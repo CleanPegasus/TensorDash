@@ -37,6 +37,8 @@ class loginViewController: UIViewController {
         passTextF.resignFirstResponder()
     }
     
+    
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.3) {
             self.upperConstraint.constant -= 70.0
@@ -65,5 +67,14 @@ extension loginViewController: UITextFieldDelegate {
     func textFieldDelegateSetUp() {
         emailTextF.delegate = self
         passTextF.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == passTextF {
+            self.view.endEditing(true)
+        } else {
+            passTextF.becomeFirstResponder()
+        }
+        return true
     }
 }
