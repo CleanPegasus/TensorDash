@@ -21,10 +21,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Foget Password View Controller-->
         <scene sceneID="9b7-qS-V3O">
             <objects>
-                <viewController id="GOZ-lz-ZSh" sceneMemberID="viewController">
+                <viewController id="GOZ-lz-ZSh" customClass="fogetPasswordViewController" customModule="TensorDash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OqD-yW-Jd0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -59,7 +59,7 @@
                                                         <rect key="frame" x="10" y="0.0" width="324" height="20"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Saira-Regular" family="Saira" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -100,6 +100,9 @@
                                 <state key="normal" title="RESET PASSWORD">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="resetAction:" destination="GOZ-lz-ZSh" eventType="touchUpInside" id="QHC-2y-OlX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6L-WD-bVW" customClass="roundedButton" customModule="TensorDash" customModuleProvider="target">
                                 <rect key="frame" x="50" y="789" width="314" height="38"/>
@@ -126,6 +129,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="back:" destination="QKz-YH-bNa" eventType="touchUpInside" id="IKl-kV-HFX"/>
+                                    <action selector="goBack:" destination="GOZ-lz-ZSh" eventType="touchUpInside" id="I5v-7M-YCD"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="zau-5i-2Qq">
@@ -152,6 +156,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K2M-CR-R7o"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextF" destination="YX4-l9-BrH" id="mFy-0a-WjK"/>
+                        <outlet property="emailView" destination="zrb-4G-jMj" id="b9R-W1-e9f"/>
+                        <outlet property="load" destination="zau-5i-2Qq" id="pCz-iF-16x"/>
+                        <outlet property="upperConstraint" destination="bT2-Eo-msU" id="qtc-4n-VYb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mdL-lt-6zh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

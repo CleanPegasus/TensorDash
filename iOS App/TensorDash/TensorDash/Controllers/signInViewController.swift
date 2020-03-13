@@ -35,6 +35,9 @@ class signInViewController: UIViewController {
         // Hidding activity indicator
         load.isHidden = true
         
+        // ADDING Tap gestures
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(signInViewController.dismissKeyboard)))
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

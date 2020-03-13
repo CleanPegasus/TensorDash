@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		52EBFCDCCE97E8D3C2681C6A /* Pods_TensorDash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0621A8A9560C591ACA627D /* Pods_TensorDash.framework */; };
+		775666F3241BE8E800C472AC /* fogetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775666F2241BE8E800C472AC /* fogetPasswordViewController.swift */; };
 		779545A12414F6510038709E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779545A02414F6510038709E /* AppDelegate.swift */; };
 		779545A62414F6510038709E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 779545A42414F6510038709E /* Main.storyboard */; };
 		779545A82414F6540038709E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 779545A72414F6540038709E /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		26B9A7A2550BA7A5E97B5CA0 /* Pods-TensorDash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TensorDash.debug.xcconfig"; path = "Target Support Files/Pods-TensorDash/Pods-TensorDash.debug.xcconfig"; sourceTree = "<group>"; };
 		39E385671CAA3E1CB1A1BA1F /* Pods-TensorDash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TensorDash.release.xcconfig"; path = "Target Support Files/Pods-TensorDash/Pods-TensorDash.release.xcconfig"; sourceTree = "<group>"; };
+		775666F2241BE8E800C472AC /* fogetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fogetPasswordViewController.swift; sourceTree = "<group>"; };
 		7795459D2414F6510038709E /* TensorDash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TensorDash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		779545A02414F6510038709E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		779545A52414F6510038709E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		779545B82414FCDD0038709E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				775666F2241BE8E800C472AC /* fogetPasswordViewController.swift */,
 				779E15E0241B5477005488D2 /* signInViewController.swift */,
 				779545BB2414FDD10038709E /* loginViewController.swift */,
 			);
@@ -318,6 +321,7 @@
 				779E15C4241B4310005488D2 /* Reachability.swift in Sources */,
 				779E15E1241B5477005488D2 /* signInViewController.swift in Sources */,
 				779545C0241509310038709E /* roundedButton.swift in Sources */,
+				775666F3241BE8E800C472AC /* fogetPasswordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
