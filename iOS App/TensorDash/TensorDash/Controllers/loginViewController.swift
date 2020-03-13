@@ -104,7 +104,7 @@ class loginViewController: UIViewController {
                     self.authAlert(titlepass: "Error", message: "There is no user registered to this Email ID.")
                 case "Sucess":
                     UserDefaults.standard.set(true, forKey: "login")
-                    
+                    self.performSegue(withIdentifier: "toTabBar", sender: self)
                 default:
                     self.authAlert(titlepass: "Error", message: "Contact Developer.")
                 }

@@ -403,6 +403,7 @@
                         <outlet property="passTextF" destination="DFi-ve-t7R" id="mXX-8G-Lf7"/>
                         <outlet property="passTextView" destination="BPi-ai-73r" id="GfL-zf-et2"/>
                         <outlet property="upperConstraint" destination="EjL-Wc-8DU" id="E1u-6P-7hR"/>
+                        <segue destination="6bT-ga-woc" kind="show" identifier="toTabBar" id="DzP-em-fP8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
