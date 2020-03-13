@@ -90,6 +90,35 @@ class signInViewController: UIViewController {
         dismissKeyboard()
         load.isHidden = false
         load.startAnimating()
+        
+        if (emailTextF.text == "" || passTextF.text == "" || cpassTextF.text == "")
+        {
+            self.authAlert(titlepass: "Error", message: "Text Field is empty.")
+            self.load.stopAnimating()
+            self.load.isHidden = true
+        }
+        else if !(passTextF.text==cpassTextF.text) {
+            self.authAlert(titlepass: "Error", message: "Password does not match. Please verify again.")
+            self.load.stopAnimating()
+            self.load.isHidden = true
+        }
+        else if (passTextF.text==cpassTextF.text) {
+            // Check internet connection
+            checkNewtork(ifError: "Cannot Sign-In.")
+            FirebaseAuth.emailSignIn(email: emailTextF.text!, pass: passTextF.text!) { (result) in
+                if result == "Sucess" {
+                    print("YAY!")
+                }
+                else if result == "Error" {
+                    self.authAlert(titlepass: "Error", message: "Error")
+                }
+            }
+        }
+        else {
+            self.authAlert(titlepass: "Error", message: "Contact Developer.")
+        }
+        
+        
     }
     
     
