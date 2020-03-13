@@ -113,8 +113,10 @@ class signInViewController: UIViewController {
                 case "The password must be 6 characters long or more.":
                     self.authAlert(titlepass: "Error", message: result)
                 case "Sucess":
-                    // Sucess then login through by entering emila and password in Login page
+                    // Sucess then login through by entering email and password in Login page
                     self.dismissAlert(titlepass: "Registered Successfully!", message: "Please Login with your Email and Password.")
+                case "The email address is already in use by another account.":
+                    self.authAlert(titlepass: "Error", message: result)
                 default:
                     self.authAlert(titlepass: "Error", message: "Contact Developer.")
                 }

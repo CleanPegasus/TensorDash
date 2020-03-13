@@ -9,7 +9,7 @@
 import UIKit
 
 class fogetPasswordViewController: UIViewController {
-
+    
     //MARK: - Outlets
     @IBOutlet weak var emailTextF: UITextField!
     @IBOutlet weak var load: UIActivityIndicatorView!
@@ -72,7 +72,34 @@ class fogetPasswordViewController: UIViewController {
     
     //MARK: - Reset password action
     @IBAction func resetAction(_ sender: UIButton) {
+        // Dismiss keyboard
+        dismissKeyboard()
+        load.isHidden = false
+        load.startAnimating()
+        if emailTextF.text == "" {
+            self.authAlert(titlepass: "Error", message: "Email cannot be empty.")
+            self.load.stopAnimating()
+            self.load.isHidden = true
+        }
+        else {
+            FirebaseAuth.forgetPassword(email: emailTextF.text!) { (result) in
+                switch result {
+                case "The email address is badly formatted.":
+                    self.authAlert(titlepass: "Error", message: result)
+                case "Sucess":
+                    // Sucess then login through by entering email and password in Login page
+                    self.dismissAlert(titlepass: "Password Reset Successfull!", message: "Password reset Email is send.")
+                case "There is no user record corresponding to this identifier. The user may have been deleted.":
+                    self.authAlert(titlepass: "Error", message: "There is no user registered to this Email ID.")
+                default:
+                    self.authAlert(titlepass: "Error", message: "Contact Developer.")
+                }
+                self.load.stopAnimating()
+                self.load.isHidden = true
+            }
+        }
     }
+    
     
     // Go to login page
     @IBAction func goBack(_ sender: Any) {

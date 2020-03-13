@@ -56,7 +56,7 @@ class FirebaseAuth: UIViewController {
             if error != nil {
                 // Vibrates on errors
                 UIDevice.invalidVibrate()
-                completion("Error")
+                completion(error?.localizedDescription ?? "Error")
             }
             else {
                 // Vibrates on valid
