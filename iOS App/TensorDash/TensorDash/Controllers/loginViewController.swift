@@ -103,7 +103,8 @@ class loginViewController: UIViewController {
                 case "There is no user record corresponding to this identifier. The user may have been deleted.":
                     self.authAlert(titlepass: "Error", message: "There is no user registered to this Email ID.")
                 case "Sucess":
-                    print("WQe")
+                    UserDefaults.standard.set(true, forKey: "login")
+                    
                 default:
                     self.authAlert(titlepass: "Error", message: "Contact Developer.")
                 }

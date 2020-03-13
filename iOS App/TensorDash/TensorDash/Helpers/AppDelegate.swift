@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configure Firebase
         FirebaseApp.configure()
         
+        // Setting up initial view controller
+        setInitialViewController()
+        
         return true
     }
 
