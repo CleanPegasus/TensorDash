@@ -11,7 +11,7 @@ import FirebaseAuth
 
 
 class FirebaseAuth: UIViewController {
-
+    
     
     //MARK: - Function for Login using email and password
     public static func emailLoginIn(email: String, pass: String, completion: @escaping (String) -> ()) {
@@ -25,9 +25,9 @@ class FirebaseAuth: UIViewController {
                 completion(error?.localizedDescription ?? "Error")
             }
             else {
-                    // Vibrates on valid
-                    UIDevice.validVibrate()
-                    completion("Sucess")
+                // Vibrates on valid
+                UIDevice.validVibrate()
+                completion("Sucess")
             }
         }
     }

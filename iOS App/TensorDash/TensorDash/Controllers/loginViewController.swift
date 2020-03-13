@@ -9,7 +9,7 @@
 import UIKit
 
 class loginViewController: UIViewController {
-
+    
     //MARK: - Outlets
     @IBOutlet weak var passTextF: UITextField!
     @IBOutlet weak var emailTextF: UITextField!
@@ -23,7 +23,7 @@ class loginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         // Setting up textField Delegates
         textFieldDelegateSetUp()
         
@@ -32,9 +32,9 @@ class loginViewController: UIViewController {
         
         // ADDING Tap gestures
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(loginViewController.dismissKeyboard)))
-    
+        
     }
- 
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -59,7 +59,7 @@ class loginViewController: UIViewController {
             passTextView.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         }
         UIView.animate(withDuration: 0.3) {
-            self.upperConstraint.constant -= 70.0
+            self.upperConstraint.constant -= self.constant
             self.view.layoutIfNeeded()
         }
     }
@@ -72,7 +72,7 @@ class loginViewController: UIViewController {
             passTextView.backgroundColor = UIColor.darkGray
             self.view.layoutIfNeeded()
             UIView.animate(withDuration: 0.3, animations: {
-                self.upperConstraint.constant += 70.0
+                self.upperConstraint.constant += self.constant
                 self.view.layoutIfNeeded()
             })
         }
@@ -96,7 +96,7 @@ class loginViewController: UIViewController {
             checkNewtork(ifError: "Cannot login")
             FirebaseAuth.emailLoginIn(email: emailTextF.text!, pass: passTextF.text!) { (result) in
                 switch result {
-                    case "The email address is badly formatted.":
+                case "The email address is badly formatted.":
                     self.authAlert(titlepass: "Error", message: result)
                 case "The password is invalid or the user does not have a password.":
                     self.authAlert(titlepass: "Error", message: result)

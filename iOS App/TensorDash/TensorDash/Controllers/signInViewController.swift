@@ -23,7 +23,7 @@ class signInViewController: UIViewController {
     @IBOutlet weak var load: UIActivityIndicatorView!
     
     //MARK: - Variables
-    var constant:CGFloat = 80.0
+    var constant:CGFloat = 90.0
     
     
     override func viewDidLoad() {
@@ -50,34 +50,38 @@ class signInViewController: UIViewController {
         cpassTextF.resignFirstResponder()
     }
     
-//    // MARK: - Function for textFieldDidBeginEditing
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        if (self.emailTextF.isEditing) {
-//            emailTextView.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-//        }
-//        else if(self.passTextF.isEditing) {
-//            passTextView.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-//        }
-//        UIView.animate(withDuration: 0.3) {
-//            self.upperConstraint.constant -= 70.0
-//            self.view.layoutIfNeeded()
-//        }
-//    }
-//    
-//    
-//    
-//    // MARK: - Function for textFieldDidEndEditing
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        if !(self.emailTextF.isEditing || self.passTextF.isEditing) {
-//            emailTextView.backgroundColor = UIColor.darkGray
-//            passTextView.backgroundColor = UIColor.darkGray
-//            self.view.layoutIfNeeded()
-//            UIView.animate(withDuration: 0.3, animations: {
-//                self.upperConstraint.constant += 70.0
-//                self.view.layoutIfNeeded()
-//            })
-//        }
-//    }
+    // MARK: - Function for textFieldDidBeginEditing
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if (self.emailTextF.isEditing) {
+            emailView.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        }
+        else if(self.passTextF.isEditing) {
+            passView.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        }
+        else if(self.cpassTextF.isEditing) {
+            cpassView.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        }
+        UIView.animate(withDuration: 0.3) {
+            self.upperConstraint.constant -= self.constant
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    
+    
+    // MARK: - Function for textFieldDidEndEditing
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if !(self.emailTextF.isEditing || self.passTextF.isEditing || self.cpassTextF.isEditing) {
+            emailView.backgroundColor = UIColor.darkGray
+            passView.backgroundColor = UIColor.darkGray
+            cpassView.backgroundColor = UIColor.darkGray
+            self.view.layoutIfNeeded()
+            UIView.animate(withDuration: 0.3, animations: {
+                self.upperConstraint.constant += self.constant
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
     
     
     // MARK: - Create account action
@@ -88,7 +92,7 @@ class signInViewController: UIViewController {
         load.startAnimating()
     }
     
-
+    
     // Go back to login page
     @IBAction func back(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -108,12 +112,19 @@ extension signInViewController: UITextFieldDelegate {
     }
     
     // Setting to go to next textField when pressed next in keyboard
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        if textField == passTextF {
-//            self.view.endEditing(true)
-//        } else {
-//            passTextF.becomeFirstResponder()
-//        }
-//        return true
-//    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == cpassTextF {
+            self.view.endEditing(true)
+        }
+        else {
+            if passTextF.isEditing == true {
+                cpassTextF.becomeFirstResponder()
+            }
+            else {
+                passTextF.becomeFirstResponder()
+            }
+        }
+        return true
+    }
 }
