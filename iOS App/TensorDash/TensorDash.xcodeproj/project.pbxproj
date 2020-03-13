@@ -16,6 +16,8 @@
 		779545B62414F9AD0038709E /* RedHatDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 779545B52414F9AD0038709E /* RedHatDisplay-Regular.otf */; };
 		779545BC2414FDD10038709E /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779545BB2414FDD10038709E /* loginViewController.swift */; };
 		779545C0241509310038709E /* roundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779545BF241509300038709E /* roundedButton.swift */; };
+		779E15C1241B42AB005488D2 /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779E15C0241B42AB005488D2 /* FirebaseAuth.swift */; };
+		779E15C4241B4310005488D2 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779E15C3241B4310005488D2 /* Reachability.swift */; };
 		77B9B5802419FBEE000F0656 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77B9B57F2419FBEE000F0656 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +34,8 @@
 		779545B52414F9AD0038709E /* RedHatDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatDisplay-Regular.otf"; sourceTree = "<group>"; };
 		779545BB2414FDD10038709E /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		779545BF241509300038709E /* roundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundedButton.swift; sourceTree = "<group>"; };
+		779E15C0241B42AB005488D2 /* FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
+		779E15C3241B4310005488D2 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		77B9B57F2419FBEE000F0656 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EF0621A8A9560C591ACA627D /* Pods_TensorDash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TensorDash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -78,10 +82,12 @@
 		7795459F2414F6510038709E /* TensorDash */ = {
 			isa = PBXGroup;
 			children = (
+				779E15BF241B41EA005488D2 /* Firebase Auth */,
 				779545BA2414FCFE0038709E /* Model */,
 				779545B82414FCDD0038709E /* Controllers */,
 				779545B72414FCD10038709E /* View */,
 				779545B22414F9260038709E /* Fonts */,
+				779E15C2241B4310005488D2 /* Services */,
 				779545B92414FCF30038709E /* Helpers */,
 				779545AC2414F6540038709E /* Info.plist */,
 				77B9B57F2419FBEE000F0656 /* GoogleService-Info.plist */,
@@ -130,6 +136,22 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		779E15BF241B41EA005488D2 /* Firebase Auth */ = {
+			isa = PBXGroup;
+			children = (
+				779E15C0241B42AB005488D2 /* FirebaseAuth.swift */,
+			);
+			path = "Firebase Auth";
+			sourceTree = "<group>";
+		};
+		779E15C2241B4310005488D2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				779E15C3241B4310005488D2 /* Reachability.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		ADB3466E3EA96BE682FC3B08 /* Frameworks */ = {
@@ -267,8 +289,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				779E15C1241B42AB005488D2 /* FirebaseAuth.swift in Sources */,
 				779545BC2414FDD10038709E /* loginViewController.swift in Sources */,
 				779545A12414F6510038709E /* AppDelegate.swift in Sources */,
+				779E15C4241B4310005488D2 /* Reachability.swift in Sources */,
 				779545C0241509310038709E /* roundedButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

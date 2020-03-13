@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class loginViewController: UIViewController {
 
@@ -78,6 +77,7 @@ class loginViewController: UIViewController {
         dismissKeyboard()
         load.isHidden = false
         load.startAnimating()
+        
     }
     
 }
