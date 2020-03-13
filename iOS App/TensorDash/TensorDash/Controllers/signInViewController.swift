@@ -114,11 +114,7 @@ class signInViewController: UIViewController {
                     self.authAlert(titlepass: "Error", message: result)
                 case "Sucess":
                     // Sucess then login through by entering emila and password in Login page
-                    let alert = UIAlertController(title: "Registered Successfully!", message: "Please Login with your Email and Password.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
-                        self.dismiss(animated: true, completion: nil)
-                    }))
-                    self.present(alert,animated: true,completion: nil)
+                    self.dismissAlert(titlepass: "Registered Successfully!", message: "Please Login with your Email and Password.")
                 default:
                     self.authAlert(titlepass: "Error", message: "Contact Developer.")
                 }
