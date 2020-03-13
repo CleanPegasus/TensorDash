@@ -10,6 +10,26 @@ import Foundation
 import FirebaseAuth
 
 
-class FirebaseAuth {
+class FirebaseAuth: UIViewController {
+
+    
+    //MARK: - Function for Login using email and password
+    public static func emailLoginIn(email: String, pass: String, completion: @escaping (String) -> ()) {
+        
+        Auth.auth().signIn(withEmail: email, password: pass) { (user, error)
+            in
+            if error != nil {
+                // Vibrates on errors
+                UIDevice.invalidVibrate()
+                print(error?.localizedDescription ?? "Error")
+                completion(error?.localizedDescription ?? "Error")
+            }
+            else {
+                    // Vibrates on valid
+                    UIDevice.validVibrate()
+                    completion("Sucess")
+            }
+        }
+    }
     
 }

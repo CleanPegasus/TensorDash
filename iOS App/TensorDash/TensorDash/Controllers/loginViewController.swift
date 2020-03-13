@@ -36,6 +36,13 @@ class loginViewController: UIViewController {
     }
  
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // Function for checking newtwork connection
+        checkNewtork(ifError: "Cannot login.")
+    }
+    
+    
     // MARK: - Selector function for dismissing keyboard
     @objc func dismissKeyboard() {
         emailTextF.resignFirstResponder()
@@ -74,10 +81,36 @@ class loginViewController: UIViewController {
     
     //MARK: - Login Action
     @IBAction func loginAction(_ sender: UIButton) {
+        // Dismiss keyboard
         dismissKeyboard()
         load.isHidden = false
         load.startAnimating()
-        
+        if (emailTextF.text == "" || passTextF.text == "")
+        {
+            self.authAlert(titlepass: "Error", message: "Text Field is empty.")
+            self.load.stopAnimating()
+            self.load.isHidden = true
+        }
+        else {
+            // Check internet connection
+            checkNewtork(ifError: "Cannot login")
+            FirebaseAuth.emailLoginIn(email: emailTextF.text!, pass: passTextF.text!) { (result) in
+                switch result {
+                    case "The email address is badly formatted.":
+                    self.authAlert(titlepass: "Error", message: result)
+                case "The password is invalid or the user does not have a password.":
+                    self.authAlert(titlepass: "Error", message: result)
+                case "There is no user record corresponding to this identifier. The user may have been deleted.":
+                    self.authAlert(titlepass: "Error", message: "There is no user registered to this Email ID.")
+                case "Sucess":
+                    print("WQe")
+                default:
+                    self.authAlert(titlepass: "Error", message: "Contact Developer.")
+                }
+                self.load.stopAnimating()
+                self.load.isHidden = true
+            }
+        }
     }
     
 }
