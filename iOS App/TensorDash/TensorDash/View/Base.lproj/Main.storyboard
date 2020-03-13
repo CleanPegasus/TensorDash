@@ -700,11 +700,11 @@
             </objects>
             <point key="canvasLocation" x="2548" y="-17"/>
         </scene>
-        <!--Item 1-->
+        <!--TensorDash-->
         <scene sceneID="acN-vt-qP7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UBV-CJ-m4f" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="PPk-Bi-y2X"/>
+                    <tabBarItem key="tabBarItem" title="TensorDash" image="report" id="PPk-Bi-y2X"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dgz-kY-zCZ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -749,6 +749,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="report" width="22" height="20"/>
         <image name="settings" width="30" height="30"/>
     </resources>
 </document>
