@@ -109,12 +109,21 @@ class signInViewController: UIViewController {
             // Check internet connection
             checkNewtork(ifError: "Cannot Sign-In.")
             FirebaseAuth.emailSignIn(email: emailTextF.text!, pass: passTextF.text!) { (result) in
-                if result == "Sucess" {
-                    print("YAY!")
+                switch result {
+                case "The password must be 6 characters long or more.":
+                    self.authAlert(titlepass: "Error", message: result)
+                case "Sucess":
+                    // Sucess then login through by entering emila and password in Login page
+                    let alert = UIAlertController(title: "Registered Successfully!", message: "Please Login with your Email and Password.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert,animated: true,completion: nil)
+                default:
+                    self.authAlert(titlepass: "Error", message: "Contact Developer.")
                 }
-                else if result == "Error" {
-                    self.authAlert(titlepass: "Error", message: "Error")
-                }
+                self.load.stopAnimating()
+                self.load.isHidden = true
             }
         }
         else {
