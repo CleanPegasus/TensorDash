@@ -176,16 +176,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="YrQ-10-2Jf">
-                                <rect key="frame" x="30" y="54" width="315" height="116.5"/>
+                                <rect key="frame" x="30" y="54" width="315" height="108.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TensorDash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MB-l1-d84">
-                                        <rect key="frame" x="78.5" y="0.0" width="158" height="40"/>
+                                        <rect key="frame" x="78.5" y="0.0" width="158" height="35"/>
                                         <fontDescription key="fontDescription" name="RedHatText-Regular" family="Red Hat Text" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login using existing account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rec-Eo-q6I">
-                                        <rect key="frame" x="32" y="90" width="251.5" height="26.5"/>
+                                        <rect key="frame" x="29.5" y="85" width="256" height="23.5"/>
                                         <fontDescription key="fontDescription" name="RedHatText-Regular" family="Red Hat Text" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -193,7 +193,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="phW-uA-jYb">
-                                <rect key="frame" x="35" y="488" width="305" height="139"/>
+                                <rect key="frame" x="35" y="490.5" width="305" height="136.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="1Yo-G0-LMz">
                                         <rect key="frame" x="0.0" y="0.0" width="305" height="44.5"/>
@@ -206,7 +206,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hq4-O8-8YP">
-                                                <rect key="frame" x="138" y="9" width="29.5" height="26.5"/>
+                                                <rect key="frame" x="138" y="9" width="29" height="26.5"/>
                                                 <fontDescription key="fontDescription" name="RedHatText-Regular" family="Red Hat Text" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -227,16 +227,16 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XQF-bA-Mvp">
-                                        <rect key="frame" x="0.0" y="64.5" width="305" height="74.5"/>
+                                        <rect key="frame" x="0.0" y="64.5" width="305" height="72"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First time here? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rex-7k-zj1">
-                                                <rect key="frame" x="96.5" y="0.0" width="112" height="21.5"/>
+                                                <rect key="frame" x="95" y="0.0" width="115.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="RedHatDisplay-Regular" family="Red Hat Display" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yk-wr-dkY" customClass="roundedButton" customModule="TensorDash" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="36.5" width="305" height="38"/>
+                                                <rect key="frame" x="0.0" y="34" width="305" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="K6a-jw-FWl"/>
                                                 </constraints>
@@ -275,7 +275,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="DTu-10-GMq">
-                                <rect key="frame" x="40" y="250.5" width="295" height="124"/>
+                                <rect key="frame" x="40" y="242.5" width="295" height="124"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="kp6-iM-MYk">
                                         <rect key="frame" x="0.0" y="0.0" width="295" height="81"/>
@@ -362,7 +362,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ju0-zN-saK">
-                                <rect key="frame" x="50" y="424.5" width="275" height="35"/>
+                                <rect key="frame" x="50" y="416.5" width="275" height="32"/>
                                 <color key="backgroundColor" red="0.76862745098039209" green="0.76862745098039209" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="RedHatDisplay-Regular" family="Red Hat Display" pointSize="17"/>
                                 <state key="normal" title="LOGIN">
@@ -373,7 +373,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="ZJ5-D8-skt">
-                                <rect key="frame" x="177" y="382" width="20" height="20"/>
+                                <rect key="frame" x="177" y="374" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -419,16 +419,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="gxb-wk-U1M">
-                                <rect key="frame" x="30" y="55" width="315" height="116.5"/>
+                                <rect key="frame" x="30" y="55" width="315" height="108.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TensorDash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnG-J7-tU2">
-                                        <rect key="frame" x="78.5" y="0.0" width="158" height="40"/>
+                                        <rect key="frame" x="78.5" y="0.0" width="158" height="35"/>
                                         <fontDescription key="fontDescription" name="RedHatText-Regular" family="Red Hat Text" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEl-OE-T2Q">
-                                        <rect key="frame" x="61.5" y="90" width="192.5" height="26.5"/>
+                                        <rect key="frame" x="59.5" y="85" width="196" height="23.5"/>
                                         <fontDescription key="fontDescription" name="RedHatText-Regular" family="Red Hat Text" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -436,7 +436,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Hho-dg-dRd">
-                                <rect key="frame" x="50" y="251.5" width="275" height="134"/>
+                                <rect key="frame" x="50" y="243.5" width="275" height="134"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="a0Q-8z-2eG">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="134"/>
@@ -585,7 +585,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYm-Ou-4yf">
-                                <rect key="frame" x="50" y="485.5" width="275" height="35"/>
+                                <rect key="frame" x="50" y="477.5" width="275" height="32"/>
                                 <color key="backgroundColor" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="RedHatDisplay-Regular" family="Red Hat Display" pointSize="17"/>
                                 <state key="normal" title="CREATE MY ACCOUNT">
@@ -596,7 +596,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="RRS-1k-ggL">
-                                <rect key="frame" x="177" y="432.5" width="20" height="20"/>
+                                <rect key="frame" x="177" y="424.5" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -643,9 +643,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xZR-w8-a9p">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xZR-w8-a9p">
                                 <rect key="frame" x="183" y="396" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Logout">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -655,6 +654,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="xZR-w8-a9p" firstAttribute="top" secondItem="3DS-By-bSs" secondAttribute="top" constant="332" id="HJW-uD-dy7"/>
+                            <constraint firstItem="xZR-w8-a9p" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3DS-By-bSs" secondAttribute="leading" id="QhQ-77-nXN"/>
+                            <constraint firstItem="3DS-By-bSs" firstAttribute="trailing" secondItem="xZR-w8-a9p" secondAttribute="trailing" constant="144" id="qYB-Xv-XoB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3DS-By-bSs"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="yZN-JW-CLI"/>
@@ -666,18 +670,61 @@
         <!--TensorDash-->
         <scene sceneID="BQa-H1-2FD">
             <objects>
-                <viewController id="ydO-y1-erA" sceneMemberID="viewController">
+                <viewController id="ydO-y1-erA" customClass="tensorDashViewController" customModule="TensorDash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oKr-kE-d7f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ijL-91-BQC">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="120" id="7ge-py-hfy" customClass="tensorDashTableViewCell" customModule="TensorDash" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7ge-py-hfy" id="470-Dw-1GL">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6x-Yi-RX2">
+                                                    <rect key="frame" x="15" y="5" width="345" height="110"/>
+                                                    <color key="backgroundColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="L6x-Yi-RX2" secondAttribute="trailing" constant="15" id="Hpc-fH-XL0"/>
+                                                <constraint firstItem="L6x-Yi-RX2" firstAttribute="top" secondItem="470-Dw-1GL" secondAttribute="top" constant="5" id="Ki9-lz-Paf"/>
+                                                <constraint firstAttribute="bottom" secondItem="L6x-Yi-RX2" secondAttribute="bottom" constant="5" id="T5g-qd-0fm"/>
+                                                <constraint firstItem="L6x-Yi-RX2" firstAttribute="leading" secondItem="470-Dw-1GL" secondAttribute="leading" constant="15" id="Zdb-qH-Nch"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ydO-y1-erA" id="lG1-cJ-4AG"/>
+                                    <outlet property="delegate" destination="ydO-y1-erA" id="wph-OM-1hM"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6JH-zr-dD1" firstAttribute="trailing" secondItem="ijL-91-BQC" secondAttribute="trailing" id="DV5-cS-Kce"/>
+                            <constraint firstItem="6JH-zr-dD1" firstAttribute="bottom" secondItem="ijL-91-BQC" secondAttribute="bottom" id="LnJ-1z-JMc"/>
+                            <constraint firstItem="ijL-91-BQC" firstAttribute="leading" secondItem="6JH-zr-dD1" secondAttribute="leading" id="VsW-xV-dXR"/>
+                            <constraint firstItem="ijL-91-BQC" firstAttribute="top" secondItem="6JH-zr-dD1" secondAttribute="top" id="ppa-70-rLg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6JH-zr-dD1"/>
                     </view>
                     <navigationItem key="navigationItem" title="TensorDash" id="zlC-hT-7Og"/>
+                    <connections>
+                        <outlet property="tensorTable" destination="ijL-91-BQC" id="m7k-ed-ong"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znu-D9-e9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4713.04347826087" y="-411.83035714285711"/>
+            <point key="canvasLocation" x="4712.8000000000002" y="-412.44377811094455"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bhW-1Y-IT7">

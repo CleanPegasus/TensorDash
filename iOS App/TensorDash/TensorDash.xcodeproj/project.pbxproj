@@ -27,6 +27,8 @@
 		779E15DF241B43E3005488D2 /* alert+Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779E15DE241B43E3005488D2 /* alert+Function.swift */; };
 		779E15E1241B5477005488D2 /* signInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779E15E0241B5477005488D2 /* signInViewController.swift */; };
 		77B9B5802419FBEE000F0656 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77B9B57F2419FBEE000F0656 /* GoogleService-Info.plist */; };
+		77C239F9241D496F00B3A556 /* tensorDashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C239F8241D496F00B3A556 /* tensorDashViewController.swift */; };
+		77C239FB241D4B5800B3A556 /* tensorDashTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C239FA241D4B5800B3A556 /* tensorDashTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		779E15DE241B43E3005488D2 /* alert+Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "alert+Function.swift"; sourceTree = "<group>"; };
 		779E15E0241B5477005488D2 /* signInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signInViewController.swift; sourceTree = "<group>"; };
 		77B9B57F2419FBEE000F0656 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		77C239F8241D496F00B3A556 /* tensorDashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tensorDashViewController.swift; sourceTree = "<group>"; };
+		77C239FA241D4B5800B3A556 /* tensorDashTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tensorDashTableViewCell.swift; sourceTree = "<group>"; };
 		EF0621A8A9560C591ACA627D /* Pods_TensorDash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TensorDash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -133,10 +137,12 @@
 		779545B82414FCDD0038709E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				77C239F8241D496F00B3A556 /* tensorDashViewController.swift */,
 				775666F4241C02F800C472AC /* settingsViewController.swift */,
 				775666F2241BE8E800C472AC /* fogetPasswordViewController.swift */,
 				779E15E0241B5477005488D2 /* signInViewController.swift */,
 				779545BB2414FDD10038709E /* loginViewController.swift */,
+				77C239FA241D4B5800B3A556 /* tensorDashTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -324,6 +330,7 @@
 				779E15DF241B43E3005488D2 /* alert+Function.swift in Sources */,
 				779E15C1241B42AB005488D2 /* FirebaseAuth.swift in Sources */,
 				779545BC2414FDD10038709E /* loginViewController.swift in Sources */,
+				77C239FB241D4B5800B3A556 /* tensorDashTableViewCell.swift in Sources */,
 				779545A12414F6510038709E /* AppDelegate.swift in Sources */,
 				779E15DB241B43AE005488D2 /* checkNetwork.swift in Sources */,
 				779E15DD241B43CD005488D2 /* haptic+Feedback.swift in Sources */,
@@ -332,6 +339,7 @@
 				775666F9241C05AF00C472AC /* instantiate+ViewController.swift in Sources */,
 				775666F5241C02F800C472AC /* settingsViewController.swift in Sources */,
 				779E15E1241B5477005488D2 /* signInViewController.swift in Sources */,
+				77C239F9241D496F00B3A556 /* tensorDashViewController.swift in Sources */,
 				779545C0241509310038709E /* roundedButton.swift in Sources */,
 				775666F3241BE8E800C472AC /* fogetPasswordViewController.swift in Sources */,
 			);
