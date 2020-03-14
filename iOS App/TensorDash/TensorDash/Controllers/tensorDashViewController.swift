@@ -34,7 +34,7 @@ extension tensorDashViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // Setting height for rows in tableView
