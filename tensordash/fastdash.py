@@ -4,6 +4,7 @@ import fastai
 from fastai.torch_core import Any, Tensor, MetricsList, ifnone
 from fastai.basic_train import LearnerCallback, Learner
 import getpass
+import time
 
 class FirebaseError(Exception):
     pass
@@ -111,6 +112,6 @@ class Fastdash(LearnerCallback):
         if(time.time() - self.start_time > 3000):
             self.start_time = time.time()
             self.key, self.auth_token = SendData.signin(email = self.email, password = self.password)
-            
+
         SendData.crashAnalytics(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
 
