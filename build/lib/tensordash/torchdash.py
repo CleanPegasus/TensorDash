@@ -1,6 +1,7 @@
 import requests
 import json
 import getpass
+import time
 
 class FirebaseError(Exception):
     pass
@@ -8,6 +9,34 @@ class SendDataToFirebase(object):
 
     def __init__(self, key = None):
         response = None
+
+    def signin(self, email = None, password = None):
+        if(email == None):
+            email = input("Enter Email :")
+        if(email != None and password == None):
+            password = getpass.getpass("Enter Tensordash Password :")
+            
+        headers = {'Content-Type': 'application/json',}
+        params = (('key', 'AIzaSyDU4zqFpa92Jf64nYdgzT8u2oJfENn-2f8'),)
+        val = {
+            "email" : email,
+            "password": password,
+            "returnSecureToken": "true"
+        }
+        data = str(val)
+
+        try:
+            response = requests.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword', headers=headers, params=params, data=data)
+            output = response.json()
+            key = output['localId']
+            token = output['idToken']
+
+            auth_token = (('auth', token),)
+
+        except:
+            raise FirebaseError("Authentication Failed. Kindly create an account on the companion app")
+
+        return key, auth_token
 
     def sendMessage(self, key = None, auth_token = None, params = None, ModelName = 'Sample Model'):
         epoch, loss, acc, val_loss, val_acc = params
@@ -51,36 +80,20 @@ SendData = SendDataToFirebase()
 
 class Torchdash(object):
     def __init__(self, ModelName = 'Sample Model', email = None, password = None):
-        if(email == None):
-            email = input("Enter Email :")
-        if(email != None and password == None):
-            password = getpass.getpass("Enter Tensordash Password :")
-            
+
+        self.start_time = time.time()    
         self.ModelName = ModelName
         self.email = email
         self.password = password
 
-        headers = {'Content-Type': 'application/json',}
-        params = (('key', 'AIzaSyDU4zqFpa92Jf64nYdgzT8u2oJfENn-2f8'),)
-        val = {
-            "email" : self.email,
-            "password": self.password,
-            "returnSecureToken": "true"
-        }
-        data = str(val)
+        self.key, self.auth_token = SendData.signin(email = self.email, password = self.password)
 
-        try:
-            response = requests.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword', headers=headers, params=params, data=data)
-            output = response.json()
-            self.key = output['localId']
-            self.token = output['idToken']
-
-            self.auth_token = (('auth', self.token),)
-
-        except:
-            raise FirebaseError("Authentication Failed. Kindly create an account on the companion app")
 
     def sendLoss(self, epoch = None, loss = None, acc = None, val_loss = None, val_acc = None, total_epochs = None):
+
+        if(time.time() - self.start_time > 3000):
+            self.start_time = time.time()
+            self.key, self.auth_token = SendData.signin(email = self.email, password = self.password)
 
         if(epoch == 0):
             SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
@@ -102,4 +115,7 @@ class Torchdash(object):
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = params, ModelName = self.ModelName)
 
     def sendCrash(self):
+        if(time.time() - self.start_time > 3000):
+            self.start_time = time.time()
+            self.key, self.auth_token = SendData.signin(email = self.email, password = self.password)
         SendData.crashAnalytics(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
