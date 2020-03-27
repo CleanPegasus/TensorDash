@@ -111,11 +111,15 @@ class Tensordash(tf.keras.callbacks.Callback):
         self.losses.append(logs.get('loss'))
         if(logs.get('acc') != None):
             self.accuracy.append(logs.get('acc'))
+        elif(logs.get('categorical_accuracy') != None):
+            self.accuracy.append(logs.get('categorical_accuracy'))
         else:
             self.accuracy.append(logs.get('accuracy'))
         self.val_losses.append(logs.get('val_loss'))
         if(logs.get('val_acc') != None):
             self.val_accuracy.append(logs.get('val_acc'))
+        elif(logs.get('val_categorical_accuracy') != None):
+            self.val_accuracy.append(logs.get('val_categorical_accuracy'))
         else:
             self.val_accuracy.append(logs.get('val_accuracy'))
         self.num_epochs.append(epoch)
