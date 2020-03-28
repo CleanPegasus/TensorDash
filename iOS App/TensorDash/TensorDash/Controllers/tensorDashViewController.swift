@@ -13,8 +13,17 @@ class tensorDashViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var tensorTable: UITableView!
     
+    //MARK: - Variables
+    var projectName = ["Project-name-one","Project-name-two","Project-name-three"]
+    var status = ["Completed","In progress","Crashed"]
+    var epoch = ["9","19","19"]
+    var accuracy = ["0.123123","0.99999","0.25"]
+    var loss = ["0.123","0.1","0.99999"]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tensorTable.tableFooterView = UIView()
     }
 
 }
@@ -30,6 +39,22 @@ extension tensorDashViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tensorTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! tensorDashTableViewCell
+        
+        cell.projectName.text = projectName[indexPath.row]
+        cell.epochLabel.text = epoch[indexPath.row]
+        cell.accuracyLabel.text = accuracy[indexPath.row]
+        cell.lossLabel.text = loss[indexPath.row]
+        cell.statusLabel.text = status[indexPath.row]
+        if status[indexPath.row] == "Completed" {
+            cell.statusLabel.backgroundColor = #colorLiteral(red: 0.003921568627, green: 0.4823529412, blue: 0.02352941176, alpha: 1)
+        }
+        else if status[indexPath.row] == "In progress" {
+            cell.statusLabel.backgroundColor = #colorLiteral(red: 0.6470588235, green: 0.3490196078, blue: 0, alpha: 1)
+        }
+        else {
+            cell.statusLabel.backgroundColor = #colorLiteral(red: 0.6941176471, green: 0, blue: 0, alpha: 1)
+        }
+        
         return cell
     }
     
@@ -39,12 +64,12 @@ extension tensorDashViewController: UITableViewDelegate, UITableViewDataSource {
     
     // Setting height for rows in tableView
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120.0
+        return 130.0
     }
     
     // Setting custom header heigth
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 17
+        return 16
     }
     
     // Setting Custom headerView background color

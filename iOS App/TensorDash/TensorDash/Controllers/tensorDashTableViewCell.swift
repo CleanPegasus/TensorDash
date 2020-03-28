@@ -10,7 +10,13 @@ import UIKit
 
 class tensorDashTableViewCell: UITableViewCell {
     
-
+    //MARK: - Outlets
+    @IBOutlet weak var projectName: UILabel!
+    @IBOutlet weak var lossLabel: UILabel!
+    @IBOutlet weak var accuracyLabel: UILabel!
+    @IBOutlet weak var epochLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
