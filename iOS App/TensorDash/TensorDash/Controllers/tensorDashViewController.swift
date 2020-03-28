@@ -20,11 +20,29 @@ class tensorDashViewController: UIViewController {
     private var accuracy = ["0.123123","0.99999","0.25"]
     private var loss = ["0.123","0.1","0.99999"]
     private var indexPathForPrepareSegue : IndexPath?
+    var refreshControl = UIRefreshControl()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // removing empty cell lines
         tensorTable.tableFooterView = UIView()
+        // Pull to refresh
+        let attr = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        refreshControl.tintColor = .white
+        refreshControl.attributedTitle = NSAttributedString(string: "Loading...",attributes: attr)
+        
+        refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        tensorTable.addSubview(refreshControl)
+    }
+    
+    // Refresh selector control
+    @objc func refresh(sender:AnyObject) {
+        // Code to refresh table view
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.refreshControl.endRefreshing()
+        }
+      
     }
 
 }
