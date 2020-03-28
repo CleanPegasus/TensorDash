@@ -12,6 +12,7 @@
 		775666F5241C02F800C472AC /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775666F4241C02F800C472AC /* settingsViewController.swift */; };
 		775666F7241C046000C472AC /* firebaseSignOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775666F6241C046000C472AC /* firebaseSignOut.swift */; };
 		775666F9241C05AF00C472AC /* instantiate+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775666F8241C05AF00C472AC /* instantiate+ViewController.swift */; };
+		77613DBA242F9582009AE4B7 /* detailedInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77613DB9242F9582009AE4B7 /* detailedInfoViewController.swift */; };
 		779545A12414F6510038709E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779545A02414F6510038709E /* AppDelegate.swift */; };
 		779545A62414F6510038709E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 779545A42414F6510038709E /* Main.storyboard */; };
 		779545A82414F6540038709E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 779545A72414F6540038709E /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		775666F4241C02F800C472AC /* settingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
 		775666F6241C046000C472AC /* firebaseSignOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firebaseSignOut.swift; sourceTree = "<group>"; };
 		775666F8241C05AF00C472AC /* instantiate+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "instantiate+ViewController.swift"; sourceTree = "<group>"; };
+		77613DB9242F9582009AE4B7 /* detailedInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailedInfoViewController.swift; sourceTree = "<group>"; };
 		7795459D2414F6510038709E /* TensorDash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TensorDash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		779545A02414F6510038709E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		779545A52414F6510038709E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		779545B82414FCDD0038709E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				77613DB9242F9582009AE4B7 /* detailedInfoViewController.swift */,
 				77C239F8241D496F00B3A556 /* tensorDashViewController.swift */,
 				775666F4241C02F800C472AC /* settingsViewController.swift */,
 				775666F2241BE8E800C472AC /* fogetPasswordViewController.swift */,
@@ -331,6 +334,7 @@
 				779E15C1241B42AB005488D2 /* FirebaseAuth.swift in Sources */,
 				779545BC2414FDD10038709E /* loginViewController.swift in Sources */,
 				77C239FB241D4B5800B3A556 /* tensorDashTableViewCell.swift in Sources */,
+				77613DBA242F9582009AE4B7 /* detailedInfoViewController.swift in Sources */,
 				779545A12414F6510038709E /* AppDelegate.swift in Sources */,
 				779E15DB241B43AE005488D2 /* checkNetwork.swift in Sources */,
 				779E15DD241B43CD005488D2 /* haptic+Feedback.swift in Sources */,

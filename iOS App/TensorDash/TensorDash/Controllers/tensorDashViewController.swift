@@ -14,11 +14,12 @@ class tensorDashViewController: UIViewController {
     @IBOutlet weak var tensorTable: UITableView!
     
     //MARK: - Variables
-    var projectName = ["Project-name-one","Project-name-two","Project-name-three"]
-    var status = ["Completed","In progress","Crashed"]
-    var epoch = ["9","19","19"]
-    var accuracy = ["0.123123","0.99999","0.25"]
-    var loss = ["0.123","0.1","0.99999"]
+    private var projectName = ["Project-name-one","Project-name-two","Project-name-three"]
+    private var status = ["Completed","In progress","Crashed"]
+    private var epoch = ["9","19","19"]
+    private var accuracy = ["0.123123","0.99999","0.25"]
+    private var loss = ["0.123","0.1","0.99999"]
+    private var indexPathForPrepareSegue : IndexPath?
     
     
     override func viewDidLoad() {
@@ -59,7 +60,27 @@ extension tensorDashViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         tableView.deselectRow(at: indexPath, animated: true)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        indexPathForPrepareSegue = indexPath
+        
+        performSegue(withIdentifier: "toInfo", sender: self)
+        
+    }
+    
+    //MARK: - Prepare for segue.
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toInfo" {
+            
+            let destinationVC = segue.destination as! detailedInfoViewController
+            destinationVC.projectName = projectName[indexPathForPrepareSegue!.row]
+            destinationVC.loss = loss[indexPathForPrepareSegue!.row]
+            destinationVC.accuracy = accuracy[indexPathForPrepareSegue!.row]
+            destinationVC.epoch = epoch[indexPathForPrepareSegue!.row]
+            destinationVC.status = status[indexPathForPrepareSegue!.row]
+        }
     }
     
     // Setting height for rows in tableView
