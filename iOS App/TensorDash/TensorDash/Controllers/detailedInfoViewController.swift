@@ -42,7 +42,7 @@ class detailedInfoViewController: UIViewController {
     
     //MARK: - Function to set view - initialise
     func initial() {
-        navBarTitle.title = "ProjectDetails"
+        navBarTitle.title = "Project Details"
         nameLabel.text = projectName
         epochLabel.text = epoch
         accuracyLabel.text = accuracy

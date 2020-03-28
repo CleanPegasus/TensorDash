@@ -27,6 +27,7 @@
 		779E15DD241B43CD005488D2 /* haptic+Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779E15DC241B43CD005488D2 /* haptic+Feedback.swift */; };
 		779E15DF241B43E3005488D2 /* alert+Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779E15DE241B43E3005488D2 /* alert+Function.swift */; };
 		779E15E1241B5477005488D2 /* signInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779E15E0241B5477005488D2 /* signInViewController.swift */; };
+		77A7566B242FBC0500072DC4 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A7566A242FBC0500072DC4 /* constants.swift */; };
 		77B9B5802419FBEE000F0656 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77B9B57F2419FBEE000F0656 /* GoogleService-Info.plist */; };
 		77C239F9241D496F00B3A556 /* tensorDashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C239F8241D496F00B3A556 /* tensorDashViewController.swift */; };
 		77C239FB241D4B5800B3A556 /* tensorDashTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C239FA241D4B5800B3A556 /* tensorDashTableViewCell.swift */; };
@@ -56,6 +57,7 @@
 		779E15DC241B43CD005488D2 /* haptic+Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "haptic+Feedback.swift"; sourceTree = "<group>"; };
 		779E15DE241B43E3005488D2 /* alert+Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "alert+Function.swift"; sourceTree = "<group>"; };
 		779E15E0241B5477005488D2 /* signInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signInViewController.swift; sourceTree = "<group>"; };
+		77A7566A242FBC0500072DC4 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		77B9B57F2419FBEE000F0656 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		77C239F8241D496F00B3A556 /* tensorDashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tensorDashViewController.swift; sourceTree = "<group>"; };
 		77C239FA241D4B5800B3A556 /* tensorDashTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tensorDashTableViewCell.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				779545A02414F6510038709E /* AppDelegate.swift */,
 				779545BF241509300038709E /* roundedButton.swift */,
 				779545A72414F6540038709E /* Assets.xcassets */,
+				77A7566A242FBC0500072DC4 /* constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				77C239F9241D496F00B3A556 /* tensorDashViewController.swift in Sources */,
 				779545C0241509310038709E /* roundedButton.swift in Sources */,
 				775666F3241BE8E800C472AC /* fogetPasswordViewController.swift in Sources */,
+				77A7566B242FBC0500072DC4 /* constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

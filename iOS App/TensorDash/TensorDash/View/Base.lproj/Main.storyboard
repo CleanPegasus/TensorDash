@@ -100,6 +100,11 @@
                                 <state key="normal" title="RESET PASSWORD">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="resetAction:" destination="GOZ-lz-ZSh" eventType="touchUpInside" id="QHC-2y-OlX"/>
                                 </connections>
@@ -368,6 +373,11 @@
                                 <state key="normal" title="LOGIN">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="slf-i4-rUS"/>
                                 </connections>
@@ -591,6 +601,11 @@
                                 <state key="normal" title="CREATE MY ACCOUNT">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="createAcc:" destination="QKz-YH-bNa" eventType="touchUpInside" id="MbF-zO-abw"/>
                                 </connections>
@@ -643,11 +658,117 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xZR-w8-a9p">
-                                <rect key="frame" x="183" y="396" width="48" height="30"/>
-                                <state key="normal" title="Logout">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="VTk-mM-1E1">
+                                <rect key="frame" x="76" y="75" width="223" height="126"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="126" id="dNZ-4o-1NT"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="b9x-CY-Amt">
+                                <rect key="frame" x="32.5" y="250" width="310" height="167"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gZn-77-Q5Q">
+                                        <rect key="frame" x="0.0" y="0.0" width="310" height="21"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CF4-UP-XW5">
+                                                <rect key="frame" x="0.0" y="0.0" width="53.5" height="21"/>
+                                                <fontDescription key="fontDescription" name="RedHatText-Regular" family="Red Hat Text" pointSize="20"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donald Trump ki maa ki........." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="5IT-19-QcR">
+                                                <rect key="frame" x="63.5" y="0.0" width="246.5" height="21"/>
+                                                <fontDescription key="fontDescription" name="RedHatText-Regular" family="Red Hat Text" pointSize="20"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="CF4-UP-XW5" firstAttribute="baseline" secondItem="5IT-19-QcR" secondAttribute="baseline" id="MHA-go-62H"/>
+                                            <constraint firstAttribute="bottom" secondItem="CF4-UP-XW5" secondAttribute="bottom" id="qYW-vB-tfF"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kr4-GV-rKR">
+                                        <rect key="frame" x="0.0" y="48" width="221" height="19"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No. of models running:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Z-NK-1LS">
+                                                <rect key="frame" x="0.0" y="0.0" width="199.5" height="19"/>
+                                                <fontDescription key="fontDescription" name="RedHatText-Regular" family="Red Hat Text" pointSize="20"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ogb-YZ-z7c">
+                                                <rect key="frame" x="209.5" y="0.0" width="11.5" height="19"/>
+                                                <fontDescription key="fontDescription" name="RedHatText-Regular" family="Red Hat Text" pointSize="20"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VQ2-OS-PKB">
+                                        <rect key="frame" x="0.0" y="94" width="224" height="20"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No. of models crashed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNP-eZ-Wgv">
+                                                <rect key="frame" x="0.0" y="0.0" width="203" height="20"/>
+                                                <fontDescription key="fontDescription" name="RedHatText-Regular" family="Red Hat Text" pointSize="20"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="e45-Np-Ixc">
+                                                <rect key="frame" x="213" y="0.0" width="11" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="11" id="2vH-Yd-NzQ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="RedHatText-Regular" family="Red Hat Text" pointSize="20"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LRV-hG-sVx">
+                                        <rect key="frame" x="0.0" y="141" width="250" height="26"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No. of models completed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iy2-bf-BlK">
+                                                <rect key="frame" x="0.0" y="0.0" width="228" height="26"/>
+                                                <fontDescription key="fontDescription" name="RedHatText-Regular" family="Red Hat Text" pointSize="20"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kkh-Rh-KCW">
+                                                <rect key="frame" x="238" y="0.0" width="12" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="12" id="gC7-cc-0il"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="RedHatText-Regular" family="Red Hat Text" pointSize="20"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="VQ2-OS-PKB" secondAttribute="trailing" constant="86" id="Is6-p2-BRV"/>
+                                    <constraint firstItem="kr4-GV-rKR" firstAttribute="top" secondItem="b9x-CY-Amt" secondAttribute="top" constant="48" id="UR3-Ae-QHz"/>
+                                    <constraint firstItem="VQ2-OS-PKB" firstAttribute="top" secondItem="b9x-CY-Amt" secondAttribute="top" constant="94" id="ZjI-HN-5a4"/>
+                                    <constraint firstAttribute="trailing" secondItem="LRV-hG-sVx" secondAttribute="trailing" constant="60" id="ndr-Da-GtV"/>
+                                    <constraint firstItem="LRV-hG-sVx" firstAttribute="top" secondItem="b9x-CY-Amt" secondAttribute="top" constant="141" id="qkM-Sy-26D"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xZR-w8-a9p">
+                                <rect key="frame" x="30" y="555" width="315" height="33"/>
+                                <color key="backgroundColor" red="0.76862745098039209" green="0.76862745098039209" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="BhV-5j-ohe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="RedHatDisplay-Regular" family="Red Hat Display" pointSize="17"/>
+                                <state key="normal" title="LOGOUT">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="logoutAct:" destination="IHr-Wh-ofD" eventType="touchUpInside" id="vo4-Uf-eS3"/>
                                 </connections>
@@ -655,17 +776,26 @@
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xZR-w8-a9p" firstAttribute="top" secondItem="3DS-By-bSs" secondAttribute="top" constant="332" id="HJW-uD-dy7"/>
-                            <constraint firstItem="xZR-w8-a9p" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3DS-By-bSs" secondAttribute="leading" id="QhQ-77-nXN"/>
-                            <constraint firstItem="3DS-By-bSs" firstAttribute="trailing" secondItem="xZR-w8-a9p" secondAttribute="trailing" constant="144" id="qYB-Xv-XoB"/>
+                            <constraint firstItem="VTk-mM-1E1" firstAttribute="centerX" secondItem="QnC-lj-CpO" secondAttribute="centerX" id="DjL-Y4-p0X"/>
+                            <constraint firstItem="VTk-mM-1E1" firstAttribute="top" secondItem="3DS-By-bSs" secondAttribute="top" constant="11" id="Mcj-iZ-nRQ"/>
+                            <constraint firstItem="3DS-By-bSs" firstAttribute="trailing" secondItem="xZR-w8-a9p" secondAttribute="trailing" constant="30" id="Njt-w6-htZ"/>
+                            <constraint firstItem="xZR-w8-a9p" firstAttribute="leading" secondItem="3DS-By-bSs" secondAttribute="leading" constant="30" id="Opy-MH-k8e"/>
+                            <constraint firstItem="3DS-By-bSs" firstAttribute="bottom" secondItem="xZR-w8-a9p" secondAttribute="bottom" constant="30" id="Ova-A1-FXh"/>
+                            <constraint firstItem="VTk-mM-1E1" firstAttribute="leading" secondItem="3DS-By-bSs" secondAttribute="leading" constant="76" id="U3C-xu-MKP"/>
+                            <constraint firstItem="b9x-CY-Amt" firstAttribute="top" secondItem="VTk-mM-1E1" secondAttribute="bottom" constant="49" id="aJS-8R-tgi"/>
+                            <constraint firstItem="b9x-CY-Amt" firstAttribute="centerX" secondItem="VTk-mM-1E1" secondAttribute="centerX" id="lgG-Oj-xAo"/>
+                            <constraint firstItem="b9x-CY-Amt" firstAttribute="centerY" secondItem="QnC-lj-CpO" secondAttribute="centerY" id="rgc-ig-NGP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3DS-By-bSs"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="yZN-JW-CLI"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="5IT-19-QcR" id="do0-JV-4Cu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mnf-qg-nYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4981.159420289855" y="396.42857142857139"/>
+            <point key="canvasLocation" x="4980" y="396.25187406296857"/>
         </scene>
         <!--TensorDash-->
         <scene sceneID="BQa-H1-2FD">
@@ -692,16 +822,16 @@
                                                     <rect key="frame" x="0.0" y="5.5" width="345" height="119"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="tLB-qy-cvC">
-                                                            <rect key="frame" x="15" y="8" width="218.5" height="39"/>
+                                                            <rect key="frame" x="15" y="8" width="220.5" height="43.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfS-77-j8o">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="73" height="16.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="73" height="23.5"/>
                                                                     <fontDescription key="fontDescription" name="RedHatDisplay-Regular" family="Red Hat Display" pointSize="12"/>
                                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Reinforcement learning part2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="1Qb-lb-gx6">
-                                                                    <rect key="frame" x="0.0" y="16.5" width="218.5" height="22.5"/>
+                                                                    <rect key="frame" x="0.0" y="23.5" width="220.5" height="20"/>
                                                                     <fontDescription key="fontDescription" name="RedHatDisplay-Regular" family="Red Hat Display" pointSize="17"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -725,19 +855,19 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="dOc-ne-rhS">
-                                                            <rect key="frame" x="27" y="67" width="292" height="43.5"/>
+                                                            <rect key="frame" x="27" y="71.5" width="292" height="39"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Gu2-0l-HBx">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="34.5" height="43.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="34.5" height="39"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Epoch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfv-0Y-fLQ">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="34.5" height="16"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="34.5" height="14"/>
                                                                             <fontDescription key="fontDescription" name="RedHatDisplay-Regular" family="Red Hat Display" pointSize="12"/>
                                                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yla-Mj-UdF">
-                                                                            <rect key="frame" x="2" y="21" width="31" height="22.5"/>
+                                                                            <rect key="frame" x="3" y="19" width="28.5" height="20"/>
                                                                             <fontDescription key="fontDescription" name="RedHatDisplay-Regular" family="Red Hat Display" pointSize="17"/>
                                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -745,16 +875,16 @@
                                                                     </subviews>
                                                                 </stackView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QPR-Pe-Gyw">
-                                                                    <rect key="frame" x="100.5" y="0.0" width="75.5" height="43.5"/>
+                                                                    <rect key="frame" x="104" y="0.0" width="71" height="39"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accuracy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJP-hj-Qk9">
-                                                                            <rect key="frame" x="13.5" y="0.0" width="49" height="16"/>
+                                                                            <rect key="frame" x="10" y="0.0" width="50.5" height="14"/>
                                                                             <fontDescription key="fontDescription" name="RedHatDisplay-Regular" family="Red Hat Display" pointSize="12"/>
                                                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.999999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95s-gV-SlK">
-                                                                            <rect key="frame" x="0.0" y="21" width="75.5" height="22.5"/>
+                                                                            <rect key="frame" x="0.0" y="19" width="71" height="20"/>
                                                                             <fontDescription key="fontDescription" name="RedHatDisplay-Regular" family="Red Hat Display" pointSize="17"/>
                                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -762,16 +892,16 @@
                                                                     </subviews>
                                                                 </stackView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="d9p-sw-0ZS">
-                                                                    <rect key="frame" x="226.5" y="0.0" width="65.5" height="43.5"/>
+                                                                    <rect key="frame" x="230.5" y="0.0" width="61.5" height="39"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loss" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hrs-RZ-YvK">
-                                                                            <rect key="frame" x="20.5" y="0.0" width="25" height="16"/>
+                                                                            <rect key="frame" x="18" y="0.0" width="26" height="14"/>
                                                                             <fontDescription key="fontDescription" name="RedHatDisplay-Regular" family="Red Hat Display" pointSize="12"/>
                                                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.99999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54e-H9-0tE">
-                                                                            <rect key="frame" x="0.0" y="21" width="65.5" height="22.5"/>
+                                                                            <rect key="frame" x="0.0" y="19" width="61.5" height="20"/>
                                                                             <fontDescription key="fontDescription" name="RedHatDisplay-Regular" family="Red Hat Display" pointSize="17"/>
                                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -927,7 +1057,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxr-Gu-Dw1">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxr-Gu-Dw1">
                                 <rect key="frame" x="30" y="369" width="315" height="33"/>
                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.4823529412" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -938,7 +1068,7 @@
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
+                                        <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
@@ -1086,6 +1216,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="profile" width="50" height="50"/>
         <image name="report" width="22" height="20"/>
         <image name="settings" width="30" height="30"/>
     </resources>

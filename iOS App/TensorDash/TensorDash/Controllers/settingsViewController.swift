@@ -10,9 +10,12 @@ import UIKit
 
 class settingsViewController: UIViewController {
 
+    //MARK: - Outlets
+    @IBOutlet weak var emailLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        emailLabel.text = getEmail()
     }
     
     @IBAction func logoutAct(_ sender: Any) {
