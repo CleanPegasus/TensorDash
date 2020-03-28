@@ -33,6 +33,11 @@ class fogetPasswordViewController: UIViewController {
         
     }
     
+    // Setting Status Bar to light
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Function for checking newtwork connection

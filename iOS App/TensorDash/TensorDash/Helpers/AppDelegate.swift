@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Setting up initial view controller
         setInitialViewController()
         
+        // Setting Navigation bar to Opaque
+        UINavigationBar.appearance().barStyle = .blackOpaque
+        
         return true
     }
 

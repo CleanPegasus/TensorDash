@@ -18,11 +18,6 @@ class settingsViewController: UIViewController {
         emailLabel.text = getEmail()
     }
     
-    //MARK: - Set status bar style to light
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
-    }
-    
     @IBAction func logoutAct(_ sender: Any) {
         
         signOut()
