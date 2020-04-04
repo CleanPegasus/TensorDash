@@ -8,5 +8,6 @@ target 'TensorDash' do
   # Pods for TensorDash
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'Charts'
 
 end

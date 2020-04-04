@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BB3FC31854BB5F7DCCD3621723548178"
+               BlueprintIdentifier = "39900946812F4440DDBA84789948A762"
                BuildableName = "Pods_TensorDash.framework"
                BlueprintName = "Pods-TensorDash"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BB3FC31854BB5F7DCCD3621723548178"
+            BlueprintIdentifier = "39900946812F4440DDBA84789948A762"
             BuildableName = "Pods_TensorDash.framework"
             BlueprintName = "Pods-TensorDash"
             ReferencedContainer = "container:Pods.xcodeproj">
