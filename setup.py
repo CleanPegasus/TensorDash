@@ -9,7 +9,7 @@ def readme():
 setup(
 
     name = "tensor-dash",
-    version = "1.7.4",
+    version = "1.8.1",
     description = "A python package that lets you remotely monitor your deep learning training metrics through it's companion app.",
     long_description = readme(),
     long_description_content_type = "text/markdown",

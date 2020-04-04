@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.tensordash">
+    package="tech.tensordash.tensordash">
 
     <application
-        android:name=".MyApplication"
+        android:name="tech.tensordash.tensordash.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,27 +11,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.ui.ProjectDescriptionActivity"
-            android:parentActivityName="com.example.tensordash.view.ui.DashboardActivity">
+            android:name="tech.tensordash.tensordash.view.ui.ProjectDescriptionActivity"
+            android:parentActivityName="tech.tensordash.tensordash.view.ui.DashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.tensordash.view.ui.DashboardActivity" />
+                android:value="tech.tensordash.tensordash.view.ui.DashboardActivity" />
         </activity>
-        <activity android:name=".view.ui.ForgotPasswordActivity" />
-        <activity android:name=".view.ui.SignUpActivity" />
+        <activity android:name="tech.tensordash.tensordash.view.ui.ForgotPasswordActivity" />
+        <activity android:name="tech.tensordash.tensordash.view.ui.SignUpActivity" />
         <activity
-            android:name=".view.ui.LoginActivity"
+            android:name="tech.tensordash.tensordash.view.ui.LoginActivity"
             android:windowSoftInputMode="" />
-        <activity android:name=".view.ui.SplashActivity">
+        <activity android:name="tech.tensordash.tensordash.view.ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.ui.DashboardActivity" />
+        <activity android:name="tech.tensordash.tensordash.view.ui.DashboardActivity" />
 
-        <service android:name=".service.FirebaseMessageService" />
+        <service android:name="tech.tensordash.tensordash.service.FirebaseMessageService" />
     </application>
 
 

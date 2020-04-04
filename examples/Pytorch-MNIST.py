@@ -44,10 +44,9 @@ import torch.optim as optim
 loss_function = nn.CrossEntropyLoss()
 optimizer = optim.Adam(net.parameters(), lr=0.001)
 
-my_cb = Torchdash(ModelName='Pytorch sample Model', email = '<YOUR_EMAIL_ID>', password= '<YOUR_PASSWORD>')
+my_cb = Torchdash(ModelName='<YOUR_MODEL_NAME>', email = '<YOUR_EMAIL_ID>', password= '<YOUR_PASSWORD>')
 
 epochs = 10
-
 
 try:
     for epoch in range(epochs):
@@ -57,9 +56,11 @@ try:
             net.zero_grad()
             output = net(X.view(-1,784))
             loss = F.nll_loss(output, y)
+            losses.append(loss.item())
             loss.backward()
             optimizer.step()
         losses = np.asarray(losses)
+        print("Send Value")
         my_cb.sendLoss(loss = np.mean(losses), epoch = epoch, total_epochs = epochs)
 
 except:

@@ -56,13 +56,14 @@ def test_step(model, x_test, y_test):
 
 model = create_model()
 
-histories = Customdash(ModelName = 'Tensorflow Model', email = '<YOUR_EMAIL_ID>', password = '<YOUR_PASSWORD>')
+histories = Customdash(ModelName = '<YOUR_MODEL_NAME>', email = '<YOUR_EMAIL_ID>', password = '<YOUR_PASSWORD>')
 
 num_epochs = 5
 
 try:
 
   for epoch in range(num_epochs):
+    print(epoch)
     for (x_train, y_train) in train_dataset:
       train_step(model, optimizer, x_train, y_train)
       
