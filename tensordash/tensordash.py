@@ -7,6 +7,10 @@ from firebase_data import SendDataToFirebase
 SendData = SendDataToFirebase()
 class Tensordash(tf.keras.callbacks.Callback):
 
+    """
+    Uses custom callbacks in keras and tf.keras to send model metrics to firebase after every epoch
+    """
+
     def __init__(self, ModelName = 'Sample_model', email = None, password =None):
 
         self.start_time = time.time()    
@@ -15,9 +19,12 @@ class Tensordash(tf.keras.callbacks.Callback):
         self.password = password
         self.epoch_num = 0
 
-        self.key, self.auth_token = SendData.signin(email = self.email, password = self.password)
+        self.key, self.auth_token = SendData.signin(email = self.email, password = self.password) #get key and authentication token for givenn email ID
 
     def on_train_begin(self, logs = {}):
+        """
+        Initializes the model on training begining to firebase and updates the status as RUNNING
+        """
         self.losses = []
         self.accuracy = []
         self.val_losses = []
@@ -28,17 +35,20 @@ class Tensordash(tf.keras.callbacks.Callback):
         SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
         
     def on_epoch_end(self, epoch, logs = {}):
-
+        """
+        Sends data to firebase after every epoch
+        """
         if(time.time() - self.start_time > 3000):
+            #gets authentication token after every 50 minuites
             self.start_time = time.time()
             self.key, self.auth_token = SendData.signin(email = self.email, password = self.password)
 
         self.losses.append(logs.get('loss'))
+        self.val_losses.append(logs.get('val_loss'))
         if(logs.get('acc') != None):
             self.accuracy.append(logs.get('acc'))
         else:
             self.accuracy.append(logs.get('accuracy'))
-        self.val_losses.append(logs.get('val_loss'))
         if(logs.get('val_acc') != None):
             self.val_accuracy.append(logs.get('val_acc'))
         else:
@@ -67,6 +77,9 @@ class Tensordash(tf.keras.callbacks.Callback):
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = values, ModelName = self.ModelName)
 
     def on_train_end(self, epoch, logs = {}):
+        """
+        Updates model status as COMPLETED on trainning end
+        """
         if(time.time() - self.start_time > 3000):
             self.start_time = time.time()
             self.key, self.auth_token = SendData.signin(email = self.email, password = self.password)
@@ -74,6 +87,9 @@ class Tensordash(tf.keras.callbacks.Callback):
         SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
 
     def sendCrash(self):
+        """
+        Updates model status as CRASHED if the model crashes
+        """
         if(time.time() - self.start_time > 3000):
             self.start_time = time.time()
             self.key, self.auth_token = SendData.signin(email = self.email, password = self.password)
@@ -81,6 +97,11 @@ class Tensordash(tf.keras.callbacks.Callback):
 
 
 class Customdash(object):
+    """
+    If you are using a custom model with a different framework that does not support callbacks 
+    or using numpy to make a model, you can use Customdash to send data.
+    Refer examples to see how to use
+    """
     def __init__(self, ModelName = 'Sample Model', email = None, password = None):
 
         self.start_time = time.time()    
@@ -94,13 +115,16 @@ class Customdash(object):
     def sendLoss(self, epoch = None, loss = None, acc = None, val_loss = None, val_acc = None, total_epochs = None):
 
         if(time.time() - self.start_time > 3000):
+            #gets authentication token if the time exceeds 50 mins
             self.start_time = time.time()
-            self.key, self.auth_token = SendData.signin(email = self.email, password = self.password)
-
+            self.key, self.auth_token = SendData.signin(email = self.email, password = self.password) 
         if(epoch == 0):
+            # Initializes the model and updates RUNNING status
+            SendData.model_init(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
             SendData.updateRunningStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
 
         if(epoch == total_epochs - 1):
+            # Updates model status as COMPLETED when the model is trained
             SendData.updateCompletedStatus(key = self.key, auth_token = self.auth_token, ModelName = self.ModelName)
         
         loss = float("{0:.6f}".format(loss))
@@ -117,6 +141,9 @@ class Customdash(object):
         SendData.sendMessage(key = self.key, auth_token = self.auth_token, params = params, ModelName = self.ModelName)
 
     def sendCrash(self):
+        """
+        Updates model status as CRASHED on model crashing
+        """
         if(time.time() - self.start_time > 3000):
             self.start_time = time.time()
             self.key, self.auth_token = SendData.signin(email = self.email, password = self.password)
