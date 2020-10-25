@@ -67,5 +67,9 @@ Install the android app from the play store.<br>
 </table>
 
 		
+## We are currently working on:
+- Development for iOS app
+- Addition of custom metrics to the model
+- Auto-update the dashboard screen on Android App
 
-
+Have feedback or a feature request? Drop us a mail at tensordash@gmail.com or raise an [issue on Github](https://github.com/CleanPegasus/TensorDash/issues/new/choose)
