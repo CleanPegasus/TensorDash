@@ -132,7 +132,7 @@ class Customdash(object):
             acc = float("{0:.6f}".format(acc))
 
         if val_loss != None:
-            val_loss = float("{0:.6f}".format(loss))
+            val_loss = float("{0:.6f}".format(val_loss))
 
         if val_acc != None:
             val_acc = float("{0:.6f}".format(val_acc))
